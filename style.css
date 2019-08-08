@@ -1,9 +1,6 @@
 body {
-    /* background:url(img/bg.jpg) top no-repeat;
-    background-position: cover;
-    background-attachment: fixed; */
     background-color:#333;
-    color:lightgrey;
+    color:white;
     font-size:16px;
     font-family:"merriweather";
     font-weight:300;
@@ -18,7 +15,7 @@ h1 {
 h2, h3 {
     font-size:22px;
     font-weight:400;
-    color:rgb(247, 241, 241);
+    color:white;
     margin:0 0 10px 0;
 }
 
@@ -82,6 +79,47 @@ a:hover {
 .full-item:hover {
     opacity:1;
     border-left:solid 5px salmon;
+}
+
+#table {
+    display:none;
+    width:92%;
+    margin:10px -20px;
+}
+
+table {
+    text-align:center;
+    color:#aaa;
+    font-weight:200;
+    font-size:12px;
+    width:100%;
+}
+
+.click:after {
+    content:"← click me";
+    color:grey;
+    text-transform:none;
+    font-weight:200;
+    font-size:13px;
+    padding-left:10px;
+}
+
+th {
+    padding:5px;
+    color:salmon;
+    font-weight:200;
+    background-color:#445;
+    opacity:.8;
+}
+
+th:hover,td:hover {
+    opacity:1;
+}
+
+td {
+    padding:5px;
+    background-color:rgb(25, 25, 27);
+    opacity:.5;
 }
 
 @media (max-width:980px) {
