@@ -131,7 +131,7 @@ table {
     font-size:13px;
     padding-left:8px;
     margin-top:3px;
-    animation: pulse 3s infinite;
+    animation: pulse 1s infinite;
 }
 
 th {
@@ -235,7 +235,7 @@ th.corner-cell:hover {
     }
     70% {
         opacity:1;
-        color:salmon;
+        color:white;
     }
     100% {
         opacity:.3;
