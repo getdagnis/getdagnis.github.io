@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Lekcijas tabula</title>
+</head>
+<style>
+    #table1 {
+        width:100%;
+        border:solid 2px #aaa;
+        font-family:'Times New Roman', Times, serif;
+        padding:10px;
+        border-collapse: collapse;
+    }
+    #table1 td,th {
+        border:solid 2px #ddd;
+        height:40px;
+        text-align:center;
+    }
+    #table2 {
+        width:auto;
+        border:none;
+        font-family:'Times New Roman', Times, serif;
+        padding:10px;
+        border-collapse: collapse;
+    }    
+    input,textarea,select {
+        font-size:16px;
+        width:250px;
+    }
+    #table2 td,th {
+        height:40px;
+        text-align:left;
+    }    
+    .submit-cell {
+        text-align:center;
+    }
+
+
+</style>
+<body>
+    <div id="contents">
+        <table id="table1">
+                <thead>
+                    <tr>
+                        <th rowspan="3">Day</th>
+                        <th colspan="3">Schedule</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Time table</th>
+                        <th rowspan="2">Topic</th>
+                    </tr>                    
+                    <tr>
+                        <th>Begin</th>
+                        <th>End</th>
+                    </tr>                        
+                </thead>
+                <tbody>
+                    <tr>
+                        <td rowspan="2">Monday</td>
+                        <td rowspan="2">Culpa.</td>
+                        <td rowspan="2">Expedita?</td>
+                        <td>Natus.</td>
+                    </tr>
+                    <tr>
+                        <td>Sectim</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="6">Tuesday</td>
+                        <td rowspan="2">Fugiat.</td>
+                        <td rowspan="2">Ratione!</td>
+                        <td rowspan="3">Aspernatur!</td>
+                    </tr>
+                    <tr></tr>
+                    <tr>
+                        <td rowspan="2">Illum?</td>
+                        <td rowspan="2">Sint?</td>
+                    </tr>
+                    <tr><td rowspan="3">Nostrum.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2">Consectetur.</td>
+                        <td rowspan="2">Sapiente.</td>
+                    </tr>
+                    <tr></tr>
+                    <tr></tr>
+                    <tr>
+                        <td>wednesday?</td>
+                        <td>Earum.</td>
+                        <td>Ea?</td>
+                        <td>Eaque!</td>
+                    </tr>
+                </tbody>
+        </table>
+        <br />
+        <table style="width:100%;">
+        <tr><td>
+        <table id="table2">
+            <tbody><form>
+                <tr>
+                    <td style="min-width:120px;">Name</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Surname</td>
+                    <td><input type="text"></td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td><input type="email" placeholder="youremail@domain.com"></td>
+                </tr>
+                <tr>
+                    <td>Age (full years)</td>
+                    <td><input type="number" min="0" max="130" step="1"></td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td><select>
+                            <option value="Kazakhstan">Kazakhstan</option>
+                            <option value="Estonia">Estonia</option>
+                            <option value="USA">USA</option>
+                            <option value="China">China</option>
+                          </select></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><textarea></textarea></td>
+                </tr>
+                <tr>
+                    <td>Enjoyment</td>
+                    <td>oh yes <input type="radio" name="enjoy" value="yes" style="width:auto;"> hell no <input type="radio" name="enjoy" value="no" style="width:auto;"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center;"><input type="button" value="Submit"></td>
+                </tr>
+            </form>    
+            </tbody>
+        </table>
+        </td><td style="text-align:right;">
+            <img src="http://broken.com/link.jpg" alt="image broken">
+            <img src="https://cdn.pixabay.com/photo/2015/12/04/14/05/code-1076536__340.jpg" alt="image broken">
+        </td></tr></table>
+        <a href="index.html">Iekšējs links</a><br />
+        <a href="http://IsItChristmas.com">Vai šodien ir Ziemassvētki?</a>
+        <ul>
+            <li>Not ordered item one
+                <ol>
+                    <li>Lipsum</li>
+                    <li>Dolor</li>
+                </ol>
+            </li>
+            <li>Not ordered item two
+                <ul>
+                    <li>Sit amet</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

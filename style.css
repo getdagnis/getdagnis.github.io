@@ -1,5 +1,8 @@
 body {
-    background-color:#333;
+    background:url(img/bg.jpg) center no-repeat;
+    background-attachment: fixed;
+    background-position: cover;
+    background-color:rgb(43, 43, 49);
     color:white;
     font-size:16px;
     font-family:"merriweather";
@@ -8,7 +11,7 @@ body {
 }
 
 h1 {
-    color:rgb(97, 97, 100);
+    color:rgb(74, 74, 82);
     margin-top:20px;
 }
 
@@ -23,6 +26,10 @@ h4 {
     color:salmon;
     margin-bottom:-10px;
     margin-top:10px;
+}
+
+ul {
+    list-style-image: url(img/bullet.png);
 }
 
 span {
@@ -56,24 +63,31 @@ a:hover {
 }
 
 .grid-item {
-    background-color:rgb(58, 58, 59);
+    display:block;
+    position:relative;
+    background-color:rgb(60, 60, 66);
     padding:20px;
-    height:460px;
+    height:auto;
+    min-height:460px;
     border-radius: 0 0 100px 0;
     opacity:.4;
     transition: all .7s ease;
 }
 
 .grid-item:hover {
-    opacity:1;
+    opacity:.6;
     cursor:pointer;
     transition: all .7s ease;    
 }
 
 .full-item {
-    background-color:rgb(38, 38, 41);
-    opacity:.8;
+    background-color:rgb(27, 27, 31);
+    opacity:.6;
     border-left:solid 5px rgb(75, 45, 42);
+}
+
+.double-item {
+    grid-row: span 2;
 }
 
 .full-item:hover {
@@ -81,10 +95,23 @@ a:hover {
     border-left:solid 5px salmon;
 }
 
+.item-tools {
+    position:absolute;
+    right:12px;
+    top:12px;
+    opacity:.3;
+    transition:all .7s ease;
+}
+
+.item-tools:hover {
+    opacity:1;
+    transition:all .7s ease;
+}
+
 #table {
     display:none;
-    width:92%;
-    margin:10px -20px;
+    width:100%;
+    margin:10px 0 10px -35px;
 }
 
 table {
@@ -95,13 +122,16 @@ table {
     width:100%;
 }
 
-.click:after {
+.click::after {
+    position:absolute;
     content:"← click me";
-    color:grey;
+    color:white;
     text-transform:none;
     font-weight:200;
     font-size:13px;
-    padding-left:10px;
+    padding-left:8px;
+    margin-top:3px;
+    animation: pulse 3s infinite;
 }
 
 th {
@@ -140,7 +170,29 @@ th.corner-cell:hover {
 
 @media (max-width:980px) {
     body {
-        padding:10px 40px 30px 20px;
+        padding:10px 20px 30px 10px;
+    }
+    #square-3 {
+        height:auto;
+        min-height:450px;
+    }
+    table {
+        width:100%;
+        font-size:10px;
+        padding:0;
+        margin:0;
+    }
+    td,th {
+        padding:2px 5px;
+    }
+    .grid-item {
+        padding:10px 15px 10px 15px;
+    }
+    .click::after {
+        content:"← click";
+        font-size:12px;
+        padding-left:5px;
+        margin-top:4px;
     }
 }
 
@@ -174,5 +226,18 @@ th.corner-cell:hover {
     #container {
         grid-template-columns: repeat(3, 500px);
         width:1530px;
+    }
+}
+
+@keyframes pulse {
+    0% {
+      opacity:.3;
+    }
+    70% {
+        opacity:1;
+        color:salmon;
+    }
+    100% {
+        opacity:.3;
     }
 }
