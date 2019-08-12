@@ -348,6 +348,24 @@ th.corner-cell:hover {
     }
 }
 
+::-webkit-scrollbar {
+    width: 20px;
+    background: rgb(43, 42, 44); 
+}
+
+::-webkit-scrollbar-thumb {
+    width: 20px;
+    background: rgb(64, 62, 66); 
+    border-radius:2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    width: 20px;
+    background: rgb(82, 79, 85); 
+}
+
+
+
 @keyframes pulse {
     0% {
       opacity:.3;
