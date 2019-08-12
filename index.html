@@ -11,19 +11,32 @@
 </head>
 <body>
     <div id="container">
-        <h1>.RCS<br /> .Aug-Sep<br /> .2019<br /></h1>    
-        <div id="square-1" class="grid-item full-item">
+        <div id="top">
+            Nedēļas: Pirmā Otrā Trešā    
+        </div>
+        <div id="grid">
+        <div id="title-item">
+            <h1 class="animated fadeInUp fast delay-1s">.RCS</h1>
+            <h1 class="animated fadeInUp fast delay-2s">.Aug-Sep</h1>
+            <h1 class="animated fadeInUp fast delay-3s">.2019</h1>
+        </div>
+        <!-- SQUARE ONE -->
+        <div id="square-1" class="grid-item square-1">
+                <div id="square-1-hide" title="Click to expand"><a href="javascript:makeDouble('square-1');"><img class="expand-img" src="img/item-expand.png" /></a></div>
                 <div class="item-tools"><a class="zoom-in-link" href="javascript:zoomIn()"><img src="img/zoomin.png" alt="work in progress..." /></a></div>
-                <h3>Visi svarīgākie faili:</h3>
+                <h3>Svarīgākās saites:</h3>
             <ul>
                 <li><a href="https://github.com/getdagnis/getdagnis.github.io/">Mans GIT repositorijs</a></li>
                 <li><a href="https://learn.freecodecamp.org/" target="_blank">freeCodeCamp.org/</a></li>
                 <li>more to come...</li>
+                <h4>WEB Bootcamp programma</h4>
+                <p>1. nedēļa:</p><ul><li>Git -&gt; Github</li><li>Web izstrādātāja rīki Chrome / Firefox</li><li>Code Editors -&gt; Visual Studio Code instalēšana</li><li>Cloud based code pens</li><li>HTML Tagi</li><li>HTML Atribūti</li><li>CSS Selektori</li><li>layouts &#8211; normal / floats / flexbox / grid</li></ul><p>2. nedēļa:</p><ul><li>Bootstrap</li><li>CSS ievads</li><li>CSS &#8211; atbildēt uz jautājumiem, pabeigt tēmu</li><li>Javascript pamati</li><li>Control flow / working with DOM</li><li>Funkcijas / Prototipi</li></ul><p>3. nedēļa:</p><ul><li>Typescript / transpilers  (Babel) / polyfills / JSON</li><li>Javascript Bibliotēkas apskats, darbība, nosacījumi</li><li>JQuery</li><li>React pamati</li><li>Intermediate React</li><li>AJAX</li></ul><p>4. nedēļa:</p><ul><li>VUE apskate</li><li>Angular pamati</li><li>Front-end pamati</li><li>Serverside tehnoloģiju apskats</li><li>Node.js apskate</li><li>SQL pamati</li></ul><p>5.nedēļa:</p><ul><li>NoSQL pamati</li><li>Building Basic REST API</li><li>Pamata MVC modelis</li><li>PHP pamati</li><li>Laravel pamati</li></ul><p>6.nedēļa:</p><ul><li>Citu ietvaru/valodu apskate</li><li>Drošība</li><li>Autorizācija</li><li>Autentifikācija</li><li>Gala darbu prezentācijas</li></ul>
             </ul>
         </div>
-        <div id="square-2" class="grid-item full-item">
+        <!-- SQUARE TWO, WEEK 1-2 -->
+        <div id="square-2" class="grid-item full-item week-1">
                 <div class="item-tools"><a class="zoom-in-link" href="javascript:zoomIn()"><img src="img/zoomin.png" alt="work in progress..." /></a></div>
-                <h3>N1 - Lekcijas I un II <span class="small">(Aug 5, Aug 6)</span></h3>
+                <h3>N1: Lekcijas I un II <span class="small">(Aug 5, Aug 6)</span></h3>
             Lekcijas fails: <a href="https://github.com/epuce/web-bootcamp/blob/master/W01L02%20-%20Git.md" target="_blank">W01L02 - Git</a>
             <h4>Jāprot izmantot GIT komandas:</h4>
             <p class="mono">
@@ -41,9 +54,10 @@
             git push origin new-branch<br />
             </p>
         </div>
-        <div id="square-3" class="grid-item full-item">
+        <!-- SQUARE THREE, WEEK 1-3 -->
+        <div id="square-3" class="grid-item full-item week-1" onclick="makeDouble('square-3');">
                 <div class="item-tools"><a class="zoom-in-link" href="javascript:zoomIn()"><img src="img/zoomin.png" alt="work in progress..." /></a></div>
-                <h3>N1 - Lekcija III <span class="small">(Aug 8)</span></h3>
+                <h3>N1: Lekcija III <span class="small">(Aug 8)</span></h3>
             Lekcijas fails: <a href="https://github.com/epuce/web-bootcamp/blob/master/W01L03%20-%20Git%20checkup%20%2B%20HTML%20tags.md" target="_blank">W01L03 - Git checkup + HTML tags</a>
             <h4>Tēmas:</h4>
             <ul>
@@ -90,22 +104,52 @@
                 <li>Vēl par formām, input pogām u.c.</li>
             </ul>
         </div>
-        <div id="square-4" class="grid-item full-item">
+        <!-- SQUARE FOUR, WEEK 1-4 -->
+        <div id="square-4" class="grid-item full-item week-1" onclick="makeDouble('square-4');">
             <div class="item-tools"><a class="zoom-in-link" href="javascript:zoomIn()"><img src="img/zoomin.png" alt="work in progress..." /></a></div>
-            <h3>N1 - Lekcija IV <span class="small">(Aug 9)</span></h3>
+            <h3>N1: Lekcija IV <span class="small">(Aug 9)</span></h3>
             Lekcijas fails: <a href="https://github.com/epuce/web-bootcamp/blob/master/W01L04%20-%20HTML%20atributes.md" target="_blank">W01L04 - HTML atributes</a><br />
-            <!-- Video: <a href="http://www.youtube.com/" target="_blank">Youtube</a> -->
+            Video: <a href="https://www.youtube.com/watch?v=C3SJUhhVWzE" target="_blank">Youtube</a>
             <h4>Tēmas:</h4>
             <ul>
                 <li>Kas ir HTML tagi</li>
-                <li><a href="lekcija_4.html">Lekcijas uzdevums: Lielā, greizā tabula</a></li>
-                <li>tas arī viss...</li>
+                <li>Uzdevums: <a href="lekcija_4.html" target="_blank">Lielā, greizā tabula</a></li>
+                <li>Uzdevuma <a href="https://github.com/epuce/web-bootcamp/raw/master/img/W01L04.png" target="_blank">paraugs.</a></li>
             </ul>
         </div>
-        <div id="square-5" class="grid-item"></div>
-        <div id="square-6" class="grid-item"></div>
-        <div id="square-7" class="grid-item"></div>
-        <div id="square-8" class="grid-item"></div>
+        <!-- SQUARE FIVE, WEEK 2-1 -->
+        <div id="square-5" class="grid-item full-item week-2" onclick="makeDouble('square-5');">
+            <div id="week-2-hide"><img class="expand-img" src="img/item-expand.png" /></div>
+            <div class="item-tools"><a class="zoom-in-link" href="javascript:zoomIn()"><img src="img/zoomin.png" alt="work in progress..." /></a></div>
+            <h3>N2: Lekcija I <span class="small">(Aug 12)</span></h3>
+            Lekcijas fails: <a href="https://github.com/epuce/web-bootcamp/blob/master/W02L01%20-%20CSS%20basics.md" target="_blank">W02L01 - CSS basics</a><br />
+            <!-- Video: <a href="http://www.youtube.com/" target="_blank">Youtube</a> -->
+            <h4>Tēmas:</h4>
+            <ul>
+                <li>Ievads CSS</li>
+                <li>Interesanti: <a href="https://www.w3schools.com/cssref/css3_pr_transform.asp">transform property</a></li>
+                <li>Garuma mērvienības: <a href="https://www.w3schools.com/cssref/css_units.asp">CSS Units</a></li>
+                <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">CSS selektori</a>, piemēram:
+                    <ul class="mono">
+                        <li title="Visi ārējie linki, vai visi PDF faili, piemēram">[target=_blank], a[href$=".pdf"]</li>
+                        <li title="Pirmais vai pēdējais paragrāfs">p:first-child, p:last-child</li>
+                        <li>::first-letter, ::first-child, ::first-line, ::first-cell</li>
+                        <li>input:focus - ieselektētais input lauks</li>
+                        <li>input:invalid - invalid value</li>
+                        <li>:not(p)	- nav paragrāfs</li>
+                        <li>li:nth-child(7)	- katra ul 7-tā li</li>
+                        <li>::selection	- daļa, ko ieselektē</li>
+                        <li>#square-5:target - ieselektē # targetu</li>
+                        <li><a href="https://css-tricks.com/how-nth-child-works/">li:nth-child(2n+2)</a> - katra otrā rinda</li>
+                    </ul>
+                </li>
+            </ul>
+            Uzdevums: <a href="lekcija_5.html" target="_blank">Pārrakstīt stilus tabulai</a>
+        </div>
+        <div id="square-6" class="grid-item" onclick="makeDouble('square-6');"></div>
+        <div id="square-7" class="grid-item" onclick="makeDouble('square-7');"></div>
+        <div id="square-8" class="grid-item" onclick="makeDouble('square-8');"></div>
+        </div>
     </div>
 </body>
 </html>

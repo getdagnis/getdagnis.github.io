@@ -12,7 +12,11 @@ body {
 
 h1 {
     color:rgb(74, 74, 82);
-    margin-top:20px;
+    margin-top:0;
+    margin-bottom:0;
+    animation-duration: 3s;
+    animation-delay: 2s;
+    animation-iteration-count: once;
 }
 
 h2, h3 {
@@ -41,25 +45,59 @@ span {
 }
 
 a {
-    color:salmon;
-}
+    color:rgb(170, 102, 94);
+    transition-property: color, opacity;
+    transition-duration: .3s;
+    transition-timing-function: ease;}
 
 a:hover {
-    color:rgb(245, 103, 87);
+    color:rgb(255, 140, 128);
+    transition-property: color, opacity;
+    transition-duration: .3s;
+    transition-timing-function: ease;
 }
 
 .mono {
     font-family:'Menlo', 'Monaco', 'Courier New', monospace;
     font-size:14px;
     margin-left:20px;
-    line-height:1.1;
+    line-height:1.5;
 }
 
+li .mono {
+    line-height:2;
+    color:grey;
+    font-size:12px;
+}
+
+li:nth-child(7) {
+    color:white!important;
+}
+
+li::selection, p::selection, a::selection {
+    color:white!important;
+    background-color:red;
+}
+
+
 #container {
+    margin:20px auto;
+}
+
+#top {
+    display:block;
+    float:right;
+    font-size:12px;
+    font-family:"open sans", "fira sans", sans;
+    text-transform:uppercase;
+    margin-top:-24px;
+    opacity:0.2;
+}
+
+#grid {
     display:grid;
     grid-column-gap: 15px;
     grid-row-gap: 15px;
-    margin:20px auto;
 }
 
 .grid-item {
@@ -67,39 +105,118 @@ a:hover {
     position:relative;
     background-color:rgb(60, 60, 66);
     padding:20px;
-    height:auto;
-    min-height:460px;
+    height:460px;
     border-radius: 0 0 100px 0;
     opacity:.4;
-    transition: all .7s ease;
+    transition: all 5s ease;
+    overflow:hidden;
 }
 
 .grid-item:hover {
-    opacity:.6;
-    cursor:pointer;
+    opacity:1;
     transition: all .7s ease;    
 }
 
-.full-item {
+.square-1 {
+    position:relative;
     background-color:rgb(27, 27, 31);
-    opacity:.6;
     border-left:solid 5px rgb(75, 45, 42);
+}
+
+.square-1:hover {
+    border-left:solid 5px salmon;
+}
+
+#square-1-hide, #week-1-hide, #week-2-hide, #week-3-hide, #week-4-hide, #week-5-hide, #week-6-hide, #week-7-hide, #week-8-hide {
+    display:block;
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:90px;
+    background-color:#111;
+    background-position-y: bottom;
+    cursor:pointer;
+}
+
+#square-1-hide {
+    background:url(img/square-1-hide.png) repeat-x;
+}
+
+#week-1-hide {
+    background:url(img/week-1-hide.png) repeat-x;
+}
+
+#week-2-hide {
+    background:url(img/week-2-hide.png) repeat-x;
+}
+
+.expand-img {
+    position:absolute;
+    bottom:0;
+    left:110px;
+    opacity:.4;
+    padding:16px 100px;  
+}
+
+.expand-img:hover {
+    opacity:1;
+}
+
+.reduce-img {
+    position:absolute;
+    bottom:16px;
+    left:220px;
+    transform:scaleY(-1);
+}
+
+.week-1 {
+    background-color:rgb(22, 25, 27);
+    border-left:solid 5px rgb(44, 54, 54);
+}
+
+.week-1:hover {
+    border-left:solid 5px rgb(96, 177, 180);
+}
+
+.week-1 a, .week-1 h4 {
+    color: rgb(90, 162, 165);
+}
+
+.week-1 a:hover {
+    color: rgb(113, 237, 241);
+}
+
+.week-2 {
+    background-color:rgb(32, 32, 30);
+    border-left:solid 5px rgb(70, 73, 53);
+}
+
+.week-2:hover {
+    border-left:solid 5px rgb(199, 214, 129);
+}
+
+.week-2 a, .week-2 h4 {
+    color:rgb(168, 179, 118);
+}
+
+.week-2 a:hover {
+    color:rgb(241, 255, 179);
 }
 
 .double-item {
     grid-row: span 2;
 }
 
-.full-item:hover {
-    opacity:1;
-    border-left:solid 5px salmon;
+.triple-item {
+    grid-row: span 3;
 }
 
 .item-tools {
     position:absolute;
     right:12px;
     top:12px;
-    opacity:.3;
+    opacity:.2;
     transition:all .7s ease;
 }
 
@@ -172,10 +289,6 @@ th.corner-cell:hover {
     body {
         padding:10px 20px 30px 10px;
     }
-    #square-3 {
-        height:auto;
-        min-height:450px;
-    }
     table {
         width:100%;
         font-size:10px;
@@ -201,8 +314,10 @@ th.corner-cell:hover {
         padding:10px 20px;
     }
     #container {
-        grid-template-columns: repeat(2, 450px);
         width:930px;
+    }
+    #grid {
+        grid-template-columns: repeat(2, 450px);
     }
     h1 {
         font-size:94px;
@@ -212,10 +327,12 @@ th.corner-cell:hover {
 @media (min-width:1180px) {
     body {
         padding:20px 50px;
-    }    
+    }
     #container {
-        grid-template-columns: repeat(2, 500px);
         width:1030px;
+    }
+    #grid {
+        grid-template-columns: repeat(2, 500px);
     }
 }
 
@@ -224,8 +341,10 @@ th.corner-cell:hover {
         padding:20px 50px;
     }
     #container {
-        grid-template-columns: repeat(3, 500px);
         width:1530px;
+    }    
+    #grid {
+        grid-template-columns: repeat(3, 500px);
     }
 }
 
@@ -235,9 +354,109 @@ th.corner-cell:hover {
     }
     70% {
         opacity:1;
-        color:white;
     }
     100% {
         opacity:.3;
     }
 }
+
+@-webkit-keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, 100%, 0);
+      transform: translate3d(0, 100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInUp {
+    -webkit-animation-name: fadeInUp;
+    animation-name: fadeInUp;
+  }
+
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  .animated.infinite {
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+  }
+  
+  .animated.delay-1s {
+    -webkit-animation-delay: 1s;
+    animation-delay: .2s;
+  }
+  
+  .animated.delay-2s {
+    -webkit-animation-delay: 2s;
+    animation-delay: .35s;
+  }
+  
+  .animated.delay-3s {
+    -webkit-animation-delay: 3s;
+    animation-delay: .5s;
+  }
+  
+  .animated.delay-4s {
+    -webkit-animation-delay: 4s;
+    animation-delay: 4s;
+  }
+  
+  .animated.delay-5s {
+    -webkit-animation-delay: 5s;
+    animation-delay: 5s;
+  }
+  
+  .animated.fast {
+    -webkit-animation-duration: 800ms;
+    animation-duration: 800ms;
+  }
+  
+  .animated.faster {
+    -webkit-animation-duration: 500ms;
+    animation-duration: 500ms;
+  }
+  
+  .animated.slow {
+    -webkit-animation-duration: 2s;
+    animation-duration: 2s;
+  }
+  
+  .animated.slower {
+    -webkit-animation-duration: 3s;
+    animation-duration: 3s;
+  }
+  
+  @media (print), (prefers-reduced-motion: reduce) {
+    .animated {
+      -webkit-animation-duration: 1ms !important;
+      animation-duration: 1ms !important;
+      -webkit-transition-duration: 1ms !important;
+      transition-duration: 1ms !important;
+      -webkit-animation-iteration-count: 1 !important;
+      animation-iteration-count: 1 !important;
+    }
+  }

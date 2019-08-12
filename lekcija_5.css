@@ -1,0 +1,70 @@
+html {
+    background-color:beige;
+    font-family:Helvetica, Arial, sans-serif;
+}
+
+#table1 td:first-child {
+    background-color:brown;
+    color:white;
+}
+
+.a.b {
+    background-color:yellowgreen;
+    color:white;
+}
+
+td:first-child	{
+    color:rebeccapurple;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+#table2 * {
+    font-size:17px;
+}
+
+[required] {
+    border:solid 1px red;
+}
+
+[type="radio"] {
+    display:inline-block;
+    border:solid 1px red;
+}
+
+input:valid {
+    border:solid 1px green;
+}
+
+#table1:hover, #table2:hover {
+    opacity:1;
+}
+
+.button {
+    display:block;
+    background-color:rgb(197, 116, 116);
+    width:200px;
+    color:white;
+    padding:10px;
+    margin:10px auto;
+}
+
+
+.button:hover {
+    background-color:rgb(219, 15, 15);
+    transition:all 1s ease;
+}
+
+a:hover {
+    color:salmon;
+    
+}
+
+:not(.a) {
+    font-family:"Open Sans";
+}
+
+a:visited {
+    color:grey;
+    text-decoration:line-through;
+}
+
