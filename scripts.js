@@ -7,6 +7,10 @@ function isOverflown(element) {
     return element.scrollHeight > element.clientHeight;
 }
 
+function divIfOverflown(divName) {
+    addHtml = '<div id="week-2-hide"><img class="expand-img" src="img/item-expand.png" /></div>';
+}
+
 function checkOverflown() {
     getDivs = document.getElementsByClassName("grid-item");
     console.log(getDivs);
@@ -41,6 +45,7 @@ function closeTable() {
 }
 
 function makeDouble(myName) {
+    // --- aizver ciet citus atvērtos double-itemus --- //
     otherItems = document.getElementsByClassName('double-item');
         for (i=0;i<otherItems.length;i++) {
             otherItems[i].classList.remove('double-item');
@@ -48,6 +53,7 @@ function makeDouble(myName) {
             changeLink = "javascript:makeDouble('" + thisId + "');";
             thisItem.setAttribute('onclick', changeLink);
         }   
+    // --- padara šo par double-item --- //
     thisItem = document.getElementById(myName);
     thisItem.classList.add('double-item');
     thisItem.style.height = "975px";

@@ -1,5 +1,5 @@
 body {
-    background:url(img/bg.jpg) center no-repeat;
+    background:url(../img/bg.jpg) center no-repeat;
     background-attachment: fixed;
     background-position: cover;
     background-color:rgb(43, 43, 49);
@@ -33,7 +33,7 @@ h4 {
 }
 
 ul {
-    list-style-image: url(img/bullet.png);
+    list-style-image: url(../img/bullet.png);
 }
 
 span {
@@ -127,7 +127,7 @@ li::selection, p::selection, a::selection {
     border-left:solid 5px salmon;
 }
 
-#square-1-hide, #week-1-hide, #week-2-hide, #week-3-hide, #week-4-hide, #week-5-hide, #week-6-hide, #week-7-hide, #week-8-hide {
+#item-hide {
     display:block;
     position:absolute;
     bottom:0;
@@ -137,18 +137,7 @@ li::selection, p::selection, a::selection {
     background-color:#111;
     background-position-y: bottom;
     cursor:pointer;
-}
-
-#square-1-hide {
-    background:url(img/square-1-hide.png) repeat-x;
-}
-
-#week-1-hide {
-    background:url(img/week-1-hide.png) repeat-x;
-}
-
-#week-2-hide {
-    background:url(img/week-2-hide.png) repeat-x;
+    background:url(../img/square-1-hide.png) repeat-x;
 }
 
 .expand-img {
