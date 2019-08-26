@@ -1,7 +1,6 @@
 body {
     font-family:"fira sans";
     color:white;
-    font-size:20px;
 }
 
   h1 {
@@ -63,7 +62,7 @@ body {
   }
 
   .les1 {
-    width:100%;
+    width:100%; 
     justify-content:space-between;
 }
 
@@ -83,7 +82,7 @@ body {
 }
 
 #les3 .item {
-    width:80px;
+    width:100%;
     height:40px;
 }
 
@@ -115,7 +114,7 @@ body {
 
   .i1 {background:teal;}
   .i2 {background:salmon;}
-  .i3 {background:slategray;}
+  .i3 {background:darkslategray;}
   .i4 {background:brown;}
   .i5 {background:gold;}
   .i6 {background:coral;}
@@ -177,4 +176,63 @@ body {
     grid-column-end:7;
     grid-row-start:3;
     grid-row-end:5;
+}
+
+@media screen and (max-width:1024px) {
+  body {
+    font-size:20px;
+}
+  h1 {
+      font-size:32px;
+  }
+  h2 {
+    font-size:20px;
+  }
+  h3 {
+    font-size:16px;
+  }
+}
+
+#screen-size {
+  position:absolute;
+  display:none;
+  width:220px;
+  height:95px;
+  margin:0 auto;
+  background:rgb(204, 50, 50);
+  border:1px solid red;
+  padding:20px 50px;
+  font-weight:600;
+  font-size:20px;
+  text-align:center;
+  top:50%;
+  left:50%;
+  transform:translate(50%,50%);
+}
+
+#black-wrap {
+  display:none;
+  position:absolute;
+  padding:-50px;
+  margin:-50px;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.7);
+  z-index:999;
+}
+
+@media screen and (max-width: 1024px) and (min-width: 320px) {
+  #screen-size {
+    display:block;
+  }
+  #black-wrap {
+    display:block;
+  }
+}
+
+@media screen and (max-width: 768px) and (min-width: 320px) and (orientation: portrait) {
+  #screen-size {
+    width:95px;
+    height:220px;
+  }
 }

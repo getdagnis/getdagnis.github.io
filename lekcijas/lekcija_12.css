@@ -1,0 +1,13 @@
+.highlight {
+    background-color:red!important;
+    color:red!important;
+}
+
+.last {
+    display:block;
+    margin-bottom:10000px;
+}
+
+imgd {
+    border-radius:50px;
+}

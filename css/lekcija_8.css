@@ -1,0 +1,26 @@
+body {
+  background:snow;
+}
+.row > div {
+height: 50px;
+background:coral;
+color:white;
+padding:10px 20px;
+text-transform:capitalize;
+}
+
+.row  {
+  margin-bottom:50px;
+}
+
+body {
+  padding:20px;
+}
+table {
+  margin-top:50px;
+}
+
+.olive {
+  background:brown!important;
+}
+

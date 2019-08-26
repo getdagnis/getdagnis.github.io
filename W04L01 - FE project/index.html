@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>W04L01 - FE project</title>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="form-div" class="">
+        <div id="form-left" onclick="javascript:showDiv();">
+            Add New Item
+        </div>
+        <form id="form" action="form_register.php" method="post">
+            <h3>Add new item here!</h3>
+            <input id="user" type="text" name="username" placeholder="Username" value=""  /><br />
+            <input id="email" type="email" name="email" placeholder="E-mail" value="" /><br />
+            <input class="button" type="submit" name="submit" value="Submit" onclick="javascript:postData();" />
+            <label onclick="checkBox();"><input id="checkbox" type="checkbox" name="myself" id="myself">I'll come myself</label>
+            <select id="select" name="myself">
+                    <option value="today">Today</option>
+                    <option value="tomorrow">Tomorrow</option>
+                    <option value="week">This week</option>
+                    <option value="call">I'll call</option>
+            </select>
+        </form>
+        </div>
+        <div id="contents">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="th1">#</th>
+                            <th class="th2">Username</th>
+                            <th class="th3">E-mail</th>
+                            <th class="th4">Self pickup</th>
+                            <th class="th5">Arrival</th>
+                            <th class="th6">Delete</th>
+                        </tr>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Est.</td>
+                            <td>Beatae.</td>
+                            <td>Magnam?</td>
+                            <td>Aperiam?</td>
+                            <td>D</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Reiciendis.</td>
+                            <td>Nobis!</td>
+                            <td>Ea.</td>
+                            <td>Earum?</td>
+                            <td>D</td>
+                        </tr>
+                    </tbody>
+                    </thead>
+                </table>
+        </div>
+    </div>
+</body>
+</html>

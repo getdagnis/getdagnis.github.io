@@ -1,0 +1,138 @@
+body {
+    background:rgb(247, 244, 242);
+    font-family:"Helvetica";
+    font-size:16px;
+}
+#wrapper, #form, #contents {
+    margin:-10px;
+}
+
+#wrapper {
+    position:relative;
+    display:block;
+    width:100%;
+    margin:0 auto;
+    max-width:1280px;
+}
+
+#contents {
+    display:inline-block;
+    width:100%;
+    margin:0 auto;
+}
+
+table {
+    width:80%;
+    margin-top:100px;
+    box-shadow: 0 0 8px #cacaca;
+    border-collapse: collapse;
+}
+
+th {
+    background:rgb(182, 182, 182);
+    color:white;
+    padding:10px 20px;
+}
+
+td {
+    text-align:center;
+    padding:10px 20px;
+    background:white;
+    color:#444;
+    border:1px solid #eee;
+}
+
+.th1, .th6 {
+    width:5%;
+}
+
+#form-div {
+    color:white;
+    position:fixed;
+    display:block;
+    background:coral;
+    right:0;
+    top:30%;
+    transform:translateY(-50%);
+    transform:translateX(520px);
+    height:auto;
+    width:auto;
+    margin:-10px;
+    padding:50px 150px 50px 100px;
+    min-width:350px;
+    border-top-left-radius: 50px;
+    border-bottom-left-radius: 50px;
+    transition:all 1s ease;
+}
+
+.show {
+    transform:translateX(0px)!important;
+    transition:all 1s ease;
+}
+
+#form-left {
+    position:absolute;
+    top:50%;
+    left:40px;
+    text-align:center;
+    text-orientation: upright;
+    transform: rotate(-90deg) translateX(-35%);
+    transform-origin: left;
+    color:brown;
+    font-weight:300;
+    text-transform:uppercase;
+    font-size:20px;
+    height:50px;
+}
+
+#form [type=text], #form [type=email], #form select, #form .button {
+    color:#5d2624;
+    display:block;
+    width:330px;
+    background-color:white;
+    border:solid 1px #ecece3;
+    height:30px;
+    padding:3px 8px;
+    margin:1px 0 -6px;;
+    font-size:14px;
+    border-radius:15px;
+    margin-left:-5px;
+}
+
+#form input .checkbox {
+    display:inline-block;
+}
+
+#form .button {
+    height:38px;
+    width:350px;
+    color:white;
+    text-transform:uppercase;
+    font-size:13px;
+    border:none;
+    padding:3px 8px;
+    background-color:#5d2624;
+    margin-top:8px;
+    border-radius:15px;
+}
+
+#form .button:hover {
+    background-color:#b03b37;
+    border:none;
+    transition: all 1s ease;
+    animation: pulse 5s infinite;
+}
+
+label {
+    display: inline-block;
+    margin:10px 0 5px;
+    padding:10px 0;
+    color:brown;
+  }
+
+.checkbox {
+    width:20px;
+    height:20px;
+    margin-top:10px;
+    transform:translateY(3px);
+  }
