@@ -7,14 +7,16 @@ function init() {
 
 function showDiv() {
     let formDiv = document.getElementById('form-div');
+    let formLeft = document.getElementById('form-left');
     formDiv.classList.add("show");
-    document.getElementById('form-left').setAttribute('onclick', "javascript:hideDiv();")
+    formLeft.setAttribute('onclick', "javascript:hideDiv();")
 }
 
 function hideDiv() {
     let formDiv = document.getElementById('form-div');
+    let formLeft = document.getElementById('form-left');
     formDiv.classList.remove("show");
-    document.getElementById('form-left').setAttribute('onclick', "javascript:showDiv();")
+    formLeft.setAttribute('onclick', "javascript:showDiv();")
 }
 
 
@@ -29,6 +31,27 @@ function checkBox() {
     }
   }
 
+function checkUser() {
+
+}
+
+function checkEmail() {
+    
+}
+
 function postData() {
-    let getUser = document.getElementById
+    let getUser = document.getElementById("user").value;
+    let getEmail = document.getElementById("email").value;
+    let getCheck = document.getElementById("checkbox").value;
+    let getSelect = document.getElementById("select").value;
+    checkUser();
+    checkEmail();
+    checkSelect();
+    let allValid = false;
+    if (allValid === true) {
+        localStorage.setItem(user,getUser);
+        localStorage.setItem(email,getEmail);
+        localStorage.setItem(check,getCheck);
+        localStorage.setItem(select,getSelect);
+    }
 }
