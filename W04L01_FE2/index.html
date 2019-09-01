@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>W04L01 - FE project</title>
+</head>
+<body>
+    <div id="task-wrapper">
+        <div id="task-popup">
+            <h2>Add new task</h2>
+            <textarea name="task-text" id="task-text" placeholder="What do you want to do?"></textarea>
+            <table class="task-options"><tbody>
+                <tr>
+                    <td class="name-cell">motivation:</td><td><input type="text" name="task-text" id="task-mtv" placeholder="get a coffee, €2000, take a lunch break, trip to italy, etc...">
+                </tr>
+                <tr>
+                    <td class="name-cell">deadline:</td>
+                    <td>
+                        <select>
+                            <option value="15 minutes" selected>15 minutes</option>
+                            <option value="30 minutes">30 minutes</option>
+                            <option value="45 minutes">45 minutes</option>
+                            <option value="1 hour">1 hour</option>
+                            <option value="2 hours">2 hours</option>
+                            <option value="4 hours">4 hours</option>
+                            <option value="8 hours">8 hours</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                        <td class="name-cell">color:</td><td><span id="grey-color" class="pick-color grey-task active-color"></span><span id="blue-color" class="pick-color blue-task"></span><span id="green-color" class="pick-color green-task"></span><span id="pink-color" class="pick-color pink-task"></span>
+                </tr>
+                </tbody></table>
+                <div class="btn-popup red-btn" onclick="javascript:doNewTask();">Do Now</div><div class="btn-popup">Do Today</div><div class="btn-popup btn-cancel">Cancel</div>
+        </div>
+    </div>
+    <div id="header"><div id="logo"></div></div>
+    <div id="flex-big">
+        <div id="flex-left" class="trans-fast">
+            <div id="slide-btn-left" onclick="javascript:hideDiv('left')"><img id="arr-left" class="" src="img/arr-left.png" alt="Hide the left sidebar!" /></div>                
+            <div id="flex-side-in">
+            <div class="side-top">
+                <h3>do today</h3>
+                <div class="btn-small" onclick="javascript:addNewTask();">add new</div>
+            </div>
+            <div class="task anim-delay-1 grey-task">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
+                <div class="task-edit">
+                    <div class="task-btns">
+                        <div class="task-btn" onclick="editTask()">edit</div>
+                        <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                    </div>
+                    <div class="task-btn-delete"></div>
+                </div>
+            </div>
+            <div class="task anim-delay-2 grey-task">
+                    <p>Aramet adipisicing conse actetur elit et scenum sacrit</p>
+                    <div class="task-edit">
+                        <div class="task-btns">
+                            <div class="task-btn" onclick="editTask()">edit</div>
+                            <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                        </div>
+                        <div class="task-btn-delete"></div>
+                    </div>
+            </div>
+            <div class="task anim-delay-3 grey-task">
+                    <p>Adipisicing orem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
+                    <div class="task-edit">
+                        <div class="task-btns">
+                            <div class="task-btn" onclick="editTask()">edit</div>
+                            <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                        </div>
+                        <div class="task-btn-delete"></div>
+                    </div>
+            </div>
+
+            <div class="side-top">
+                    <h3>do later</h3>
+                </div>
+                <div class="task anim-delay-1 grey-task">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
+                    <div class="task-edit">
+                        <div class="task-btns">
+                            <div class="task-btn" onclick="editTask()">edit</div>
+                            <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                        </div>
+                        <div class="task-btn-delete"></div>
+                    </div>
+                </div>
+                <div class="task anim-delay-2 grey-task">
+                        <p>Aramet adipisicing conse actetur elit et scenum sacrit</p>
+                        <div class="task-edit">
+                            <div class="task-btns">
+                                <div class="task-btn" onclick="editTask()">edit</div>
+                                <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                            </div>
+                            <div class="task-btn-delete"></div>
+                        </div>
+                </div>
+                <div class="task anim-delay-3 grey-task">
+                        <p>Adipisicing orem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
+                        <div class="task-edit">
+                            <div class="task-btns">
+                                <div class="task-btn" onclick="editTask()">edit</div>
+                                <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                            </div>
+                            <div class="task-btn-delete"></div>
+                        </div>
+                </div>
+                <div class="task anim-delay-4 grey-task">
+                        <p>- Lorem ipsum dolor sit amet consectetur<br />-  Adipisicing elit et scenum sacrit<br />- Dolor sit amet consectetur</p>
+                        <div class="task-edit">
+                            <div class="task-btns">
+                                <div class="task-btn" onclick="editTask()">edit</div>
+                                <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                            </div>
+                            <div class="task-btn-delete"></div>
+                        </div>
+                </div>
+                <!-- <div class="task anim-delay-5 grey-task">
+                        <p>Aramet conse actetur adipisicing elit et scenum sacrit</p>
+                        <div class="task-edit">
+                            <div class="task-btns">
+                                <div class="task-btn" onclick="editTask()">edit</div>
+                                <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                            </div>
+                            <div class="task-btn-delete"></div>
+                        </div>
+                </div>
+                <div class="task anim-delay-6 grey-task">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
+                        <div class="task-edit">
+                            <div class="task-btns">
+                                <div class="task-btn" onclick="editTask()">edit</div>
+                                <div class="task-btn red-btn" onclick="javascript:clearSides();">do now</div>
+                            </div>
+                            <div class="task-btn-delete"></div>
+                        </div>
+                </div>
+                <span class="side-bottom"></span> -->
+
+        </div></div>
+        <div id="flex-center">
+            <div id="main-task-empty">
+                <h1>you have nothing to do...</h1>
+                <h3>choose a new task to do!</h3>
+            </div>
+            <div id="main-task-big">
+            <div class="main-top">
+            <h1>do right<strong> now</strong></h1>
+            <div class="main-task" onclick="javascript:clearSides();">finish the Czech Agreement, sign it, scan it and send it to Petr for signing</div>
+            <div class="btn-big giveup anim-delay-10" onclick="javascript:giveUp();">give up</div><div class="btn-big done anim-delay-12" onclick="javascript:mainTaskDone();">done!</div></div>
+            <div class="main-bottom">
+                    <h4>this is what you will get when you finish it:</h4>
+                    <div class="mtv-box">go eat lunch</div><div class="mtv-box">€4800 payment</div><div class="mtv-box">ski trip in december</div>
+                <div class="timer">
+                    <h4>deadline:</h4>
+                    <h2>2 hours 36 minutes 12 seconds</h2>
+                </div>
+            </div>
+            </div>
+        </div>
+        <div id="flex-right" class="trans-fast">
+            <div id="slide-btn-right" onclick="javascript:hideDiv('right')"><img id="arr-right" class="" src="img/arr-right.png" alt="Hide the right sidebar!" /></div>                
+            <div id="flex-side-in">
+            <div class="side-top">
+                <h3>done today</h3>
+                <div class="grey-btn">earlier</div>
+            </div>
+                <div class="task task-right anim-delay-5"><p>Lorem ipsum dolor sit Amet consectetur adipisicing elit</p><div class="task-btn-delete"></div></div>
+                <div class="task task-right anim-delay-6"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p><div class="task-btn-delete"></div></div>
+                <div class="task task-right anim-delay-7"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p><div class="task-btn-delete"></div></div>
+        </div>
+    </div>
+</body>
+</html>
