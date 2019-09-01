@@ -17,7 +17,14 @@ function clearSides() {
 function doNewTask() {
     let taskWrap = document.getElementById("task-wrapper");
     taskWrap.style.display = "none";
-    clearSides();
+    mainBig = document.getElementById("main-task-big");
+    mainBig.style.display = "flex";
+    mainEmpty = document.getElementById("main-task-empty");
+    mainEmpty.style.display = "none";
+    hideDiv("left");
+    hideDiv("right");
+    document.getElementById("flex-left").classList.replace("trans-fast", "trans-slow");
+    document.getElementById("flex-right").classList.replace("trans-fast", "trans-slow");
 }
 
 function editTask() {
