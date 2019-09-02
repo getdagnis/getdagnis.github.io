@@ -3,7 +3,7 @@ window.onload = init;
 function init() {
     clearSidesTrue = 0;
     countHidden = 0;
-    // doNewTask();
+    doNewTask();
     // addNewTask();
 }
 
