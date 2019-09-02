@@ -44,7 +44,7 @@
   
   .flipInX {
     backface-visibility: visible !important;
-    animation: flipInX .7s;
+    animation: flipInX .5s;
   }
   
   @keyframes zoomOut {

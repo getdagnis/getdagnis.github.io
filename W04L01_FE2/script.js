@@ -153,7 +153,7 @@ function deleteTask() {
             // event.target.parentNode.parentNode.classList.add("scale-0");
             setTimeout(function() {
                 event.target.parentNode.parentNode.style.display = "none";
-            }, 700);
+            }, 520);
         }
     });
 }
@@ -175,11 +175,13 @@ function hideTask() {
 function refreshDone() {
     var taskBtns = document.getElementsByClassName("task-btn-hide");
     var thisBtn = document.getElementsByClassName("task-btn-hide");
-    for (i=0;i<taskBtns.length;i++) {
-        thisBtn[i].parentElement.style.display = "block";
-    };
+    setTimeout(function() {
+        document.getElementById("refresh-done").style.display = "none";
+        for (i=0;i<taskBtns.length;i++) {
+            thisBtn[i].parentElement.style.display = "block";
+        };
+    }, 100);
     countHidden = 0;
-    document.getElementById("refresh-done").style.display = "none";
 }
 
 window.addEventListener('mouseup',function(event) {
