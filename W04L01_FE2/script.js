@@ -19,6 +19,9 @@ function doNewTask() {
     taskWrap.style.display = "none";
     mainBig = document.getElementById("main-task-big");
     mainBig.style.display = "flex";
+    mainTask = document.getElementsByClassName("main-task")[0];
+    mainTask.style.display = "block";
+    mainTask.classList.add("fadeIn");
     mainEmpty = document.getElementById("main-task-empty");
     mainEmpty.style.display = "none";
     hideDiv("left");
@@ -33,50 +36,51 @@ function editTask() {
 
 function giveUp() {
     mainTask = document.getElementsByClassName("main-task")[0];
-    mainTop = document.getElementsByClassName("main-top")[0];
-    mainBottom = document.getElementsByClassName("main-bottom")[0];
+    mainBig = document.getElementById("main-task-big");
     mainEmpty = document.getElementById("main-task-empty");
-    mainTask.style.background = "#666";
+    mainTask.classList.add("color666");
     mainTask.classList.add("hinge");
     document.getElementsByClassName("giveup")[0].style.display = "none";
     document.getElementsByClassName("done")[0].style.display = "none";
     setTimeout(function() {
-        mainTop.classList.add("fadeOut");
-        mainBottom.classList.add("fadeOut");
-      }, 600);
+        mainBig.classList.add("fadeOut");
+      }, 800);
     setTimeout(function() {
         mainTask.style.display = "none";
-        mainTop.style.display = "none";
-        mainBottom.style.display = "none";
+        mainBig.style.display = "none";
         showDiv("left");
         showDiv("right");
-      }, 900);  
+      }, 1000);  
     setTimeout(function() {
         mainEmpty.style.display = "block";
         mainEmpty.classList.add("fadeIn");
-      }, 1100);        
+        mainTask.classList.remove("hinge");
+        mainBig.classList.remove("fadeOut");
+        mainTask.classList.remove("color666");
+        document.getElementsByClassName("giveup")[0].style.display = "inline-block";
+        document.getElementsByClassName("done")[0].style.display = "inline-block";
+      }, 1200);        
 }
 
 function mainTaskDone() {
     mainTask = document.getElementsByClassName("main-task")[0];
-    mainTop = document.getElementsByClassName("main-top")[0];
+    mainBig = document.getElementById("main-task-big");
     mainEmpty = document.getElementById("main-task-empty");
-    mainBottom = document.getElementsByClassName("main-bottom")[0];
     mainTask.classList.add("rollOut");
     setTimeout(function() {
-        mainTop.classList.add("fadeOut");
-        mainBottom.classList.add("fadeOut");
+        mainBig.classList.add("fadeOut");
       }, 300);
     setTimeout(function() {
         mainTask.style.display = "none";
-        mainTop.style.display = "none";
-        mainBottom.style.display = "none";
+        mainBig.style.display = "none";
         showDiv("left");
         showDiv("right");            
       }, 800);
     setTimeout(function() {
         mainEmpty.style.display = "block";
         mainEmpty.classList.add("fadeIn");
+        mainTask.classList.remove("rollOut");
+        mainBig.classList.remove("fadeOut");
       }, 1000);    
 }
 

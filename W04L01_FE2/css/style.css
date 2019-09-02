@@ -15,7 +15,7 @@ html, body {
     background:#ddd;
     margin:0;
     padding:6px;
-    z-index:2;
+    z-index:9;
 }
 
 #logo {
@@ -24,7 +24,7 @@ html, body {
     width:150px;
     height:32px;
     margin:9px;
-    opacity:.5;
+    opacity:.6;
     transition:opacity .5s ease;    
 }
 
@@ -55,6 +55,7 @@ html, body {
     box-sizing:border-box;
     overflow: auto;
     box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+    z-index:2;
 }
 
 #slide-btn-left, #slide-btn-right {
@@ -165,7 +166,6 @@ html, body {
     position:relative;
     color: white;
     width:auto;
-    vertical-align:middle;
     min-height:40px;
     padding:24px;
     margin:8px 0;
@@ -250,7 +250,6 @@ html, body {
     transition:all .7s ease;
     padding:6px 22px;
 }
-
 
 .red-btn { background:#974049; } .red-btn:hover { background:#c02f3e; } .task-btn:active { background:#f7d2d5; }
 
@@ -350,6 +349,10 @@ html, body {
     animation: pulse 2s infinite;
 }
 
+.color666 {
+    background:#666;
+}
+
 /* .main-task:hover {
     animation: pulse 5s infinite;
 } */
@@ -422,7 +425,7 @@ html, body {
     background:#8c232d;
     animation:pulse 2s infinite;
     transition:all .5s ease;
-    cursor: default;
+    cursor: text;
 }
 
 #task-wrapper {
@@ -537,8 +540,8 @@ textarea::placeholder, [type=text]::placeholder {
     display:inline-block;
     float:right;
     width:auto;
-    padding:4px 28px 5px;
-    margin:0 5px 35px;
+    padding:2px 28px 2px;
+    margin:0 5px 25px;
     border-radius:8px;
     font-size:19px;
     font-weight:600;
@@ -549,11 +552,11 @@ textarea::placeholder, [type=text]::placeholder {
 }
 
 .btn-popup:hover {
-    padding:4px 44px 5px;
+    padding:2px 40px 2px;
     background:#636363;
     animation:pulse 2s infinite;
     transition:all .5s ease;
-    cursor: default;
+    cursor: pointer;
 }
 
 .red-btn { background:#B22D3A; } .red-btn:hover { background:rgb(155, 27, 48); }
@@ -589,7 +592,7 @@ textarea::placeholder, [type=text]::placeholder {
 @media (max-width:1480px) {
     .main-task {
         max-width:850px!important;
-        margin:10px 20px;
+        margin:10px 20px 30px;
         padding:40px 20px;
         font-size:22px;
     }
@@ -611,7 +614,7 @@ textarea::placeholder, [type=text]::placeholder {
 @media (max-width:1580px) {
     .main-task {
         max-width:650px;
-        margin:10px 20px;
+        margin:10px 20px 30px;
     }
 }
 
