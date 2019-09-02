@@ -1,3 +1,71 @@
+@keyframes taskBounce {
+    0% {
+        transform:translateY(0px);
+    }
+    20% {
+        transform:translateY(40px);
+    }
+    100% {
+        transform:translateY(0px);
+    }
+}
+
+.taskBounce {
+    animation: taskBounce .7s;
+  }
+
+  
+
+@keyframes flipInX {
+    from {
+      transform: perspective(400px) rotate3d(1, 0, 0, 90deg);
+      animation-timing-function: ease-in;
+      opacity: 0;
+    }
+  
+    40% {
+      transform: perspective(400px) rotate3d(1, 0, 0, -20deg);
+      animation-timing-function: ease-in;
+    }
+  
+    60% {
+      transform: perspective(400px) rotate3d(1, 0, 0, 10deg);
+      opacity: 1;
+    }
+  
+    80% {
+      transform: perspective(400px) rotate3d(1, 0, 0, -5deg);
+    }
+  
+    to {
+      transform: perspective(400px);
+    }
+  }
+  
+  .flipInX {
+    backface-visibility: visible !important;
+    animation: flipInX .7s;
+  }
+  
+  @keyframes zoomOut {
+    from {
+      opacity: 1;
+    }
+  
+    50% {
+      opacity: 0;
+      transform: scale3d(0.3, 0.3, 0.3);
+    }
+  
+    to {
+      opacity: 0;
+    }
+  }
+  
+  .zoomOut {
+    animation-name: zoomOut;
+  }
+  
 
 @keyframes fadeIn {
     from {
@@ -95,10 +163,8 @@
     }
   
 .fadeOut {
-    animation: zoomOut .7s;
+    animation: zoomOut .5s 0ms;
   }
-
-
 
 @keyframes bounceIn {
     from,
@@ -141,7 +207,8 @@
 .bounceIn {
     animation: bounceIn .7s;
 }
-  
+
+
 
 /*
 
@@ -181,17 +248,7 @@
     }
 }
 
-@keyframes task-bounce-in {
-    0% {
-        transform:translateY(0px);
-    }
-    20% {
-        transform:translateY(40px);
-    }
-    100% {
-        transform:translateY(0px);
-    }
-}
+
 
 @keyframes fade-up {
     from {
@@ -205,6 +262,8 @@
     }
   }
 
+*/
+
 .anim-delay-1 {animation-delay: .1s;}
 .anim-delay-2 {animation-delay: .2s;}
 .anim-delay-3 {animation-delay: .3s;}
@@ -216,4 +275,4 @@
 .anim-delay-9 {animation-delay: .9s;}
 .anim-delay-10 {animation-delay: 1s;}
 .anim-delay-11 {animation-delay: 1.1s;}
-.anim-delay-12 {animation-delay: 1.2s;} */
+.anim-delay-12 {animation-delay: 1.2s;}

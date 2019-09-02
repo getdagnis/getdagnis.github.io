@@ -1,17 +1,24 @@
 window.onload = init;
 
 function init() {
-    // clearSides();
+    clearSidesTrue = 0;
+    countHidden = 0;
+    // doNewTask();
+    // addNewTask();
 }
 
-function clearSides() {
-    // TO-DO: if there's a main task already present, then hide both divs //
-    // TO-DO: automatically hide the side divs after 30 sec if there's no mouseover and main task ir present //
-    hideDiv("left");
-    hideDiv("right");
-    document.getElementById("flex-left").classList.replace("trans-fast", "trans-slow");
-    document.getElementById("flex-right").classList.replace("trans-fast", "trans-slow");
-    document.getElementsByClassName("main-task")[0].classList.add("shake");
+function addNewTask() {
+    let taskWrap = document.getElementById("task-wrapper");
+    let taskPop = document.getElementById("task-popup");
+    let taskText = document.getElementById("task-text");
+    taskWrap.style.display = "block";
+    taskWrap.classList.add("opaque");
+    taskPop.classList.add("opaque");
+    taskText.focus(); 
+}
+
+function editTask() {
+    addNewTask();
 }
 
 function doNewTask() {
@@ -21,17 +28,42 @@ function doNewTask() {
     mainBig.style.display = "flex";
     mainTask = document.getElementsByClassName("main-task")[0];
     mainTask.style.display = "block";
-    mainTask.classList.add("fadeIn");
     mainEmpty = document.getElementById("main-task-empty");
     mainEmpty.style.display = "none";
+    document.getElementsByClassName("main-task")[0].classList.add("flipInX");
+    setTimeout(function() {
+        document.getElementsByClassName("main-task")[0].classList.remove("shake","flipInX");
+    }, 1000)
+    clearSides();
+}
+
+function clickMainTask() {
+    console.log(clearSidesTrue);
+    if (clearSidesTrue == 2) {
+        showDiv("left");
+        showDiv("right");
+    } else {
+        hideDiv("left");
+        hideDiv("right");
+        clearSidesTrue = 2
+    }
+    setTimeout(function() {
+        document.getElementsByClassName("main-task")[0].classList.remove("shake","flipInX");
+    }, 1000)
+}
+
+function clearSides() {
+    // TO-DO: if there's a main task already present, then hide both divs //
+    // TO-DO: automatically hide the side divs after 30 sec if there's no mouseover and main task ir present //
     hideDiv("left");
     hideDiv("right");
     document.getElementById("flex-left").classList.replace("trans-fast", "trans-slow");
     document.getElementById("flex-right").classList.replace("trans-fast", "trans-slow");
-}
-
-function editTask() {
-    addNewTask();
+    setTimeout(function() {
+        document.getElementById("flex-left").classList.replace("trans-slow", "trans-fast");
+        document.getElementById("flex-right").classList.replace("trans-slow", "trans-fast");
+    }, 200)
+    clearSidesTrue = 2;
 }
 
 function giveUp() {
@@ -96,7 +128,7 @@ function showDiv(side) {
     flexThis.classList.remove(newClass);
     btnThis.setAttribute('onclick', newClick)
     arrThis.classList.remove("rotate-90");
-    flexThis.classList.replace("trans-slow", "trans-fast");
+    --clearSidesTrue;
 }
 
 function hideDiv(side) {
@@ -111,16 +143,43 @@ function hideDiv(side) {
     flexThis.classList.add(newClass);
     btnThis.setAttribute('onclick', newClick)
     arrThis.classList.add("rotate-90");
+    ++clearSidesTrue;
 }
 
-function addNewTask() {
-    let taskWrap = document.getElementById("task-wrapper");
-    let taskPop = document.getElementById("task-popup");
-    let taskText = document.getElementById("task-text");
-    taskWrap.style.display = "block";
-    taskWrap.classList.add("opaque");
-    taskPop.classList.add("opaque");
-    taskText.focus(); 
+function deleteTask() {
+    window.addEventListener('click',function(event) {
+        if(event.target.classList.contains("task-btn-delete")) {
+            event.target.parentNode.parentNode.classList.replace("taskBounce","fadeOut");
+            // event.target.parentNode.parentNode.classList.add("scale-0");
+            setTimeout(function() {
+                event.target.parentNode.parentNode.style.display = "none";
+            }, 700);
+        }
+    });
+}
+
+function hideTask() {
+    window.addEventListener('click',function(event) {
+        if(event.target.classList.contains("task-btn-hide")) {
+            event.target.parentNode.style.display = "none";
+        }
+        if (document.getElementsByClassName("task-btn-hide").length == countHidden) {
+            setTimeout(function() {
+                document.getElementById("refresh-done").style.display = "block";
+            }, 100);
+        }
+    });
+    countHidden++;
+}
+
+function refreshDone() {
+    var taskBtns = document.getElementsByClassName("task-btn-hide");
+    var thisBtn = document.getElementsByClassName("task-btn-hide");
+    for (i=0;i<taskBtns.length;i++) {
+        thisBtn[i].parentElement.style.display = "block";
+    };
+    countHidden = 0;
+    document.getElementById("refresh-done").style.display = "none";
 }
 
 window.addEventListener('mouseup',function(event) {
@@ -132,61 +191,3 @@ window.addEventListener('mouseup',function(event) {
 
 
 
-
-// window.onload = init;
-
-// function init() {
-//     checkBox();
-// }
-
-
-// function showDiv() {
-//     let formDiv = document.getElementById('form-div');
-//     let formLeft = document.getElementById('form-left');
-//     formDiv.classList.add("show");
-//     formLeft.setAttribute('onclick', "javascript:hideDiv();")
-// }
-
-// function hideDiv() {
-//     let formDiv = document.getElementById('form-div');
-//     let formLeft = document.getElementById('form-left');
-//     formDiv.classList.remove("show");
-//     formLeft.setAttribute('onclick', "javascript:showDiv();")
-// }
-
-
-// function checkBox() {
-//     let checkBox = document.getElementById("checkbox");
-//     let select = document.getElementById("select");
-  
-//     if (checkBox.checked == true){
-//         select.style.display = "block";
-//     } else {
-//         select.style.display = "none";
-//     }
-//   }
-
-// function checkUser() {
-
-// }
-
-// function checkEmail() {
-    
-// }
-
-// function postData() {
-//     let getUser = document.getElementById("user").value;
-//     let getEmail = document.getElementById("email").value;
-//     let getCheck = document.getElementById("checkbox").value;
-//     let getSelect = document.getElementById("select").value;
-//     checkUser();
-//     checkEmail();
-//     checkSelect();
-//     let allValid = false;
-//     if (allValid === true) {
-//         localStorage.setItem(user,getUser);
-//         localStorage.setItem(email,getEmail);
-//         localStorage.setItem(check,getCheck);
-//         localStorage.setItem(select,getSelect);
-//     }
-// }

@@ -11,35 +11,7 @@
     <title>W04L01 - FE project</title>
 </head>
 <body>
-    <div id="task-wrapper">
-        <div id="task-popup">
-            <h2>Add new task</h2>
-            <textarea name="task-text" id="task-text" placeholder="What do you want to do?"></textarea>
-            <table class="task-options"><tbody>
-                <tr>
-                    <td class="name-cell">motivation:</td><td><input type="text" name="task-text" id="task-mtv" placeholder="get a coffee, €2000, take a lunch break, trip to italy, etc...">
-                </tr>
-                <tr>
-                    <td class="name-cell">deadline:</td>
-                    <td>
-                        <select>
-                            <option value="15 minutes" selected>15 minutes</option>
-                            <option value="30 minutes">30 minutes</option>
-                            <option value="45 minutes">45 minutes</option>
-                            <option value="1 hour">1 hour</option>
-                            <option value="2 hours">2 hours</option>
-                            <option value="4 hours">4 hours</option>
-                            <option value="8 hours">8 hours</option>
-                        </select>
-                    </td>
-                </tr>
-                <tr>
-                        <td class="name-cell">color:</td><td><span id="grey-color" class="pick-color grey-task active-color"></span><span id="blue-color" class="pick-color blue-task"></span><span id="green-color" class="pick-color green-task"></span><span id="pink-color" class="pick-color pink-task"></span>
-                </tr>
-                </tbody></table>
-                <div class="btn-popup red-btn" onclick="javascript:doNewTask();">Do Now</div><div class="btn-popup">Do Today</div><div class="btn-popup btn-cancel">Cancel</div>
-        </div>
-    </div>
+    
     <div id="header"><div id="logo"></div></div>
     <div id="flex-big">
         <div id="flex-left" class="trans-fast">
@@ -49,98 +21,98 @@
                 <h3>do today</h3>
                 <div class="btn-small" onclick="javascript:addNewTask();">add new</div>
             </div>
-            <div class="task grey-task">
+            <div class="task grey-task anim-delay-1 taskBounce">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
                 <div class="task-edit">
                     <div class="task-btns">
                         <div class="task-btn" onclick="editTask()">edit</div>
                         <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                     </div>
-                    <div class="task-btn-delete"></div>
+                    <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                 </div>
             </div>
-            <div class="task grey-task">
+            <div class="task grey-task anim-delay-2 taskBounce">
                     <p>Aramet adipisicing conse actetur elit et scenum sacrit</p>
                     <div class="task-edit">
                         <div class="task-btns">
                             <div class="task-btn" onclick="editTask()">edit</div>
                             <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                         </div>
-                        <div class="task-btn-delete"></div>
+                        <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                     </div>
             </div>
-            <div class="task grey-task">
+            <div class="task grey-task anim-delay-3 taskBounce">
                     <p>Adipisicing orem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
                     <div class="task-edit">
                         <div class="task-btns">
                             <div class="task-btn" onclick="editTask()">edit</div>
                             <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                         </div>
-                        <div class="task-btn-delete"></div>
+                        <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                     </div>
             </div>
 
             <div class="side-top">
                     <h3>do later</h3>
                 </div>
-                <div class="task grey-task">
+                <div class="task grey-task anim-delay-1 taskBounce">
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
                     <div class="task-edit">
                         <div class="task-btns">
                             <div class="task-btn" onclick="editTask()">edit</div>
                             <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                         </div>
-                        <div class="task-btn-delete"></div>
+                        <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                     </div>
                 </div>
-                <div class="task grey-task">
+                <div class="task grey-task anim-delay-2 taskBounce">
                         <p>Aramet adipisicing conse actetur elit et scenum sacrit</p>
                         <div class="task-edit">
                             <div class="task-btns">
                                 <div class="task-btn" onclick="editTask()">edit</div>
                                 <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                             </div>
-                            <div class="task-btn-delete"></div>
+                            <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                         </div>
                 </div>
-                <div class="task grey-task">
+                <div class="task grey-task anim-delay-3 taskBounce">
                         <p>Adipisicing orem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
                         <div class="task-edit">
                             <div class="task-btns">
                                 <div class="task-btn" onclick="editTask()">edit</div>
                                 <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                             </div>
-                            <div class="task-btn-delete"></div>
+                            <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                         </div>
                 </div>
-                <div class="task grey-task">
+                <div class="task grey-task anim-delay-4 taskBounce">
                         <p>- Lorem ipsum dolor sit amet consectetur<br />-  Adipisicing elit et scenum sacrit<br />- Dolor sit amet consectetur</p>
                         <div class="task-edit">
                             <div class="task-btns">
                                 <div class="task-btn" onclick="editTask()">edit</div>
                                 <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                             </div>
-                            <div class="task-btn-delete"></div>
+                            <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                         </div>
                 </div>
-                <!-- <div class="task grey-task">
+                <!-- <div class="task grey-task anim-delay-1 taskBounce">
                         <p>Aramet conse actetur adipisicing elit et scenum sacrit</p>
                         <div class="task-edit">
                             <div class="task-btns">
                                 <div class="task-btn" onclick="editTask()">edit</div>
                                 <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                             </div>
-                            <div class="task-btn-delete"></div>
+                            <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                         </div>
                 </div>
-                <div class="task grey-task">
+                <div class="task grey-task anim-delay-1 taskBounce">
                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
                         <div class="task-edit">
                             <div class="task-btns">
                                 <div class="task-btn" onclick="editTask()">edit</div>
                                 <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
                             </div>
-                            <div class="task-btn-delete"></div>
+                            <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
                         </div>
                 </div>
                 <span class="side-bottom"></span> -->
@@ -150,11 +122,12 @@
             <div id="main-task-empty">
                 <h1>you have nothing to do...</h1>
                 <h3>choose a new task to do!</h3>
+                <div class="empty-btn" onclick="javascript:doNewTask();">add a new task to do</div>
             </div>
             <div id="main-task-big">
             <div class="main-top">
             <h1>do right<strong> now</strong></h1>
-            <div class="main-task" onclick="javascript:clearSides();">finish the Czech Agreement, sign it, scan it and send it to Petr for signing</div>
+            <div class="main-task" onclick="javascript:clickMainTask();">finish the Czech Agreement, sign it, scan it and send it to Petr for signing</div>
             <div class="btn-big giveup" onclick="javascript:giveUp();">give up</div><div class="btn-big done" onclick="javascript:mainTaskDone();">done!</div></div>
             <div class="main-bottom">
                     <h4>this is what you will get when you finish it:</h4>
@@ -171,12 +144,42 @@
             <div id="flex-side-in">
             <div class="side-top">
                 <h3>done today</h3>
-                <div class="grey-btn">earlier</div>
+                <div class="grey-btn"></div>
             </div>
-                <div class="task task-right"><p>Lorem ipsum dolor sit Amet consectetur adipisicing elit</p><div class="task-btn-delete"></div></div>
-                <div class="task task-right"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p><div class="task-btn-delete"></div></div>
-                <div class="task task-right"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p><div class="task-btn-delete"></div></div>
+                <div class="task task-right anim-delay-1 taskBounce"><p>Lorem ipsum dolor sit Amet consectetur adipisicing elit</p><div class="task-btn-hide" onclick="javascript:hideTask();"></div></div>
+                <div class="task task-right anim-delay-2 taskBounce"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p><div class="task-btn-hide" onclick="javascript:hideTask();"></div></div>
+                <div class="task task-right anim-delay-3 taskBounce"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit</p><div class="task-btn-hide" onclick="javascript:hideTask();"></div></div>
+                <div id="refresh-done" class="refresh-done flipInX" onclick="javascript:refreshDone();"><img src="img/refresh.png" alt="Refresh!"></div>
         </div>
     </div>
+    <div id="task-wrapper">
+            <div id="task-popup">
+                <h2>Add new task</h2>
+                <textarea name="task-text" id="task-text" placeholder="What do you want to do?"></textarea>
+                <table class="task-options"><tbody>
+                    <tr>
+                        <td class="name-cell">motivation:</td><td><input type="text" name="task-text" id="task-mtv" placeholder="get a coffee, €2000, take a lunch break, trip to italy, etc...">
+                    </tr>
+                    <tr>
+                        <td class="name-cell">deadline:</td>
+                        <td>
+                            <select>
+                                <option value="15 minutes" selected>15 minutes</option>
+                                <option value="30 minutes">30 minutes</option>
+                                <option value="45 minutes">45 minutes</option>
+                                <option value="1 hour">1 hour</option>
+                                <option value="2 hours">2 hours</option>
+                                <option value="4 hours">4 hours</option>
+                                <option value="8 hours">8 hours</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                            <td class="name-cell">color:</td><td><span id="grey-color" class="pick-color grey-task active-color"></span><span id="blue-color" class="pick-color blue-task"></span><span id="green-color" class="pick-color green-task"></span><span id="pink-color" class="pick-color pink-task"></span>
+                    </tr>
+                    </tbody></table>
+                    <div class="btn-popup red-btn" onclick="javascript:doNewTask();">Do Now</div><div class="btn-popup">Do Later</div><div class="btn-popup btn-cancel">Cancel</div>
+                </div>
+            </div>
 </body>
 </html>
