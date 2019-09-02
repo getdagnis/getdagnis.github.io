@@ -3,7 +3,11 @@ window.onload = init;
 function init() {
     clearSidesTrue = 0;
     countHidden = 0;
-    doNewTask();
+    // mainEmpty = document.getElementById("main-task-empty");
+    // mainEmpty.style.display = "block";
+    setTimeout(function() {
+        doNewTask();
+    }, 300);
     // addNewTask();
 }
 

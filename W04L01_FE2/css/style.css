@@ -95,7 +95,7 @@ html, body {
 
 .rotate-90 { transform: rotate(180deg); }
 
-.trans-slow { transition:all 2s ease .6s!important; }
+.trans-slow { transition:all 3s ease .6s!important; }
 .trans-fast { transition:all .5s ease 0s!important; }
 
 .slide-side-left { transform: translateX(-360px); }
@@ -347,7 +347,7 @@ html, body {
 }
 
 #main-task-empty {
-    display:block;
+    display:none;
     position:absolute;
     top:0;
     left:0;
