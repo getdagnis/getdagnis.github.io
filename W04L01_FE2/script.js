@@ -3,8 +3,9 @@ window.onload = init;
 function init() {
     clearSidesTrue = 0;
     countHidden = 0;
-    // mainEmpty = document.getElementById("main-task-empty");
-    // mainEmpty.style.display = "block";
+    dblclick();
+    mainEmpty = document.getElementById("main-task-empty");
+    mainEmpty.style.display = "block";
     setTimeout(function() {
         doNewTask();
     }, 300);
@@ -19,6 +20,19 @@ function addNewTask() {
     taskWrap.classList.add("opaque");
     taskPop.classList.add("opaque");
     taskText.focus(); 
+}
+
+function pickColor() {
+    window.addEventListener('click', function (e) {
+        var myColor = event.target;
+        var allColors = document.getElementsByClassName("pick-color");
+        if (myColor.classList.contains("pick-color") == true) {
+            for (i=0;i<allColors.length;i++) {
+                allColors[i].classList.remove("active-color");
+            }
+            myColor.classList.add("active-color");
+        }
+    })
 }
 
 function editTask() {
@@ -41,6 +55,13 @@ function doNewTask() {
     clearSides();
 }
 
+function doLater() {
+    taskWrap.style.display = "none";
+    var divLater = document.getElementById("flex-left-later");
+    var initial = divLater.innerHTML;
+    divLater.innerHTML = initial;
+}
+
 function clickMainTask() {
     console.log(clearSidesTrue);
     if (clearSidesTrue == 2) {
@@ -56,9 +77,17 @@ function clickMainTask() {
     }, 1000)
 }
 
+function dblclick() {
+    window.addEventListener('dblclick', function (e) {
+        console.log(event.target.id);
+        console.log(event.path[0].id);
+        if(event.target.id == "main-task-big" || event.target.id == "flex-side-in" || event.target.id == "flex-big" || event.target.id == "main-task-empty" || event.target.id == "flex-center" || event.target.id == "flex-center" || event.target.id == "empty-h1" || event.target.id == "empty-h3") {
+            clickMainTask();
+        }
+    });
+}
+
 function clearSides() {
-    // TO-DO: if there's a main task already present, then hide both divs //
-    // TO-DO: automatically hide the side divs after 30 sec if there's no mouseover and main task ir present //
     hideDiv("left");
     hideDiv("right");
     document.getElementById("flex-left").classList.replace("trans-fast", "trans-slow");
