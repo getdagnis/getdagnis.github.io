@@ -1,0 +1,26 @@
+#header {
+  position:fixed;
+  display:block;
+  height:50px;
+  width:100%;
+  background:#cbcbcd;
+  margin:0;
+  padding:6px;
+  z-index:9;
+}
+
+#logo {
+  display:block;
+  background:url(../../img/SVG/logo.svg);
+  width:140px;
+  height:28px;
+  margin:13px;
+  opacity:.6;
+  transition:opacity .5s ease;
+  cursor:pointer;
+}
+
+#logo:hover {
+  opacity:1;
+  transition:opacity .5s ease;
+}

@@ -1,0 +1,48 @@
+<div id="task-wrapper">
+    <div id="task-popup">
+        <h2>Add a new task (form TO-DO)</h2>
+        <textarea name="task-text" id="task-text" placeholder="What do you want to do?"></textarea>
+        <table class="task-table"><tbody>
+            <tr>
+                <td class="name-cell">motivation:</td>
+                <td>
+                    <div class="tags-main" data-name="tags-input">
+                        <span class="tag">CSS<span class="close"></span></span>
+                        <span class="tag">Java Script<span class="close"></span></span>
+                        <span class="tag">HTML<span class="close"></span></span>
+                        <input class="tags-input" type="text" />
+                        <!-- placeholder="get a coffee, €2000, take a lunch break, trip to italy, etc..." -->
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="name-cell">cathegory:</td>
+                <td>
+                    <select>
+                        <option value="15 minutes" selected>No cathegories added</option>
+                        <option value="30 minutes">Work</option>
+                        <option value="45 minutes">Home</option>
+                        <option value="1 hour">Programming</option> <input type="button" value="edit cathegories"> -->
+                        <option value="2 hours">2 hours</option>
+                        <option value="4 hours">4 hours</option>
+                        <option value="8 hours">8 hours</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                    <td class="name-cell">color:</td>
+                    <td>
+                        <div class="color-cell">
+                            <span id="grey-color" class="pick-color grey-task active-color" onclick="javascript:pickColor();"></span>
+                            <span id="blue-color" class="pick-color cath-a" onclick="javascript:pickColor();"></span>
+                            <span id="green-color" class="pick-color cath-b" onclick="javascript:pickColor();"></span>
+                            <span id="pink-color" class="pick-color cath-c" onclick="javascript:pickColor();"></span>
+                        </div>
+                    </td>
+            </tr>
+        </tbody></table>
+            <div class="btn-popup red-btn" onclick="javascript:doNewTask();">Start Now</div>
+            <div class="btn-popup" onclick="javascript:doLater();">Add to List</div>
+            <div class="btn-popup btn-cancel">Cancel</div>
+    </div>
+</div>
