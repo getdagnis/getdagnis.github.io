@@ -1,107 +1,37 @@
-<div id="flex-side-in" class="dblclick">
+<div id="flex-side-in-left" class="dblclick">
     <div class="side-top dblclick">
         <h3>do today</h3>
-        <div class="btn-small btn-add-task">add new</div>
-    </div>
-    <div class="task grey-task anim-delay-1 taskBounce">
-        <div class="cath cath-a"></div>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
-        <div class="task-edit">
-            <div class="task-btns">
-                <div class="task-btn" onclick="editTask()">edit</div>
-                <div class="task-btn cath-a" onclick="javascript:doNewTask();">do now</div>
-            </div>
-            <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-        </div>
-    </div>
-    <div class="task grey-task anim-delay-2 taskBounce">
-            <div class="cath cath-b"></div>
-            <p>Aramet adipisicing conse actetur elit et scenum sacrit</p>
-            <div class="task-edit">
-                <div class="task-btns">
-                    <div class="task-btn" onclick="editTask()">edit</div>
-                    <div class="task-btn cath-b" onclick="javascript:doNewTask();">do now</div>
-                </div>
-                <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-            </div>
-    </div>
-    <div class="task grey-task anim-delay-3 taskBounce">
-            <p>Adipisicing orem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
-            <div class="task-edit">
-                <div class="task-btns">
-                    <div class="task-btn" onclick="editTask()">edit</div>
-                    <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
-                </div>
-                <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-            </div>
+        <div class="btn-small btn-add-task" (click)="showNewTaskPopup()">add new</div>
     </div>
 
-    <div class="side-top dblclick">
+    <ul>
+      <li class="task grey-task" [ngClass]="{taskBounce: winIsLoaded}" *ngFor="let task of tasksToday">
+        {{ task }}
+        <div class="task-edit">
+          <div class="task-btns">
+              <div class="task-btn" onclick="editTask()">edit</div>
+              <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
+          </div>
+          <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
+        </div>
+      </li>
+    </ul>
+
+    <!-- <div class="side-top dblclick">
             <h3>do later</h3>
     </div>
     <div id="flex-left-later">
-        <div class="task grey-task anim-delay-1 taskBounce">
-                <div class="cath cath-c"></div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
+        <ul>
+          <li class="task grey-task taskBounce" *ngFor="let task of tasksLater">
+            {{ task }}
             <div class="task-edit">
-                <div class="task-btns">
-                    <div class="task-btn" onclick="editTask()">edit</div>
-                    <div class="task-btn cath-c" onclick="javascript:doNewTask();">do now</div>
-                </div>
-                <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
+              <div class="task-btns">
+                  <div class="task-btn" onclick="editTask()">edit</div>
+                  <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
+              </div>
+              <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
             </div>
-        </div>
-        <div class="task grey-task anim-delay-2 taskBounce">
-                <div class="cath cath-b"></div>
-                <p>Aramet adipisicing conse actetur elit et scenum sacrit</p>
-                <div class="task-edit">
-                    <div class="task-btns">
-                        <div class="task-btn" onclick="editTask()">edit</div>
-                        <div class="task-btn cath-b" onclick="javascript:doNewTask();">do now</div>
-                    </div>
-                    <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-                </div>
-        </div>
-        <div class="task grey-task anim-delay-3 taskBounce">
-                <p>Adipisicing orem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
-                <div class="task-edit">
-                    <div class="task-btns">
-                        <div class="task-btn" onclick="editTask()">edit</div>
-                        <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
-                    </div>
-                    <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-                </div>
-        </div>
-        <div class="task grey-task anim-delay-4 taskBounce">
-                <p>- Lorem ipsum dolor sit amet consectetur<br />-  Adipisicing elit et scenum sacrit<br />- Dolor sit amet consectetur</p>
-                <div class="task-edit">
-                    <div class="task-btns">
-                        <div class="task-btn" onclick="editTask()">edit</div>
-                        <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
-                    </div>
-                    <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-                </div>
-        </div>
-        <!-- <div class="task grey-task anim-delay-1 taskBounce">
-                <p>Aramet conse actetur adipisicing elit et scenum sacrit</p>
-                <div class="task-edit">
-                    <div class="task-btns">
-                        <div class="task-btn" onclick="editTask()">edit</div>
-                        <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
-                    </div>
-                    <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-                </div>
-        </div>
-        <div class="task grey-task anim-delay-1 taskBounce">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit et scenum sacrit</p>
-                <div class="task-edit">
-                    <div class="task-btns">
-                        <div class="task-btn" onclick="editTask()">edit</div>
-                        <div class="task-btn red-btn" onclick="javascript:doNewTask();">do now</div>
-                    </div>
-                    <div class="task-btn-delete" onclick="javascript:deleteTask();"></div>
-                </div>
-        </div>
-        <span class="side-bottom"></span> -->
-        </div>
+          </li>
+        </ul>
+        </div> -->
 </div>

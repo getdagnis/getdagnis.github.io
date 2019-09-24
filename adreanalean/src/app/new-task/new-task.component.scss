@@ -12,6 +12,10 @@
   transition:all .6s ease .5s;
 }
 
+.visible {
+  display:block!important;
+}
+
 #task-popup {
   position:absolute;
   top:50%;
@@ -19,7 +23,7 @@
   width:750px;
   padding:5px 30px;
   box-sizing:border-box;
-  transform: translate(-375px,-330px);
+  transform: translate(-50%,-70%);
   border-radius:20px;
   background:#ccc;
   color:#777;
@@ -31,6 +35,7 @@
 
 #task-popup h2 {
   font-size:24px;
+  margin-bottom:10px;
 }
 
 .opaque {
@@ -50,14 +55,6 @@
 .task-table td {
   height:55px;
   padding:2px 0;
-}
-
-.name-cell td {
-  max-width:70px;
-  margin-right:10px;
-  font-weight:600;
-  font-size:20px;
-  padding:0!important;
 }
 
 #task-text {
@@ -81,70 +78,29 @@
   background:#fff;
 }
 
-.tags-input {
-  display:inline-block;
-  width:100%;
-  margin-left:10px!important;
+.name-cell {
+  width: 130px;
+  font-size:20px;
+  font-weight:600;
 }
 
-select, .tags-input, [type=text] {
-  display:inline-block;
-  padding:4px;
-  background:#f8f8f8;
-  color:#555;
-  font-size:18px;
-  font-weight:400;
-  border-radius:5px;
-  border:none;
+[type=text], select {
+  width:100%;
+  padding: 8px;
+  background: #f8f8f8;
+  color: #777;
+  font-size: 17px;
+  border-radius: 5px;
+  border: none;
   outline: none;
-  user-select: text;
-  margin-left:10px!important;
+}
+
+#task-text:focus, [type=text]:focus, select:focus {
+  border:1px solid #aaa!important;
 }
 
 .color-cell {
   margin-left:10px!important;
-}
-
-.tags-input:focus {
-  background:#fff;
-}
-
-.tags-input .tag {
-  display:inline-block;
-  background-color:#ddd;
-  color:#777;
-  padding:5px 10px;
-  margin:0 1px 0;
-  border-radius:4px;
-  cursor:pointer;
-  transition:all .2s ease;
-}
-
-.tags-input .tag:hover {
-  color:white;
-  background: #8c232d;
-  transition:all .2s ease;
-}
-
-.tags-input .tag .close::after {
-  content: "✕";
-  display:inline-block;
-  transform:scale(.8);
-  color:#bbb;
-  margin-left:5px;
-}
-
-.tags-input .tag .close:hover::after {
-  color:white;
-}
-
-.tags-input .tags-main-input {
-  padding:4px;
-  background:transparent;
-  border-radius:5px;
-  border:none;
-  outline: none;
-  user-select: text;
 }
 
 select {

@@ -3,7 +3,7 @@
 @import url(media.scss);
 
 html, body {
-  background:url(img/bg.jpg) center #74757a;
+  background:url(assets/img/bg.jpg) center #74757a;
   background-attachment: fixed;
   background-position: cover;
   margin:0;
@@ -39,7 +39,6 @@ html, body {
   width:23px;
   top:75px;
   right:-20px;
-  background: url(img/arr-left.png) center no-repeat;
   background-color:#606165;
   border-radius:0 5px 5px 0;
   transition:all 1s ease;
@@ -61,8 +60,11 @@ html, body {
 }
 
 #arr-left, #arr-right {
-  margin:13px 0 0 6px;
+  transition:all .5s ease .5s;
 }
+
+#arr-left { margin:13px 0 0 7px; }
+#arr-right { margin:13px 0 0 5px; }
 
 .rotate-180 { transform: rotate(180deg); }
 
@@ -72,7 +74,7 @@ html, body {
 .slide-side-left { transform: translateX(-360px); }
 .slide-side-right { transform: translateX(360px); }
 
-#flex-side-in {
+#flex-side-in-left, #flex-side-in-right {
   display:block;
   position:absolute;
   background:#636468;
@@ -153,12 +155,18 @@ html, body {
 }
 
 .grey-btn:active::after {
-  content:"not yet done"
+  content:"not yet done";
+}
+
+ul {
+  list-style:none;
+  padding:0;
 }
 
 .task {
   display:block;
   position:relative;
+  list-style: none;
   color: white;
   width:auto;
   min-height:40px;
@@ -166,7 +174,7 @@ html, body {
   margin:8px 0;
   border-radius:10px;
   font-size:15px;
-  animation:task-bounce-in 1s;
+  animation:taskBounce 1s;
 }
 
 .task p {
@@ -223,7 +231,7 @@ html, body {
   padding:6px 22px;
 }
 
-.red-btn { background:#974049; }
+.red-btn { background:#862f38; }
 .red-btn:hover { background:#c02f3e; }
 .task-btn:active { background:#f7d2d5; }
 
@@ -245,11 +253,11 @@ html, body {
 }
 
 .cath-a { background:coral; }
-.cath-a:hover { background:rgb(231, 102, 56); }
+.btn .cath-a:hover { background:rgb(231, 102, 56); }
 .cath-b { background:teal; }
-.cath-b:hover { background:rgb(0, 102, 102); }
+.btn .cath-b:hover { background:rgb(0, 102, 102); }
 .cath-c { background:olive; }
-.cath-c:hover { background:rgb(99, 99, 0); }
+.btn .cath-c:hover { background:rgb(99, 99, 0); }
 
 .green-task { background:#555f57; }
 .pink-task { background:rgb(121, 100, 99); }
@@ -263,7 +271,7 @@ html, body {
   right:6px;
   width:22px;
   height:22px;
-  background:url(img/bin.png) no-repeat center;
+  background:url(assets/img/bin.png) no-repeat center;
   border-radius:5px;
   opacity:.7;
 }
