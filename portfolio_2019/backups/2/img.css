@@ -1,0 +1,65 @@
+.viewer {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.images {
+    width: calc(908*9px);
+    height: 526px;
+    background: white;
+    transition: all .5s ease;
+}
+
+.viewer-img {
+    display: inline-block;
+    width: 898px;
+    height: 526px;
+    margin: 0 4px 0 0;
+    transition: all .3s ease;
+}
+
+#contents .next {
+    opacity: .5;
+    cursor: pointer;
+}
+
+#contents .next:hover {
+    opacity: .8;
+    transition: all .7s ease-in;
+}
+
+#contents .last {
+    background: url(img/arrow.svg) no-repeat;
+    background-color: #f0f0f0;
+    background-size: 15%;
+    background-position: 10% 50%;
+    cursor: pointer;
+}
+
+#contents .last:hover {
+    background-color: #eaeaea;
+}
+
+#contents .previous {
+    opacity: 1;
+}
+
+/* ------------------ MARS 2049 ----------------- */
+.mars-1 { background: url(works/mars0.jpg) no-repeat center; background-size: cover; }
+.mars-2 { background: url(works/mars1.jpg) no-repeat center; background-size: cover; }
+.mars-3 { background: url(works/mars2.jpg) no-repeat center; background-size: cover; }
+.mars-4 { background: url(works/mars3.jpg) no-repeat center; background-size: cover; }
+.mars-5 { background: url(works/mars4.jpg) no-repeat center; background-size: cover; }
+.mars-6 { background: url(works/mars5.jpg) no-repeat center; background-size: cover; }
+.mars-7 { background: url(works/mars6.jpg) no-repeat center; background-size: cover; }
+.mars-8 { background: url(works/mars7.jpg) no-repeat center; background-size: cover; }
+
+/* ------------------ DINAMO ----------------- */
+.din-1 { background: url(works/dinamo2.jpg) no-repeat center; background-size: auto 110%; }
+.din-2 { background: url(works/dinamo1.jpg) no-repeat center; background-size: cover; }
+.din-3 { background: url(works/dinamo3.jpg) no-repeat center; background-size: cover; }
+.din-4 { background: url(works/dinamo4.jpg) no-repeat center; background-size: cover; }
+.din-5 { background: url(works/dinamo5.jpg) no-repeat center; background-size: cover; }
+.din-6 { background: url(works/dinamo6.jpg) no-repeat center; background-size: cover; }
+.din-7 { background: url(works/dinamo7.jpg) no-repeat center; background-size: cover; }
+
