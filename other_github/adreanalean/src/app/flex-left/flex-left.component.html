@@ -1,0 +1,36 @@
+<div id="flex-side-in-left" class="dblclick">
+    <div class="side-top dblclick">
+        <h3>do today</h3>
+        <div class="btn-small btn-add-task" routerLink="../new-task">add new</div>
+    </div>
+
+    <ul>
+      <li class="task grey-task" [ngClass]="{taskBounce: winIsLoaded}" *ngFor="let task of tasksToday">
+        <p>{{ task.title }}</p>
+        <div class="task-edit">
+          <div class="task-btns">
+              <div class="task-btn" [routerLink]="['/edit-task', task._id]" >edit</div>
+              <div class="task-btn red-btn" [routerLink]="['/my-app', task._id]">do now</div>
+          </div>
+          <div class="task-btn-delete" (click)="onDeleteTodaysTaskClick(task._id)"></div>
+        </div>
+      </li>
+    </ul>
+
+    <div class="side-top dblclick">
+            <h3>do later</h3>
+    </div>
+    <div id="flex-left-later">
+        <ul>
+            <li class="task grey-task" [ngClass]="{taskBounce: winIsLoaded}" *ngFor="let task of tasksLater">
+              <p>{{ task.title }}</p>
+              <div class="task-edit">
+                <div class="task-btns">
+                    <div class="task-btn" onclick="javascript:void();">edit</div>
+                    <div class="task-btn red-btn" onclick="javascript:void();">do now</div>
+                </div>
+                <div class="task-btn-delete" (click)="onDeleteLaterTaskClick(task._id)"></div>
+              </div>
+            </li>
+          </ul>
+</div>

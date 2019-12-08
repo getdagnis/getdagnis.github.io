@@ -1,0 +1,272 @@
+{
+    "workbench.colorTheme": "One Dark Pro",
+    "explorer.confirmDelete": false,
+    "git.enableSmartCommit": true,
+    "explorer.confirmDragAndDrop": false,
+    "window.zoomLevel": 0,
+    "editor.fontSize": 14,
+    "workbench.colorCustomizations": {
+        "editor.background": "#10151d", // 15181d, 10151d
+        "editor.foreground": "#c1cbd8",
+        "sideBar.background": "#1a1c24",
+        "sideBar.foreground": "#a9b5c5",
+        "sideBarSectionHeader.background": "#191b1f",
+        "sideBarSectionHeader.foreground": "#545666",
+        "sideBar.border": "#191b1f",
+        "sideBarTitle.foreground": "#3c4047",
+        "list.inactiveSelectionBackground": "#272b33",
+        "activityBar.border": "#292c32",
+        "editor.findMatchHighlightBackground": "#1e2730",
+        "editor.findMatchHighlightBorder": "#32363d",
+        "editor.lineHighlightBackground": "#161a24",
+        "editor.selectionBackground": "#462530",
+        "editor.selectionHighlightBackground": "#2f1f3a",
+        "editor.selectionHighlightBorder": "#432955",
+        "editorBracketMatch.background": "#182b3b",
+        "editorBracketMatch.border": "#384a6b",
+        "editorCursor.foreground": "#617d94",
+        "editor.wordHighlightBackground": "#3d1c30",
+        "editor.wordHighlightBorder": "#52223c",
+        "editor.wordHighlightStrongBackground": "#1b1619",
+        "editor.wordHighlightStrongBorder": "#5a4d5e",
+    },
+    "editor.tokenColorCustomizations": {
+        "[One Dark Pro]": {
+            "comments": "#3b3c46",
+            "functions": "#ff8263", // fdaa83
+            "strings": "#819e6f",
+            "keywords": "#505e63",
+            "numbers": "#b4a5a4",
+            "types": "#85a36c",
+            "variables": "#839cb4", // 62a6af
+            "textMateRules": [
+                {
+                    "scope": "entity.name.tag", // html un css tag
+                    "settings": {
+                        "foreground": "#5797cc"
+                    }
+                },
+                {
+                    "scope": "entity.other.attribute-name", // html attr
+                    "settings": {
+                        "foreground": "#d4bf81"
+                    }
+                },
+                {
+                    "scope": "string.quoted.single",
+                    "settings": {
+                        "foreground": "#6ba182"
+                    }
+                },
+                {
+                    "scope": "punctuation.definition.string.begin",
+                    "settings": {
+                        "foreground": "#4a5f54"
+                    }
+                },
+                {
+                    "scope": "punctuation.definition.string.end",
+                    "settings": {
+                        "foreground": "#4a5f54"
+                    }
+                },
+                {
+                    "scope": "support.type.property-name", // css prop
+                    "settings": {
+                        "foreground": "#707480"
+                    }
+                },
+                {
+                    "scope": "entity.other.attribute-name.id.css",
+                    "settings": {
+                        "foreground": "#7bc4d1"
+                    }
+                },
+                {
+                    "scope": "entity.other.attribute-name.class.css",
+                    "settings": {
+                        "foreground": "#cbdd99"
+                    }
+                },
+                {
+                    "scope": "meta.tag", // html tagu krāsu
+                    "settings": {
+                        "foreground": "#445868"
+                    }
+                },
+                {
+                    "scope": "meta", // js un css { } krāsa
+                    "settings": {
+                        "foreground": "#3f4d57"
+                    }
+                },
+                {
+                    "scope": "punctuation.terminator",
+                    "settings": {
+                        "foreground": "#50585f"
+                    }
+                },
+                {
+                    "scope": "constant", // true un false
+                    "settings": {
+                        "foreground": "#415f70",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "variable.language", // this, class
+                    "settings": {
+                        "foreground": "#445868"
+                    }
+                },
+                {
+                    "scope": "storage.type", // let vai const
+                    "settings": {
+                        "foreground": "#464955"
+                    }
+                },
+                {
+                    "scope": "variable.other.readwrite", // galvenie var
+                    "settings": {
+                        "foreground": "#7caec4"
+                    }
+                },
+                {
+                    "scope": "variable.other.constant",
+                    "settings": {
+                        "foreground": "#3196a8"
+                    }
+                },
+                {
+                    "scope": "variable.other",
+                    "settings": {
+                        "foreground": "#547a8a"
+                    }
+                },
+                {
+                    "scope": "invalid",
+                    "settings": {
+                        "foreground": "#ff0000"
+                    }
+                },
+                {
+                    "scope": "variable.parameter",
+                    "settings": {
+                        "foreground": "#b8948e"
+                    }
+                },
+                {
+                    "scope": "constant.other",
+                    "settings": {
+                        "foreground": "#c2a493"
+                    }
+                },
+                {
+                    "scope": "meta.function-call",
+                    "settings": {
+                        "foreground": "#b38a77"
+                    }
+                },
+                {
+                    "scope": "keyword.operator",
+                    "settings": {
+                        "foreground": "#605561",
+                    }
+                },
+                {
+                    "scope": "keyword.other",
+                    "settings": {
+                        "foreground": "#c22f48"
+                    }
+                },
+                {
+                    "scope": "keyword.operator.assignment",
+                    "settings": {
+                        "foreground": "#9eb1a5",
+                    }
+                },
+                {
+                    "scope": "keyword.operator.arithmetic",
+                    "settings": {
+                        "foreground": "#39463d"
+                    }
+                },
+                {
+                    "scope": "variable.other.php",
+                    "settings": {
+                        "foreground": "#c7a18d",
+                        // "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "support.function",
+                    "settings": {
+                        "foreground": "#855e88",
+                        "fontStyle": "italic"
+                    }
+                },
+                {
+                    "scope": "keyword.control",
+                    "settings": {
+                        "foreground": "#5b425e",
+                        "fontStyle": "italic"
+                    }
+                }
+            ]
+        }
+    },
+    "peacock.favoriteColors": [
+        {
+            "name": "Angular Red",
+            "value": "#b52e31"
+        },
+        {
+            "name": "Auth0 Orange",
+            "value": "#eb5424"
+        },
+        {
+            "name": "Azure Blue",
+            "value": "#007fff"
+        },
+        {
+            "name": "C# Purple",
+            "value": "#68217A"
+        },
+        {
+            "name": "Gatsby Purple",
+            "value": "#639"
+        },
+        {
+            "name": "Go Cyan",
+            "value": "#5dc9e2"
+        },
+        {
+            "name": "Java Blue-Gray",
+            "value": "#557c9b"
+        },
+        {
+            "name": "JavaScript Yellow",
+            "value": "#f9e64f"
+        },
+        {
+            "name": "Mandalorian Blue",
+            "value": "#1857a4"
+        },
+        {
+            "name": "Node Green",
+            "value": "#215732"
+        },
+        {
+            "name": "React Blue",
+            "value": "#00b3e6"
+        },
+        {
+            "name": "Something Different",
+            "value": "#832561"
+        },
+        {
+            "name": "Vue Green",
+            "value": "#42b883"
+        }
+    ]
+}

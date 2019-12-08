@@ -1,0 +1,20 @@
+<div id="flex-big" class="dblclick">
+    <div id="flex-left" class="trans-fast dblclick">
+        <div id="slide-btn-left" (click)="showOrHide('left');">
+          <img id="arr-left" class="" src="assets/img/arr-left.png" alt="Hide the left sidebar!" />
+        </div>
+        <app-flex-left></app-flex-left>
+    </div>
+
+    <div id="flex-center" class="dblclick">
+        <app-flex-center></app-flex-center>
+    </div>
+
+    <div id="flex-right" class="trans-fast dblclick">
+        <div id="slide-btn-right" (click)="showOrHide('right');">
+          <img id="arr-right" class="" src="assets/img/arr-right.png" alt="Hide the left sidebar!" />
+        </div>
+        <app-flex-right></app-flex-right>
+    </div>
+
+</div>

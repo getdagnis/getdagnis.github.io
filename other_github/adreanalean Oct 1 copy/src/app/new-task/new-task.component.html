@@ -1,0 +1,41 @@
+<div id="task-wrapper" [class.visible]="showNewTask">
+    <div (keyup.escape)="hideNewTaskPopup()" id="task-popup">
+        <h2>Add a new task</h2>
+        <form >
+          <textarea ngModel name="taskBody" #taskBody (keyup.enter)="hideNewTaskPopup()" id="taskBody" placeholder="What do you want to do?" required></textarea>
+          <table class="task-table"><tbody>
+              <tr>
+                  <td class="name-cell">motivation:</td>
+                  <td>
+                    <input ngModel #taskMotivation type="text" id="task-mtv" placeholder="get a coffee, €2000, take a lunch break, trip to italy, etc...">
+                  </td>
+              </tr>
+              <tr>
+                  <td class="name-cell">cathegory:</td>
+                  <td>
+                      <select>
+                          <option value="nocath" selected>No cathegory</option>
+                          <option value="work">Work</option>
+                          <option value="home">Home</option>
+                          <option value="prog">Programming</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                      <td class="name-cell">color:</td>
+                      <td>
+                          <div class="color-cell">
+                              <span id="grey-color" class="pick-color grey-task active-color" (click)="pickColor()"></span>
+                              <span id="blue-color" class="pick-color cath-a" (click)="pickColor()"></span>
+                              <span id="green-color" class="pick-color cath-b" (click)="pickColor()"></span>
+                              <span id="pink-color" class="pick-color cath-c" (click)="pickColor()"></span>
+                          </div>
+                      </td>
+              </tr>
+          </tbody></table>
+              <div class="btn-popup red-btn" onclick="javascript:doNewTask();">Do Now</div>
+              <div class="btn-popup" onclick="javascript:doLater();">Do Later</div>
+              <div class="btn-popup btn-cancel" (click)="hideNewTaskPopup()">Cancel</div>
+        </form>
+    </div>
+</div>

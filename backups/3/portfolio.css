@@ -1,0 +1,117 @@
+.viewer {
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.images {
+    width: calc(908*9px);
+    height: 526px;
+    background: white;
+    transition: all .5s ease;
+}
+
+.viewer-img {
+    display: inline-block;
+    width: 898px;
+    height: 526px;
+    margin: 0 4px 0 0;
+    transition: all .3s ease;
+}
+
+#contents .next {
+    position: relative;
+    opacity: .3;
+    cursor: pointer;
+}
+
+#contents .next:hover {
+    opacity: .6;
+    transition: all .3 ease;
+}
+
+#contents .last {
+    background: url(img/arrow.svg) no-repeat;
+    background-color: rgba(69, 247, 217, 0.9);
+    background-size: 30%;
+    background-position: 10% 50%;
+    cursor: pointer;
+}
+
+#contents .previous {
+    opacity: 1;
+}
+
+@keyframes itemBounce {
+    0% {
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(50px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.itemBounce {
+    animation: itemBounce .7s;
+}
+
+
+@keyframes slideIn {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(100px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.slideIn {
+    animation: slideIn .7s;
+}
+
+
+/* ------------------ MARS 2049 ----------------- */
+.mars-1 { background: url(works/mars0.jpg) no-repeat center; background-size: cover; }
+.mars-2 { background: url(works/mars1.jpg) no-repeat center; background-size: cover; }
+.mars-3 { background: url(works/mars2.jpg) no-repeat center; background-size: cover; }
+.mars-4 { background: url(works/mars3.jpg) no-repeat center; background-size: cover; }
+.mars-5 { background: url(works/mars4.jpg) no-repeat center; background-size: cover; }
+.mars-6 { background: url(works/mars5.jpg) no-repeat center; background-size: cover; }
+.mars-7 { background: url(works/mars6.jpg) no-repeat center; background-size: cover; }
+.mars-8 { background: url(works/mars7.jpg) no-repeat center; background-size: cover; }
+
+/* ------------------ DINAMO ----------------- */
+.dinamo-1 { background: url(works/dinamo2.jpg) no-repeat center; background-size: auto 110%; }
+.dinamo-2 { background: url(works/dinamo1.jpg) no-repeat center; background-size: cover; }
+.dinamo-3 { background: url(works/dinamo3.jpg) no-repeat center; background-size: cover; }
+.dinamo-4 { background: url(works/dinamo4.jpg) no-repeat center; background-size: cover; }
+.dinamo-5 { background: url(works/dinamo5.jpg) no-repeat center; background-size: cover; }
+.dinamo-6 { background: url(works/dinamo6.jpg) no-repeat center; background-size: cover; }
+.dinamo-7 { background: url(works/dinamo7.jpg) no-repeat center; background-size: cover; }
+
+
+/* ------------------ BK LIEPAJA ----------------- */
+.liepaja-1 { background: url(works/liepaja-1.jpg) no-repeat center; background-size: auto 100%; }
+.liepaja-2 { background: url(works/liepaja-2.jpg) no-repeat center; background-size: cover; }
+.liepaja-3 { background: url(works/liepaja-3.jpg) no-repeat center; background-size: cover; }
+.liepaja-4 { background: url(works/liepaja-4.jpg) no-repeat center; background-size: cover; }
+.liepaja-5 { background: url(works/liepaja-5.jpg) no-repeat center; background-size: cover; }
+.liepaja-6 { background: url(works/liepaja-6.jpg) no-repeat center; background-size: cover; }
+.liepaja-7 { background: url(works/liepaja-7.jpg) no-repeat center; background-size: cover; }
+
+/* ------------------ SPORTA CENTRS ----------------- */
+.centrs-1 { background: url(works/centrs-1.jpg) no-repeat center; background-size: auto 100%; }
+.centrs-2 { background: url(works/centrs-2.jpg) no-repeat top left; background-size: cover; }
+.centrs-3 { background: url(works/centrs-3.jpg) no-repeat top left; background-size: cover; }
+.centrs-4 { background: url(works/centrs-4.jpg) no-repeat top left; background-size: cover; }
+.centrs-5 { background: url(works/centrs-5.jpg) no-repeat top left; background-size: cover; }
+
+

@@ -1,0 +1,341 @@
+@import "portfolio.css";
+
+*, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Open Sans";
+}
+
+#hide {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(69, 247, 217, 0.9);
+    top: 0;
+    z-index: 998;
+    transition: all 1.5s ease;
+    transition-delay: 1s;
+}
+
+.intro-card {
+    display: block;
+    position: absolute;
+    width: 600px;
+    height: auto;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    text-align: center;
+    font-size: 18px;
+    letter-spacing: -.3px;
+}
+
+#hide strong {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+#hide p {
+    text-align: left;
+    margin-top: 20px;
+}
+
+#hide .button {
+    display: block;
+    width: 60px;
+    margin: 20px auto;
+    padding: 6px;
+    background: url(img/arrow-bl-dwn.svg);
+    color: white;
+    border: none;
+    font-size: 14px;
+}
+
+#wrapper {
+    width: 1200px;
+    margin: auto;
+}
+
+#header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-gap: 8px;
+    height: 100px;
+}
+
+.head-left, .head-right {
+    display: block;
+    height: 100%;
+    padding: 24px 0 0;
+    box-sizing: border-box;
+    font-weight: 500;
+    letter-spacing: -.3px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.head-left {
+    grid-column: 1 / span 2;
+}
+
+.head-left h1 {
+    display: block;
+    width: 450px;
+    height: 40px;
+    color: #ffff00;
+    font-size: 0px;
+    background: url('img/dagnis_logo.svg') no-repeat;
+    background-size: 100%;
+}
+
+.head-left h2 {
+    font-weight: 500;
+    letter-spacing: -.3px;
+    text-transform: uppercase;
+    font-size: 14px;
+}
+
+.head-right {
+    text-align: right;
+}
+
+.head-right ul {
+    list-style: none;
+}
+
+.head-right .nav-li {
+    display: inline-block;
+    padding-left: 14px;
+}
+
+.head-right .active {
+    text-decoration: line-through;
+}
+
+#motto {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    height: 36px;
+    width: auto;
+    background: black;
+    margin: 8px 0;
+}
+
+.motto-left {
+    display: block;
+    width: 326px;
+    padding-left: 30px;
+    background: url(img/motto-left.png) no-repeat center;
+}
+
+.motto-mid {
+    display: block;
+    flex: auto;
+    background: url(img/motto-mid.png) no-repeat;
+    background-position-x: right;
+    background-position-y: center;
+    background-repeat: no-repeat;
+    animation: slideFromRight 2s ease;
+}
+
+@keyframes slideFromRight {
+    0% {
+        background-position-x: -2000px;
+    }
+    100% {
+        background-position-x: right;
+    }
+}
+
+.motto-right {
+    display: block;
+    width: 331px;
+    padding-right: 30px;
+    background: url(img/motto-right.png) no-repeat center;
+}
+
+#contents {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(10, 170px);
+    grid-gap: 8px;
+}
+
+#contents .active-item {
+    background-color: rgba(240, 240, 240, 1);
+    padding: 25px;
+}
+
+#contents h2, h3, h4 {
+    text-transform: uppercase;
+    letter-spacing: -.3px;
+}
+
+#contents h2 {
+    font-size: 20px;
+}
+
+#contents h3, h4 {
+    font-size: 15px;
+    text-align: left;
+}
+
+h4 {
+    font-weight: 400;
+}
+
+#grid-item-mars {
+    grid-row: 1 / span 1;
+    height: 170px;
+    transition: all 1s ease;
+}
+
+.grid-item-inner {
+    position: relative;
+    display: block;
+    background: #f8f8f8;
+    height: 170px;
+    text-align: center;
+    transition: background-color 1s ease;
+    box-sizing: border-box;
+    cursor: pointer;
+    overflow: hidden;
+    transition: all .5s ease;
+}
+
+.grid-item-inner:hover > .item-inner {
+    transform: translateY(0px);
+    transition: transform .2s ease-in;
+}
+
+
+.item-inner, .item-inner-active, .item-visited {
+    position: absolute;
+    display: block;
+    padding: 25px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: left;
+    box-sizing: border-box;
+    transition: transform .5s ease-out;
+}
+/* Yellow */
+/* .item-inner, .item-inner-active, .item-visited {
+    background: rgba(255, 251, 36, 0.966);
+    color: rgba(39, 39, 39, 0.966);
+}
+
+/* Red */
+/* .item-inner, .item-inner-active, .item-visited {
+    background: rgba(255, 69, 36, 0.966);
+    color: rgba(255, 255, 255, 0.966);
+} */
+
+/* Blue */
+.item-inner, .item-inner-active, .item-visited, .item-inner > svg {
+    background: rgba(69, 247, 217, 0.97);
+    color: black;
+}
+
+.inner-top { transform: translateY(-170px); }
+.inner-right { transform: translateX(294px); }
+.inner-bottom { transform: translateY(170px); }
+.inner-left { transform: translateX(-294px); }
+
+.item-inner-active {
+    transform: translate(0px, 0px);
+}
+
+/* .item-inner-active:hover > img {
+    transform: rotate(-180deg);
+    transition: all .5s ease;
+} */
+
+.item-inner img {
+    transform: rotate(0deg);
+    transition: transform .5s ease;
+}
+
+.item-inner-active > img {
+    transform: rotate(-180deg);
+    transition: transform .5s ease;
+}
+
+.item-visited {
+    background: rgba(190, 190, 190, 0.96);
+    transform: translateY(170px);
+}
+
+.thumb {
+    position: absolute;
+    width: 200px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.expanded {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    grid-column: 1 / span 4;
+    overflow: hidden;
+}
+
+.scale-0 {
+    opacity: 0;
+    grid-column: 1 / span 0;
+    transform: translateY(-50px);
+    transition-property: opacity, transform;
+    transition-duration: .3s, .5s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    z-index: 997;
+}
+
+.scale-100 {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-property: opacity, transform;
+    transition-duration: .4s, .5s;
+    z-index: 997;
+}
+
+.hidden {
+    display: none!important;
+    transition: all 1s ease;
+}
+
+.expand-row-1 { grid-row-start: 2; grid-row-end: 6; }
+
+.expanded-bottom {
+    min-height: 170px;
+    margin-top: 8px;
+    background-color: rgba(240, 240, 240, 1);
+    box-sizing: border-box;
+    padding: 30px 50px;
+}
+
+.expanded-bottom h2 span {
+    text-transform: uppercase;
+    font-size: 16px;
+    font-weight: 400;
+    margin-left: 12px;
+}
+
+.expanded-bottom p {
+    margin-top: 8px;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: -.3px;
+}
+
+

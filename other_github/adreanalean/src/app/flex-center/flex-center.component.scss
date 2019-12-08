@@ -1,0 +1,195 @@
+:host h1 {
+  margin:60px 0 20px;
+  text-align:center;
+  font-size:42px;
+  font-weight:700;
+  color: #58595c;
+  letter-spacing:-2px;
+  text-shadow: 0px 1px 0px rgba(200,200,200,.5);
+}
+
+:host h4 {
+  color:#444;
+  font-weight:300;
+  font-size:18px;
+  margin:40px auto 10px;
+}
+
+:host h2 {
+  color:#efefef;
+  font-weight:700;
+  font-size:32px;
+  margin-top:-5px;
+}
+
+#main-task-big {
+  display:block;
+  flex-direction:column;
+  justify-content:space-between;
+  height:100%;
+}
+
+#main-task-empty {
+  display:block;
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  transform: translateY(32%);
+}
+
+#main-task-empty h1 {
+  max-width:580px;
+  margin:20px auto -20px;
+  margin-bottom:-20px;
+  font-size:48px;
+  font-weight:700;
+  color: #58595c;
+  letter-spacing:-2px;
+  text-shadow: 0px 1px 0px rgba(200,200,200,.5);
+}
+
+#main-task-empty h3 {
+  font-size:28px;
+  font-weight:500;
+  color: #58595c;
+  text-shadow: 0px .5px 0px rgba(200,200,200,.5);
+}
+
+#main-task-empty .empty-btn {
+  display:none;
+}
+
+.main-task {
+  display:block;
+  max-width:650px;
+  margin:30px auto 40px;
+  padding:70px;
+  background:#B22D3A;
+  color:white;
+  text-align:center;
+  font-size:32px;
+  font-weight:600;
+  border-radius:30px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, .5);
+  cursor:default;
+  transition:all 1s ease;
+}
+
+/* .main-task:hover { animation: pulse 5s infinite; } */
+
+.main-task-top, .main-task-bottom {
+  font-size:17px;
+  color:rgb(151, 34, 45);
+  text-transform: uppercase;
+  letter-spacing:-.5px;
+  text-shadow: 0px 1px 0px rgba(204, 87, 87, 0.5);
+}
+
+.main-task-top {
+  margin:-50px auto 30px;
+}
+
+.main-task-bottom {
+  margin:30px auto -50px;
+}
+
+.color666 {
+  background:#6a6d72!important;
+  box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+  color:#bbb!important;
+}
+
+.btn-big {
+  display:inline-block;
+  width:150px;
+  height:auto;
+  padding:8px 6px;
+  margin:0 0 7px 15px;
+  border-radius:8px;
+  background:#6a6d72;
+  color:#aaa;
+  font-size:16px;
+  font-weight:600;
+  text-align:center;
+  text-transform:uppercase;
+  transition:all .5s ease;
+  animation:fadeIn .5s;
+}
+
+.btn-big:hover {
+  background:rgb(63, 63, 68);
+  color:#fff;
+  width:200px;
+  opacity:1;
+  cursor: pointer;
+  transition: all .5s ease;
+}
+
+.done:hover {
+  background:#B22D3A;
+  animation:pulse-btn 2s infinite;
+}
+
+.done:active {
+  background:rgb(202, 55, 70)!important;
+}
+
+.giveup:hover::before { content: "really "}
+.giveup:hover::after { content: "?"}
+.done:hover::before { content: "it's "}
+.done:hover::after { content: "!!"}
+
+.btn-big:active {
+  background:white;
+  animation:none;
+}
+
+.main-bottom {
+  margin:50px auto 90px;
+}
+
+.mtv-box {
+  display:inline-block;
+  background:#B22D3A;
+  width:auto;
+  padding:4px 22px 5px;
+  margin:0 5px 5px;
+  border-radius:8px;
+  font-size:20px;
+  font-weight:600;
+  text-align:center;
+  color:white;
+  transition:all .5s ease;
+}
+
+.mtv-box:hover {
+  padding:4px 44px 5px;
+  background:#8c232d;
+  animation:pulse 2s infinite;
+  transition:all .5s ease;
+  cursor: text;
+}
+
+#timeDiv {
+  display:relative;
+  cursor:pointer;
+}
+
+.paused {
+  color:#B22D3A!important;
+  animation: pulseText .5s infinite!important;
+}
+
+#paused {
+  display:none;
+  position:absolute;
+  left:50%;
+  transform:translateX(-50%);
+  color:#B22D3A;
+  font-weight:600;
+  font-size:14px;
+  text-transform: uppercase;
+  animation: pulseText .5s infinite!important;
+}

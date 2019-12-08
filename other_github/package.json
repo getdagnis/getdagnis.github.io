@@ -1,0 +1,27 @@
+{
+  "name": "newcomp",
+  "version": "0.0.1",
+  "description": "",
+  "main": "scripts.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/getdagnis/getdagnis.github.io.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/getdagnis/getdagnis.github.io/issues"
+  },
+  "homepage": "https://github.com/getdagnis/getdagnis.github.io#readme",
+  "dependencies": {
+    "jquery": "^3.4.1",
+    "lodash": "4.17.15",
+    "vue": "^2.6.10"
+  },
+  "devDependencies": {
+    "bootstrap": "^4.3.1"
+  }
+}

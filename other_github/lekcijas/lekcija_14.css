@@ -1,0 +1,14 @@
+.menu {
+    background: grey;
+    border-bottom: 4px solid #fff;   
+}
+.footer, .menu:hover {
+    display: block;
+}
+   
+.footer {
+    position: fixed;
+    text-align: right;
+    left: 0; 
+    bottom: 0;
+}

@@ -1,0 +1,32 @@
+<div id="main-task-empty" class="dblclick">
+    <h1 id="empty-h1" class="dblclick">you have nothing to do...</h1>
+    <h3 class="dblclick">choose a new task to do!</h3>
+    <div class="empty-btn" onclick="javascript:doNewTask();">add a new task to do</div>
+</div>
+
+<div id="main-task-big" class="dblclick">
+    <div class="main-top dblclick">
+      <h1  class="dblclick">do right<strong> now</strong></h1>
+      <div class="main-task dblclick">
+          <!-- <h5 class="main-task-top">Do this at once... or suffer the consequences!</h5> -->
+              Finish the basic front-end homework task at once or suffer the consequences
+          <!-- <h5 class="main-task-bottom">Do this at once... or suffer the consequences!</h5>                 -->
+      </div>
+      <div class="btn-big giveup" onclick="javascript:giveUp();">give up</div>
+      <div class="btn-big done" onclick="javascript:mainTaskDone();">done!</div>
+    </div>
+
+    <div class="main-bottom dblclick">
+            <h4>this is what you will get when you finish it:</h4>
+            <div class="mtv-box">go eat lunch</div><div class="mtv-box">good grades</div><div class="mtv-box">€1 in cash</div>
+        <div class="timer">
+            <h4>time passed:</h4>
+            <h2 id="timeDiv" class="" alt="Click to pause the timer!">
+                <span id="hr-div" class="redTime1"></span>
+                <span id="min-div" class="redTime1"></span>
+                <span id="sec-div" class="redTime1">Timer starting</span>
+                <div id="paused">timer paused</div>
+            </h2>
+        </div>
+    </div>
+  </div>

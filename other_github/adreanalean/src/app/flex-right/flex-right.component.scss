@@ -1,0 +1,40 @@
+.task-right {
+  background:#74757a;
+  transition:all 2s ease;
+}
+
+.task-right:hover {
+  background:#3d3e41;
+  transition:all 1s ease;
+}
+
+.task-right > .task-btn-hide {
+  display:none;
+  background:url(../../assets/img/cross.png) no-repeat center;
+}
+
+.task-right:hover > .task-btn-hide {
+  display:block;
+}
+
+.refresh-done {
+  display:none;
+  text-align:center;
+  width:30px;
+  margin:80px auto;
+  opacity:.3;
+  transition:all .5s ease;
+}
+
+.refresh-done:hover {
+  cursor:pointer;
+  opacity:.8;
+  transform: rotate(-45deg);
+  transition:all .5s ease;
+}
+
+.refresh-done:active {
+  opacity:1;
+  transform: rotate(-180deg);
+  transition:all .5s ease;
+}
