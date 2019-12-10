@@ -17,9 +17,9 @@
 
 #consider {
     display: block;
-    width: 400px;
+    width: 300px;
     height: auto;
-    margin: 40px auto 10px;
+    margin: 40px auto -10px;
 }
 
 .link {
@@ -31,11 +31,34 @@
     cursor: pointer;
     border-radius: 0px;
     transition: border-radius 1s ease .3s;
-    transition: padding 1s ease .3s;
 }
 
 .link:hover {
     padding: 11px 60px 7px;
     border-radius: 40px;
-    transition: all 1s ease;
+    transition: all .8s ease;
+}
+
+.link:active {
+    background: orangered;
+    transform: scale(.9);
+    transition: all .01s ease;
+}
+
+.thumb {
+    display: inline-block;
+    width: 150px;
+    margin: 8px 16px;
+    border-radius: 0px;
+    cursor: pointer;
+    border: 3px solid white;
+    box-sizing: border-box;
+    transition: border-radius .4s ease;
+}
+
+.thumb:hover {
+    border-radius: 0px;
+    box-sizing: border-box;
+    border-radius: 40px;
+    transition: border-radius .8s ease;
 }
