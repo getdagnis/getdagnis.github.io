@@ -1,0 +1,18 @@
+/* CSS Document */
+
+.clientTitle span {
+    background-color: #000000;
+	border-radius: 10px 10px 0 0;
+	behavior: url(../PIE.htc);
+    color: #FFFFFF;
+    font-family: Arial,Geneva,sans-serif;
+    font-size: 10px;
+    font-variant: normal;
+    letter-spacing: -1px;
+    padding: 2px 5px 1px;
+	position: relative;
+	}
+	
+*+html .clientTitle span {
+    padding: 2px 5px 0px;
+	}

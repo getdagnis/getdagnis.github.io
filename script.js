@@ -5,8 +5,8 @@ window.onload = contents;
 function contents() {
     setTimeout(function() {
         hideTheCurtain();
-        getContents();
-    }, 0); // 1000
+        launchPortfolio();
+    }, 1100); // 1000
     // document.addEventListener("mouseleave", function(event) {
     //     showTheCurtain();
     // });

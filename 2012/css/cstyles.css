@@ -1,0 +1,129 @@
+/*===================================================================
+*Filename: cstyles.css
+*Template: Portfolio
+*Code Author: Dainis S
+*Homepage: www.nextgen.lv
+*Date Created: 15.01.12
+*Media: Screen
+===================================================================*/
+
+
+
+
+/*===================== About Page =====================*/
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	color: #1A171B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14.3px;
+	line-height: 1.3;
+}
+a, a:hover, a:active, a:visited {
+	text-decoration: none;
+	color: #1A171B;
+}
+#cwrapper {
+	width: 423px;
+	margin: 0 auto;
+}
+.cCont {
+	width: 393px;
+	height: 501px;
+	background-image: url(../images/cBg.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding: 0 15px;
+	position: relative;
+}
+.cHead {
+	height: 36px;
+	padding-top: 12px;
+	margin-bottom: 18px;
+}
+#title {
+	width: 116px;
+	height: 28px;
+	background-image: url(../images/about_title.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#title span {
+	display: none;
+}
+p {
+	margin-bottom: 15px;
+}
+.bWish {
+	font-family: Arial, Helvetica, sans-serif;
+	font-style: italic;
+	line-height: 1.5;
+}
+.bWish span {
+	line-height: 2.5;
+}
+.red {
+	color: #e11d40;
+}
+.cFooter {
+	bottom: 0;
+	height: 33px;
+	left: 0;
+	padding: 0 15px;
+	position: absolute;
+	width: 393px;
+}
+.cFooter span {
+	float: left;
+	color: #929496;
+	font-style: italic;
+	font-size: 11px;
+	margin-top: 8px;
+}
+.cFimg {
+	float: right;
+}
+
+
+/*===================== Contact Page =====================*/
+
+body#contacts {
+	color: #1A171B;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+	line-height: 1.2;
+}
+#contacts #cwrapper {
+	width: 372px;
+	margin: 0 auto;
+}
+#contacts .cCont {
+	width: 342px;
+	height: 225px;
+	background-image: url(../images/cBg_small.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+	padding: 0 15px;
+	position: relative;
+}
+#contacts .cHead {
+	height: 34px;
+	margin-bottom: 10px;
+	padding-top: 16px;
+}
+#contacts #title {
+	width: 127px;
+	height: 22px;
+	background-image: url(../images/contacts_title.png);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#contacts #title span {
+	display: none;
+}
+#contacts td {
+	height: 29px;
+	vertical-align: bottom;
+}

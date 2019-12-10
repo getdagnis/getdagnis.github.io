@@ -1,10 +1,9 @@
 .viewer {
     position: relative;
-    /* overflow: hidden; */
 }
 
 .images {
-    width: calc(908*9px);
+    width: calc(908px*9);
     height: 526px;
     background: white;
     transition: all .5s ease;
@@ -15,12 +14,32 @@
     width: 898px;
     height: 526px;
     margin: 0 4px 0 0;
-    transition: all .3s ease;
+    transition: all 1s ease;
+}
+
+.scale-0 {
+    opacity: 0;
+    grid-column: 1 / span 0;
+    transform: translateY(-50px);
+    transition-property: opacity, transform;
+    transition-duration: .3s, .5s;
+    transition-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    z-index: 997;
+}
+
+.scale-100 {
+    opacity: 1;
+    transform: translateY(0px);
+    transition-property: opacity, transform;
+    transition-duration: .4s, .5s;
+    z-index: 997;
 }
 
 #contents .next {
     position: relative;
     opacity: .3;
+    border: 1px solid black;
+    box-sizing: border-box;
     cursor: pointer;
 }
 
@@ -89,7 +108,7 @@
 .mars-8 { background: url(works/mars7.jpg) no-repeat center; background-size: cover; }
 
 /* ------------------ DINAMO ----------------- */
-.dinamo-1 { background: url(works/dinamo2.jpg) no-repeat center; background-size: auto 110%; }
+.dinamo-1 { background: url(works/dinamo-1.jpg) no-repeat center; background-size: auto 110%; }
 .dinamo-2 { background: url(works/dinamo1.jpg) no-repeat center; background-size: cover; }
 .dinamo-3 { background: url(works/dinamo3.jpg) no-repeat center; background-size: cover; }
 .dinamo-4 { background: url(works/dinamo4.jpg) no-repeat center; background-size: cover; }

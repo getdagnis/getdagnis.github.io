@@ -1,0 +1,968 @@
+/*===================================================================
+*Filename: Style.css
+*Template: Portfolio
+*Code Author: Dainis S
+*Homepage: www.nextgen.lv
+*Date Created: 15.01.12
+*Media: Screen
+===================================================================*/
+
+
+
+
+/*===================== Layout =====================*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+body {
+	background-color: #fff;
+	font-family: Verdana, Geneva, sans-serif;
+	font-size: 14px;
+	color: #3b3b3b;
+}
+#wrapper {
+	width: 935px;
+	height: 100%;
+	margin: 0 auto;
+}
+#container {
+	background-image:url(../images/main_bg.jpg);
+	background-repeat: no-repeat;
+	background-position: left top;
+	height: 735px;
+	width: 935px;
+	position: relative;
+	padding-bottom: 55px;
+}
+/*===================== Header =====================*/
+
+#title {
+	width: 631px;
+	margin: 17px auto;
+}
+#logo {
+	width: 631px;
+	height: 66px;
+	background-image: url(../images/logo.jpg);
+	background-repeat: no-repeat;
+	background-position: center top;
+}
+#logo span {
+	display: none;
+}
+#description {
+	font-family: Helvetica, Arial, sans-serif;
+	font-weight: normal;
+	font-size: 11.5px;
+	letter-spacing: 0.1px;
+	margin-right: 13px;
+	margin-top: -2px;
+	text-align: right;
+	text-transform: uppercase;
+}
+#awards {
+  position:absolute;
+  top:40px;
+  right:0px;
+  z-index:1001;
+}
+#award1 a {
+  background-image:url(http://www.csswinner.com/images/nominee-graphics/nominee-white-right.png);
+  background-position:initial initial;
+  background-repeat:no-repeat no-repeat;
+  display:block;
+  height:85px;
+  overflow:hidden;
+  text-indent:-8000px;
+  width:69px;
+}
+#award2 a {
+  background-image:url(http://www.cssdesignawards.com/award/css-design-awards-nominee-right-white.png);
+  background-position:initial initial;
+  background-repeat:no-repeat no-repeat;
+  display:block;
+  height:105px;
+  overflow:hidden;
+  text-indent:-8000px;
+  width:69px;
+}
+#award3 a {
+  background-image:url(/images/css_nominee.png);
+  background-position:top right;
+  background-repeat:no-repeat no-repeat;
+  margin-top:10px;
+  display:block;
+  height:145px;
+  overflow:hidden;
+  text-indent:-8000px;
+  width:69px;
+}
+
+
+
+/*===================== Style =====================*/
+
+.redLink {
+	color: #bf0013;
+	text-decoration: none;
+	font-size: 11.5px;
+}
+.redLink:hover {
+	color: #ff0000;
+	text-decoration: underline;
+	font-size: 11.5px;	
+}
+a, a:active, a:visited {
+	text-decoration: none;
+	outline: none;
+}
+a:hover {
+	text-decoration: underline;
+}
+.clientTitle span {
+	background-color: #000000;
+	-moz-border-radius-topleft: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-bottomright: 0;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-top-left-radius: 10px;
+	-webkit-border-top-right-radius: 10px;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	color: #FFFFFF;
+	font-family: Arial, Geneva, sans-serif;
+	font-size: 10px;
+	font-variant: normal;
+	letter-spacing: -1px;
+	padding: 2px 5px 1px;
+}
+h1.clientTitle {
+	margin-bottom: 0px;
+}
+
+/*===================== Client group positions =====================*/
+
+#client_2 .work, #client_3 .work, #client_10 .work, #client_7 .work, #client_11 .work  {
+	width: 162px;
+}
+#client_1 .work, #client_4 .work, #client_5 .work, #client_6 .work, #client_8 .work, #client_9 .work, #client_12 .work, #client_13 .work {
+	width: 122px;
+}
+#client_14 .work {
+	width: 82px;
+}
+#client_15 .work {
+	width: 202px;
+}
+.work li {
+	float: left;
+}
+.work li a {
+	height: 38px;
+	width: 38px;
+	display: block;
+	padding: 0;
+	margin: 0;
+}
+#client_1 {
+	left: 3px;
+	position: absolute;
+	top: 22px;
+}
+#client_2 {
+	left: 165px;
+	position: absolute;
+	top: 22px;
+}
+#client_3 {
+	position: absolute;
+	right: 164px;
+	top: 22px;
+}
+#client_4 {
+	position: absolute;
+	right: 3px;
+	top: 22px;
+}
+#client_5 {
+	left: 3px;
+	position: absolute;
+	top: 221px;
+}
+#client_6 {
+	left: 165px;
+	position: absolute;
+	top: 182px;
+}
+#client_7 {
+	position: absolute;
+	right: 164px;
+	top: 181px;
+}
+#client_8 {
+	position: absolute;
+	right: 3px;
+	top: 139px;
+}
+#client_9 {
+	left: 3px;
+	position: absolute;
+	top: 342px;
+}
+#client_10 {
+	left: 165px;
+	position: absolute;
+	top: 342px;
+}
+#client_11 {
+	position: absolute;
+	right: 164px;
+	top: 301px;
+}
+#client_12 {
+	position: absolute;
+	right: 3px;
+	top: 222px;
+}
+#client_13 {
+	position: absolute;
+	right: 3px;
+	top: 341px;
+}
+#client_14 {
+	position: absolute;
+	right: 244px;
+	top: 419px;
+}
+#client_15 {
+	position: absolute;
+	right: 3px;
+	top: 459px;
+}
+
+
+/*===================== Footer =====================*/
+
+#footer {
+	height:100%;
+	background-color: #b2b2b2;
+}
+#behance {
+	vertical-align:top;
+	float:left;
+	position:relative;
+	margin-top:2px;
+	margin-right:22px;
+}
+#behance a:hover{
+	text-decoration:none;
+}
+#fCont {
+	font-family: "Myriad Pro", "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+	font-size: 12px;
+	width: 935px;
+	margin: 0 auto;
+	padding-top: 21px;
+	height: 31px;
+	color: #fff;
+}
+#fLeft {
+	width: 60%;
+	float: left;
+}
+#fRight {
+	float: right;
+	text-align: right;
+	width: 40%;
+}
+#fMenu li {
+	float: left;
+	padding: 0 8px;
+	border-left: 1px solid #FFF;
+}
+#fMenu li:first-child {
+	border-left: none;
+	padding-left: 0;
+}
+#fMenu a {
+	color: #fff;
+}
+
+/*Client icon style*/
+
+#client_1 ul.work li, #client_2 ul.work li, #client_3 ul.work li, #client_4 ul.work li, #client_5 ul.work li, #client_6 ul.work li, #client_7 ul.work li, #client_8 ul.work li, #client_9 ul.work li, #client_10 ul.work li, #client_11 ul.work li, #client_12 ul.work li, #client_13 ul.work li, #client_14 ul.work li, #client_15 ul.work li {
+	text-indent: -9999px;
+	border: 1px solid #1a171b;
+}
+
+
+/*=====================	Dinamo Riga =====================*/
+
+/*Border around client group*/
+
+ul.work li#dRiga_1, ul.work li#dRiga_2, ul.work li#dRiga_3 {
+	border-top-width: 2px;
+}
+ul.work li#dRiga_3, ul.work li#dRiga_6, ul.work li#dRiga_9, ul.work li#dRiga_10, ul.work li#dRiga_11 {
+	border-right-width: 2px;
+}
+ul.work li#dRiga_8, ul.work li#dRiga_9, ul.work li#dRiga_10, ul.work li#dRiga_11 {
+	border-bottom-width: 2px;
+}
+ul.work li#dRiga_1, ul.work li#dRiga_4, ul.work li#dRiga_7, ul.work li#dRiga_10 {
+	border-left-width: 2px;
+}
+ul.work li#dRiga_10, ul.work li#dRiga_11 {
+	margin-top: -1px;
+}
+ul.work li#dRiga_11 {
+	margin-left: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_1 ul.work li#dRiga_1 a {
+	background: url(../images/work.jpg) no-repeat 0px 0px;
+}
+#client_1 ul.work li#dRiga_2 a {
+	background: url(../images/work.jpg) no-repeat 0px -38px;
+}
+#client_1 ul.work li#dRiga_3 a {
+	background: url(../images/work.jpg) no-repeat 0px -76px;
+}
+#client_1 ul.work li#dRiga_4 a {
+	background: url(../images/work.jpg) no-repeat 0px -114px;
+}
+#client_1 ul.work li#dRiga_5 a {
+	background: url(../images/work.jpg) no-repeat 0px -152px;
+}
+#client_1 ul.work li#dRiga_6 a {
+	background: url(../images/work.jpg) no-repeat 0px -190px;
+}
+#client_1 ul.work li#dRiga_7 a {
+	background: url(../images/work.jpg) no-repeat 0px -228px;
+}
+#client_1 ul.work li#dRiga_8 a {
+	background: url(../images/work.jpg) no-repeat 0px -266px;
+}
+#client_1 ul.work li#dRiga_9 a {
+	background: url(../images/work.jpg) no-repeat 0px -304px;
+}
+#client_1 ul.work li#dRiga_10 a {
+	background: url(../images/work.jpg) no-repeat 0px -342px;
+}
+#client_1 ul.work li#dRiga_11 a {
+	background: url(../images/work.jpg) no-repeat 0px -380px;
+}
+
+/*===================== Publishing =====================*/
+
+/*Border around client group*/
+
+ul.work li#publ_1, ul.work li#publ_2, ul.work li#publ_3, ul.work li#publ_4 {
+	border-top-width: 2px;
+}
+ul.work li#publ_4, ul.work li#publ_8, ul.work li#publ_10 {
+	border-right-width: 2px;
+}
+ul.work li#publ_7, ul.work li#publ_8, ul.work li#publ_9, ul.work li#publ_10 {
+	border-bottom-width: 2px;
+}
+ul.work li#publ_1, ul.work li#publ_5, ul.work li#publ_9 {
+	border-left-width: 2px;
+}
+ul.work li#publ_9, ul.work li#publ_10 {
+	margin-top: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_2 ul.work li#publ_1 a {
+	background: url(../images/work.jpg) no-repeat -114px 0px;
+}
+#client_2 ul.work li#publ_2 a {
+	background: url(../images/work.jpg) no-repeat -114px -38px;
+}
+#client_2 ul.work li#publ_3 a {
+	background: url(../images/work.jpg) no-repeat -114px -76px;
+}
+#client_2 ul.work li#publ_4 a {
+	background: url(../images/work.jpg) no-repeat -114px -114px;
+}
+#client_2 ul.work li#publ_5 a {
+	background: url(../images/work.jpg) no-repeat -114px -152px;
+}
+#client_2 ul.work li#publ_6 a {
+	background: url(../images/work.jpg) no-repeat -114px -190px;
+}
+#client_2 ul.work li#publ_7 a {
+	background: url(../images/work.jpg) no-repeat -114px -228px;
+}
+#client_2 ul.work li#publ_8 a {
+	background: url(../images/work.jpg) no-repeat -114px -266px;
+}
+#client_2 ul.work li#publ_9 a {
+	background: url(../images/work.jpg) no-repeat -114px -304px;
+}
+#client_2 ul.work li#publ_10 a {
+	background: url(../images/work.jpg) no-repeat -114px -342px;
+}
+
+
+/*===================== Made Architects =====================*/
+
+/*Border around client group*/
+
+ul.work li#MA_1, ul.work li#MA_2, ul.work li#MA_3, ul.work li#MA_4 {
+	border-top-width: 2px;
+}
+ul.work li#MA_4, ul.work li#MA_7, ul.work li#MA_9 {
+	border-right-width: 2px;
+}
+ul.work li#MA_4, ul.work li#MA_7, ul.work li#MA_8, ul.work li#MA_9 {
+	border-bottom-width: 2px;
+}
+ul.work li#MA_1, ul.work li#MA_5, ul.work li#MA_8 {
+	border-left-width: 2px;
+}
+ul.work li#MA_5, ul.work li#MA_6, ul.work li#MA_7, ul.work li#MA_8, ul.work li#MA_9 {
+	margin-top: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_3 ul.work li#MA_1 a {
+	background: url(../images/work.jpg) no-repeat -228px 0px;
+}
+#client_3 ul.work li#MA_2 a {
+	background: url(../images/work.jpg) no-repeat -228px -38px;
+}
+#client_3 ul.work li#MA_3 a {
+	background: url(../images/work.jpg) no-repeat -228px -76px;
+}
+#client_3 ul.work li#MA_4 a {
+	background: url(../images/work.jpg) no-repeat -228px -114px;
+}
+#client_3 ul.work li#MA_5 a {
+	background: url(../images/work.jpg) no-repeat -228px -152px;
+}
+#client_3 ul.work li#MA_6 a {
+	background: url(../images/work.jpg) no-repeat -228px -190px;
+}
+#client_3 ul.work li#MA_7 a {
+	background: url(../images/work.jpg) no-repeat -228px -228px;
+}
+#client_3 ul.work li#MA_8 a {
+	background: url(../images/work.jpg) no-repeat -228px -266px;
+}
+#client_3 ul.work li#MA_9 a {
+	background: url(../images/work.jpg) no-repeat -228px -304px;
+}
+#client_3 ul.work li#MA_10 a {
+	background: url(../images/work.jpg) no-repeat -228px -342px;
+}
+#client_3 ul.work li#MA_7 {
+	margin-right: 20px;
+}
+
+
+/*===================== Satori =====================*/
+
+/*Border around client group*/
+
+ul.work li#sti_1, ul.work li#sti_2, ul.work li#sti_3 {
+	border-top-width: 2px;
+}
+ul.work li#sti_3, ul.work li#sti_6 {
+	border-right-width: 2px;
+}
+ul.work li#sti_4, ul.work li#sti_5, ul.work li#sti_6 {
+	border-bottom-width: 2px;
+}
+ul.work li#sti_1, ul.work li#sti_4 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_4 ul.work li#sti_1 a {
+	background: url(../images/work.jpg) no-repeat -342px 0px;
+}
+#client_4 ul.work li#sti_2 a {
+	background: url(../images/work.jpg) no-repeat -342px -38px;
+}
+#client_4 ul.work li#sti_3 a {
+	background: url(../images/work.jpg) no-repeat -342px -76px;
+}
+#client_4 ul.work li#sti_4 a {
+	background: url(../images/work.jpg) no-repeat -342px -114px;
+}
+#client_4 ul.work li#sti_5 a {
+	background: url(../images/work.jpg) no-repeat -342px -152px;
+}
+#client_4 ul.work li#sti_6 a {
+	background: url(../images/work.jpg) no-repeat -342px -190px;
+}
+
+
+/*===================== Designed by humans =====================*/
+
+/*Border around client group*/
+
+ul.work li#designBH_1, ul.work li#designBH_2, ul.work li#designBH_3 {
+	border-top-width: 2px;
+}
+ul.work li#designBH_3, ul.work li#designBH_5 {
+	border-right-width: 2px;
+}
+ul.work li#designBH_3, ul.work li#designBH_4, ul.work li#designBH_5 {
+	border-bottom-width: 2px;
+}
+ul.work li#designBH_1, ul.work li#designBH_4 {
+	border-left-width: 2px;
+}
+ul.work li#designBH_4, ul.work li#designBH_5 {
+	margin-top: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_5 ul.work li#designBH_1 a {
+	background: url(../images/work.jpg) no-repeat -456px 0px;
+}
+#client_5 ul.work li#designBH_2 a {
+	background: url(../images/work.jpg) no-repeat -456px -38px;
+}
+#client_5 ul.work li#designBH_3 a {
+	background: url(../images/work.jpg) no-repeat -456px -76px;
+}
+#client_5 ul.work li#designBH_4 a {
+	background: url(../images/work.jpg) no-repeat -456px -114px;
+}
+#client_5 ul.work li#designBH_5 a {
+	background: url(../images/work.jpg) no-repeat -456px -152px;
+}
+
+
+/*===================== ZATLER'S REFORM PARTY =====================*/
+
+/*Border around client group*/
+
+ul.work li#zatRef_1, ul.work li#zatRef_2, ul.work li#zatRef_3 {
+	border-top-width: 2px;
+}
+ul.work li#zatRef_3, ul.work li#zatRef_6, ul.work li#zatRef_8 {
+	border-right-width: 2px;
+}
+ul.work li#zatRef_6, ul.work li#zatRef_7, ul.work li#zatRef_8 {
+	border-bottom-width: 2px;
+}
+ul.work li#zatRef_1, ul.work li#zatRef_4, ul.work li#zatRef_7 {
+	border-left-width: 2px;
+}
+ul.work li#zatRef_7, ul.work li#zatRef_8 {
+	margin-top: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_6 ul.work li#zatRef_1 a {
+	background: url(../images/work.jpg) no-repeat -570px 0px;
+}
+#client_6 ul.work li#zatRef_2 a {
+	background: url(../images/work.jpg) no-repeat -570px -38px;
+}
+#client_6 ul.work li#zatRef_3 a {
+	background: url(../images/work.jpg) no-repeat -570px -76px;
+}
+#client_6 ul.work li#zatRef_4 a {
+	background: url(../images/work.jpg) no-repeat -570px -114px;
+}
+#client_6 ul.work li#zatRef_5 a {
+	background: url(../images/work.jpg) no-repeat -570px -152px;
+}
+#client_6 ul.work li#zatRef_6 a {
+	background: url(../images/work.jpg) no-repeat -570px -190px;
+}
+#client_6 ul.work li#zatRef_7 a {
+	background: url(../images/work.jpg) no-repeat -570px -228px;
+}
+#client_6 ul.work li#zatRef_8 a {
+	background: url(../images/work.jpg) no-repeat -570px -266px;
+}
+
+
+/*===================== POSITIVUS FESTIVAL '09-'11 =====================*/
+
+/*Border around client group*/
+
+ul.work li#pFest11_1, ul.work li#pFest11_2, ul.work li#pFest11_3, ul.work li#pFest11_4 {
+	border-top-width: 2px;
+}
+ul.work li#pFest11_4, ul.work li#pFest11_8 {
+	border-right-width: 2px;
+}
+ul.work li#pFest11_5, ul.work li#pFest11_6, ul.work li#pFest11_7, ul.work li#pFest11_8 {
+	border-bottom-width: 2px;
+}
+ul.work li#pFest11_1, ul.work li#pFest11_5 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_7 ul.work li#pFest11_1 a {
+	background: url(../images/work.jpg) no-repeat -684px 0px;
+}
+#client_7 ul.work li#pFest11_2 a {
+	background: url(../images/work.jpg) no-repeat -684px -38px;
+}
+#client_7 ul.work li#pFest11_3 a {
+	background: url(../images/work.jpg) no-repeat -684px -76px;
+}
+#client_7 ul.work li#pFest11_4 a {
+	background: url(../images/work.jpg) no-repeat -684px -114px;
+}
+#client_7 ul.work li#pFest11_5 a {
+	background: url(../images/work.jpg) no-repeat -684px -152px;
+}
+#client_7 ul.work li#pFest11_6 a {
+	background: url(../images/work.jpg) no-repeat -684px -190px;
+}
+#client_7 ul.work li#pFest11_7 a {
+	background: url(../images/work.jpg) no-repeat -684px -228px;
+}
+#client_7 ul.work li#pFest11_8 a {
+	background: url(../images/work.jpg) no-repeat -684px -266px;
+}
+
+
+/*===================== ZELTA ZIVTINA =====================*/
+
+/*Border around client group*/
+
+ul.work li#zelta_1, ul.work li#zelta_2, ul.work li#zelta_3 {
+	border-top-width: 2px;
+}
+ul.work li#zelta_3 {
+	border-right-width: 2px;
+}
+ul.work li#zelta_1, ul.work li#zelta_2, ul.work li#zelta_3 {
+	border-bottom-width: 2px;
+}
+ul.work li#zelta_1 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_8 ul.work li#zelta_1 a {
+	background: url(../images/work.jpg) no-repeat -798px 0px;
+}
+#client_8 ul.work li#zelta_2 a {
+	background: url(../images/work.jpg) no-repeat -798px -38px;
+}
+#client_8 ul.work li#zelta_3 a {
+	background: url(../images/work.jpg) no-repeat -798px -76px;
+}
+
+
+/*===================== SPONSORKING =====================*/
+
+/*Border around client group*/
+
+ul.work li#spsk_1, ul.work li#spsk_2, ul.work li#spsk_3 {
+	border-top-width: 2px;
+}
+ul.work li#spsk_3, ul.work li#spsk_6 {
+	border-right-width: 2px;
+}
+ul.work li#spsk_4, ul.work li#spsk_5, ul.work li#spsk_6 {
+	border-bottom-width: 2px;
+}
+ul.work li#spsk_1, ul.work li#spsk_4 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_9 ul.work li#spsk_1 a {
+	background: url(../images/work.jpg) no-repeat -912px 0px;
+}
+#client_9 ul.work li#spsk_2 a {
+	background: url(../images/work.jpg) no-repeat -912px -38px;
+}
+#client_9 ul.work li#spsk_3 a {
+	background: url(../images/work.jpg) no-repeat -912px -76px;
+}
+#client_9 ul.work li#spsk_4 a {
+	background: url(../images/work.jpg) no-repeat -912px -114px;
+}
+#client_9 ul.work li#spsk_5 a {
+	background: url(../images/work.jpg) no-repeat -912px -152px;
+}
+#client_9 ul.work li#spsk_6 a {
+	background: url(../images/work.jpg) no-repeat -912px -190px;
+}
+
+
+/*===================== GIVE AS WORK RIGA =====================*/
+
+/*Border around client group*/
+
+ul.work li#gwRiga_1, ul.work li#gwRiga_2, ul.work li#gwRiga_3, ul.work li#gwRiga_4 {
+	border-top-width: 2px;
+}
+ul.work li#gwRiga_4, ul.work li#gwRiga_7 {
+	border-right-width: 2px;
+}
+ul.work li#gwRiga_4, ul.work li#gwRiga_5, ul.work li#gwRiga_6, ul.work li#gwRiga_7 {
+	border-bottom-width: 2px;
+}
+ul.work li#gwRiga_1, ul.work li#gwRiga_5 {
+	border-left-width: 2px;
+}
+ul.work li#gwRiga_5, ul.work li#gwRiga_6, ul.work li#gwRiga_7 {
+	margin-top: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_10 ul.work li#gwRiga_1 a {
+	background: url(../images/work.jpg) no-repeat -1026px 0px;
+}
+#client_10 ul.work li#gwRiga_2 a {
+	background: url(../images/work.jpg) no-repeat -1026px -38px;
+}
+#client_10 ul.work li#gwRiga_3 a {
+	background: url(../images/work.jpg) no-repeat -1026px -76px;
+}
+#client_10 ul.work li#gwRiga_4 a {
+	background: url(../images/work.jpg) no-repeat -1026px -114px;
+}
+#client_10 ul.work li#gwRiga_5 a {
+	background: url(../images/work.jpg) no-repeat -1026px -152px;
+}
+#client_10 ul.work li#gwRiga_6 a {
+	background: url(../images/work.jpg) no-repeat -1026px -190px;
+}
+#client_10 ul.work li#gwRiga_7 a {
+	background: url(../images/work.jpg) no-repeat -1026px -228px;
+}
+
+
+/*===================== POSITIVUS FESTIVAL '07-'08 =====================*/
+
+/*Border around client group*/
+
+ul.work li#pFest08_1, ul.work li#pFest08_2, ul.work li#pFest08_3, ul.work li#pFest08_4 {
+	border-top-width: 2px;
+}
+ul.work li#pFest08_4, ul.work li#pFest08_8 {
+	border-right-width: 2px;
+}
+ul.work li#pFest08_5, ul.work li#pFest08_6, ul.work li#pFest08_7, ul.work li#pFest08_8 {
+	border-bottom-width: 2px;
+}
+ul.work li#pFest08_1, ul.work li#pFest08_5 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_11 ul.work li#pFest08_1 a {
+	background: url(../images/work.jpg) no-repeat -1140px 0px;
+}
+#client_11 ul.work li#pFest08_2 a {
+	background: url(../images/work.jpg) no-repeat -1140px -38px;
+}
+#client_11 ul.work li#pFest08_3 a {
+	background: url(../images/work.jpg) no-repeat -1140px -76px;
+}
+#client_11 ul.work li#pFest08_4 a {
+	background: url(../images/work.jpg) no-repeat -1140px -114px;
+}
+#client_11 ul.work li#pFest08_5 a {
+	background: url(../images/work.jpg) no-repeat -1140px -152px;
+}
+#client_11 ul.work li#pFest08_6 a {
+	background: url(../images/work.jpg) no-repeat -1140px -190px;
+}
+#client_11 ul.work li#pFest08_7 a {
+	background: url(../images/work.jpg) no-repeat -1140px -228px;
+}
+#client_11 ul.work li#pFest08_8 a {
+	background: url(../images/work.jpg) no-repeat -1140px -266px;
+}
+
+
+/*===================== CREATIVE ANDREJSALA =====================*/
+
+/*Border around client group*/
+
+ul.work li#ctAndr_1, ul.work li#ctAndr_2, ul.work li#ctAndr_3 {
+	border-top-width: 2px;
+}
+ul.work li#ctAndr_3, ul.work li#ctAndr_5 {
+	border-right-width: 2px;
+}
+ul.work li#ctAndr_3, ul.work li#ctAndr_4, ul.work li#ctAndr_5 {
+	border-bottom-width: 2px;
+}
+ul.work li#ctAndr_1, ul.work li#ctAndr_4 {
+	border-left-width: 2px;
+}
+ul.work li#ctAndr_4, ul.work li#ctAndr_5 {
+	margin-top: -1px;
+}
+
+/*Background images for client icons*/
+
+#client_12 ul.work li#ctAndr_1 a {
+	background: url(../images/work.jpg) no-repeat -1254px 0px;
+}
+#client_12 ul.work li#ctAndr_2 a {
+	background: url(../images/work.jpg) no-repeat -1254px -38px;
+}
+#client_12 ul.work li#ctAndr_3 a {
+	background: url(../images/work.jpg) no-repeat -1254px -76px;
+}
+#client_12 ul.work li#ctAndr_4 a {
+	background: url(../images/work.jpg) no-repeat -1254px -114px;
+}
+#client_12 ul.work li#ctAndr_5 a {
+	background: url(../images/work.jpg) no-repeat -1254px -152px;
+}
+
+
+/*===================== SURVIVAL KIT 2 =====================*/
+
+/*Border around client group*/
+
+ul.work li#svKit_1, ul.work li#svKit_2, ul.work li#svKit_3 {
+	border-top-width: 2px;
+}
+ul.work li#svKit_3, ul.work li#svKit_6 {
+	border-right-width: 2px;
+}
+ul.work li#svKit_4, ul.work li#svKit_5, ul.work li#svKit_6 {
+	border-bottom-width: 2px;
+}
+ul.work li#svKit_1, ul.work li#svKit_4 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_13 ul.work li#svKit_1 a {
+	background: url(../images/work.jpg) no-repeat -1368px 0px;
+}
+#client_13 ul.work li#svKit_2 a {
+	background: url(../images/work.jpg) no-repeat -1368px -38px;
+}
+#client_13 ul.work li#svKit_3 a {
+	background: url(../images/work.jpg) no-repeat -1368px -76px;
+}
+#client_13 ul.work li#svKit_4 a {
+	background: url(../images/work.jpg) no-repeat -1368px -114px;
+}
+#client_13 ul.work li#svKit_5 a {
+	background: url(../images/work.jpg) no-repeat -1368px -152px;
+}
+#client_13 ul.work li#svKit_6 a {
+	background: url(../images/work.jpg) no-repeat -1368px -190px;
+}
+
+
+/*===================== LEFTOVERS =====================*/
+
+/*Border around client group*/
+
+ul.work li#left_1, ul.work li#left_2 {
+	border-top-width: 2px;
+}
+ul.work li#left_2, ul.work li#left_4, ul.work li#left_6 {
+	border-right-width: 2px;
+}
+ul.work li#left_5, ul.work li#left_6 {
+	border-bottom-width: 2px;
+}
+ul.work li#left_1, ul.work li#left_3, ul.work li#left_5 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_14 ul.work li#left_1 a {
+	background: url(../images/work.jpg) no-repeat -1482px 0px;
+}
+#client_14 ul.work li#left_2 a {
+	background: url(../images/work.jpg) no-repeat -1482px -38px;
+}
+#client_14 ul.work li#left_3 a {
+	background: url(../images/work.jpg) no-repeat -1482px -76px;
+}
+#client_14 ul.work li#left_4 a {
+	background: url(../images/work.jpg) no-repeat -1482px -114px;
+}
+#client_14 ul.work li#left_5 a {
+	background: url(../images/work.jpg) no-repeat -1482px -152px;
+}
+#client_14 ul.work li#left_6 a {
+	background: url(../images/work.jpg) no-repeat -1482px -190px;
+}
+
+
+/*===================== NOKIA OPEN STAGE =====================*/
+
+/*Border around client group*/
+
+ul.work li#nokia_1, ul.work li#nokia_2, ul.work li#nokia_3, ul.work li#nokia_4, ul.work li#nokia_5 {
+	border-top-width: 2px;
+}
+ul.work li#nokia_5, ul.work li#nokia_10 {
+	border-right-width: 2px;
+}
+ul.work li#nokia_6, ul.work li#nokia_7, ul.work li#nokia_8, ul.work li#nokia_9, ul.work li#nokia_10 {
+	border-bottom-width: 2px;
+}
+ul.work li#nokia_1, ul.work li#nokia_6 {
+	border-left-width: 2px;
+}
+
+/*Background images for client icons*/
+
+#client_15 ul.work li#nokia_1 a {
+	background: url(../images/work.jpg) no-repeat -1596px 0px;
+}
+#client_15 ul.work li#nokia_2 a {
+	background: url(../images/work.jpg) no-repeat -1596px -38px;
+}
+#client_15 ul.work li#nokia_3 a {
+	background: url(../images/work.jpg) no-repeat -1596px -76px;
+}
+#client_15 ul.work li#nokia_4 a {
+	background: url(../images/work.jpg) no-repeat -1596px -114px;
+}
+#client_15 ul.work li#nokia_5 a {
+	background: url(../images/work.jpg) no-repeat -1596px -152px;
+}
+#client_15 ul.work li#nokia_6 a {
+	background: url(../images/work.jpg) no-repeat -1596px -190px;
+}
+#client_15 ul.work li#nokia_7 a {
+	background: url(../images/work.jpg) no-repeat -1596px -228px;
+}
+#client_15 ul.work li#nokia_8 a {
+	background: url(../images/work.jpg) no-repeat -1596px -266px;
+}
+#client_15 ul.work li#nokia_9 a {
+	background: url(../images/work.jpg) no-repeat -1596px -304px;
+}
+#client_15 ul.work li#nokia_10 a {
+	background: url(../images/work.jpg) no-repeat -1596px -342px;
+}
