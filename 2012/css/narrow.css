@@ -244,8 +244,12 @@ h1.clientTitle {
 /*===================== Footer =====================*/
 
 #footer {
-	height:100%;
-	background-color: #b2b2b2;
+	position: fixed;
+	bottom: 0;
+	height: auto;
+	min-width: 200px;
+	width: 100%;
+	background-color: rgba(156, 156, 156, .9);
 }
 #behance {
 	vertical-align:top;
