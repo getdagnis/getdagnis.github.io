@@ -1,43 +1,57 @@
-function launchPortfolio() {
+// JS code by Dagnis Skurbe, December 2019-January 2020
 
-    let allObjects = [];
+let allObjects = {};
+
+if (localStorage.getItem("portfolio") != null) {
+    allObjects = JSON.parse(localStorage.getItem("portfolio"));
+    console.log(allObjects);
+} else {
+    let xhttp = new XMLHttpRequest();
+
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            allObjects = JSON.parse(xhttp.responseText);
+            // localStorage.setItem("portfolio", xhttp.responseText);
+            // console.log(JSON.parse(localStorage.getItem("portfolio")));
+        }
+    };
+    xhttp.open("GET", "portfolio.json", true);
+    xhttp.send();
+}
+
+function launchPortfolio() {
+    let objectKeys = Object.keys(allObjects);
     let thisObj = {};
     let newContents = '';
 
-    console.log(allObjects);
-    getObjects();
-    allObjects = objectArray;
-
-    for (i = 0; i < allObjects.length; i++) {
-        thisObj = allObjects[i];
-        let thisIndex = 0; // let thisIndex = i / 100 * 8;
+    for (i = 0; i < objectKeys.length; i++) {
+        let thisObjKey = objectKeys[i];
+        thisObj = allObjects[thisObjKey];
         let thisCol = '';
         let thisRowFormula = 0;
         let thisRow = '';
-        let indexFormula = .2 + i / 100 * 1.5;
         let rowAndCol = '';
         let whichInnerSide = '';
-        let thisImgNumb = 0;
-        let j = 2;
-        let firstImageDiv = `<div class="viewer-img ${thisObj.key}-1"></div>`;
-        let otherImageDiv = '';
-        let otherImageDivs = '';
+        let animationDelay = 0; 
+        let animationDelayFormula = .2 + i / 100 * 1.5;
+        let thisImageDiv = '';
+        let allImageDivs = '';
         
         // GENERATES THE GRID OF ALL THE THUMBNAILS
         if (i % 4 === 0) { 
-            thisIndex = indexFormula;
+            animationDelay = animationDelayFormula;
             thisCol = 'col-1';
             whichInnerSide = 'inner-right';
         } else if (i % 4 === 1) {
-            thisIndex = indexFormula + .15;
+            animationDelay = animationDelayFormula + .15;
             thisCol = 'col-2';
             whichInnerSide = 'inner-left';
         } else if (i % 4 === 2) {
-            thisIndex = indexFormula + .3;
+            animationDelay = animationDelayFormula + .3;
             thisCol = 'col-3';
             whichInnerSide = 'inner-right';
         } else if (i % 4 === 3) {
-            thisIndex = indexFormula + .45;
+            animationDelay = animationDelayFormula + .45;
             thisCol = 'col-4';
             whichInnerSide = 'inner-left';
         };
@@ -45,19 +59,30 @@ function launchPortfolio() {
         thisRow = 'row-' + thisRowFormula;
         rowAndCol = thisRow + '-' + thisCol;
 
-        // GENERATES ALL THE IMAGES IN THE IMAGE VIEWER (images themselves defined in portfolio.css)
-        while (j <= thisObj.images) {
-           otherImageDiv = '<div class="viewer-img next ' + thisObj.key + '-' + j + '"></div>';
-           otherImageDivs = otherImageDivs.concat(otherImageDiv);
-           j++;
-        }
-        
-        // TEMPLATE FOR BOTH THE THUMBNAIL AND THE IMAGE VIEWER UNDERNEATH
+        // GENERATES ALL THE IMAGES IN THE IMAGE VIEWER
+        let j = 0;
+
+        if (thisObj.images.length > 0) {
+            while (j < thisObj.images.length) {
+                let thisImgName = thisObj.key + '-' + j;
+                let firstOrNext = 'first';
+                (j > 0) ? firstOrNext = 'next' : 'first';
+
+                thisImageDiv = `<div class="viewer-img ${thisObj.key} ${j} ${thisImgName} ${firstOrNext}"
+                style="background: url('works/${thisObj.key}/${thisObj.images[j]}.jpg') no-repeat center; background-size: cover;">
+                <input type="file" class="img-upload"></div>`;
+                allImageDivs = allImageDivs.concat(thisImageDiv);
+                j++;
+            }
+        } 
+
+        // TEMPLATE FOR BOTH THE THUMBNAIL AND THE IMAGE VIEWER.
+        // WARNING: ITEM-INNER (AND GRID-ITEM-INNER) FIRST FOUR (AND THREE) CLASSES ARE USED BY SCRIPTS.JS AND ADMIN.JS IN THIS ORDER!
         templateHTML = `
         <div class="grid-item" id="grid-item-${thisObj.key}">
-            <div class="grid-item-inner ${thisRow} ${thisCol} itemBounce" style="animation-delay: ${thisIndex}s">
+            <div class="grid-item-inner ${thisRow} ${thisCol} itemBounce" style="animation-delay: ${animationDelay}s">
                 <img class="thumb" src="img/thumbs/${thisObj.key}.svg" alt="${thisObj.name + ", " + thisObj.work}" />
-                <div class="item-inner ${thisObj.key} ${thisRow} ${thisCol} ${rowAndCol} ${whichInnerSide}"> <!-- !!! IMPORTANT: 2nd CLASS MUST BE 'KEY' AND 3rd 'ROW-x' (used by openExpanded function) -->
+                <div class="item-inner ${thisObj.key} ${thisRow} ${thisCol} ${rowAndCol} ${whichInnerSide}">
                         <img src="img/arr-bl-dwn.svg" height="50px" />
                         <h3>${thisObj.name}</h3>
                         <h4>${thisObj.title}</h4>
@@ -65,290 +90,27 @@ function launchPortfolio() {
                 </div>
             </div>            
         </div>
-        <div class="expanded ${thisObj.key} expand-row-1 scale-0 hidden">
+        <div class="expanded ${thisObj.key} expand-${thisRow} scale-0 hidden">
             <div class="viewer" id="${thisObj.key}-viewer">
                 <div class="images" id="${thisObj.key}-images">
-                    ${firstImageDiv}
-                    ${otherImageDivs}
+                    ${allImageDivs}
                     <div class="viewer-img last"></div>
                 </div>
             </div>
             <div class="expanded-bottom">
-                    <h2>${thisObj.name + ", " + thisObj.title}<span>${thisObj.work + ", " + thisObj.year}</span></h2>
-                    <p>${thisObj.description}</p>
+                    <h2 class="${thisObj.key}-name ${thisObj.key} name edit-ready">${thisObj.name}</h2>
+                    <span class="${thisObj.key}-title ${thisObj.key} title edit-ready">${thisObj.title}</span>
+                    <img src="img/arrow.svg" height="12px" /><span class="${thisObj.key}-work ${thisObj.key} work edit-ready">${thisObj.work}</span> 
+                    (<span class="${thisObj.key}-year ${thisObj.key} year edit-ready">${thisObj.year}</span>)
+                    <p class="${thisObj.key}-description ${thisObj.key} description edit-ready">${thisObj.description}</p>
             </div>
         </div>         
         `;
         
         newContents = newContents + templateHTML;
-        
+
     }
 
     const contentDiv = document.getElementById('contents');
     contentDiv.innerHTML = newContents;
-}
-
-function getObjects() {
-    objectArray = [
-        {
-            key: 'mars',
-            name: "Mission to Mars 2049",
-            title: "Board Game",
-            work: "Invented & Published",
-            year: "2016",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'dinamo',
-            name: "Dinamo Riga",
-            title: "Ice Hockey Club",
-            work: "Logo & Jerseys",
-            year: "2008",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 3
-        },
-        {
-            key: 'liepaja',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 1
-        },
-        {
-            key: 'centrs',
-            name: "Sporta Centrs",
-            title: "Online Sports News",
-            work: "Logo",
-            year: "2009",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'zivtina',
-            name: "Zelta Zivtiņa",
-            title: "Mobile Pay-To-Go Card",
-            work: "Logo Refresh",
-            year: "2005",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'made',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'open',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'makslai',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'reformu',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'binders',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'sporta',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'basket',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'sponsor',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'positivus',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'summer',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'creative',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'haemo',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'api',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'lapas',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        },
-        {
-            key: 'maritec',
-            name: "BK Liepāja",
-            title: "Basketball Club",
-            work: "Full Identity",
-            year: "2018",
-            description: `
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.
-                Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.
-                Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.
-            `,
-            images: 8
-        }
-    ]
 }

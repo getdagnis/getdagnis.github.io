@@ -1,12 +1,16 @@
-// JS code by Dagnis Skurbe, December 2019-January 2020
+// JS code by Dagnis Skurbe, November 2019
+
 window.onload = contents;
+
+// Globāls divs, kas mainās, kad jebkur kaut kādā veidā tiek atvērta bilžu galerija.
+// TODO -- pārrakstīt uz funkciju (checkIfSomethingIsOpen), kas to nolasa neko globāli nemainot
 let somethingIsOpen = false;
 
 function contents() {
     setTimeout(function() {
         hideTheCurtain();
         launchPortfolio();
-    }, 1100);
+    }, 1100); // 1000
     // document.addEventListener("mouseleave", function(event) {
     //     showTheCurtain();
     // });
@@ -34,31 +38,28 @@ function showTheCurtain() {
 document.addEventListener("click", function(event) {
     // Navigācija starp bildēm turp -- uz next / no pēdējās uz sākumu -- uz last / atpakaļ -- uz previous
     if (event.target.classList.contains("next")) {
-        moveImage(event, "forward");
-    } else if (event.target.classList.contains("previous")) {
-        moveImage(event, "back");
-    } else if (event.target.classList.contains("last")) {
+        moveImage(event);
+    }
+    if (event.target.classList.contains("last")) {
         moveToZero(event);
     }
 
     // Thumbnailu funkciju mainīšana, atkarībā no tā, kā uz tiem tiek klikšķināts
     if (event.target.classList.contains("item-inner") &&
-        event.target.classList.contains("item-inner-active") === false) {
+    event.target.classList.contains("item-inner-active") === false) {
         let id = event.target.classList[1];
         let row = event.target.classList[2];
-        moveToZero(event);
         closeExpanded();
         openExpanded(id, row);
-        // moveScreenUp(event, wasOnParent);
+        moveToZero(event);
     }
     if (event.target.parentElement.classList.contains("item-inner") &&
         event.target.parentElement.classList.contains("item-inner-active") === false) {
         let id = event.target.parentElement.classList[1];
         let row = event.target.parentElement.classList[2];
-        moveToZero(event);
         closeExpanded();
         openExpanded(id, row);
-        // moveScreenUp(event, wasOnParent);
+        moveToZero(event);
     }
     if (event.target.classList.contains("item-inner-active")) {
         somethingIsOpen = true;
@@ -75,31 +76,6 @@ document.addEventListener("click", function(event) {
     }
 });
 
-function moveScreenUp(event, wasOnParent) {
-    let pageY = event.pageY;
-    let elementY = event.offsetY;
-    let windowY = event.y;
-    let newY = 0;
-
-    if (wasOnParent === false) {
-        newY = pageY - elementY - 10;
-        
-        window.scrollTo({
-            top: newY,
-            left: 0,
-            behavior: 'smooth'
-        });
-    } else {
-        newY = pageY - event.layerY - 10;
-        window.scrollTo({
-            top: newY,
-            left: 0,
-            behavior: 'smooth'
-        });
-    }
-}
-
-
 // Vada zilā laukuma staigāšanu pa gridu (sekošanu pelei)
 function walkTheInnerBlue() {
     let previousItemClass = '';
@@ -111,47 +87,53 @@ function walkTheInnerBlue() {
     const previousItem = document.getElementsByClassName(previousItemClass)[0];
 
     document.addEventListener("mouseover", function(event) {
-        if (event.target.classList.length > 0) {
-            if (event.target.classList.contains('grid-item-inner')) {
-                thisItemRow = event.target.classList[1].slice(4);
-                thisItemCol = event.target.classList[2].slice(4);
-                thisInnerItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;
-                thisInnerItem = document.getElementsByClassName(thisInnerItemClass)[0];
-                thisInnerItem.classList.add('inner-current');
-    
-                infectItemsAround(thisItemRow, thisItemCol, previousItemClass);
-                previousItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;                    
-            } else if (event.target.classList.contains('body') ||
-                    event.target.parentElement.classList.contains('motto') ||
-                    event.target.classList.contains('viewer-img') ||
-                    event.target.classList.contains('item-inner-active')) {
-                cleanUnnecessaryItems();
-            }
+        if (event.target.parentElement.classList.contains('grid-item')) {
+            thisItemRow = event.target.classList[1].slice(4);
+            thisItemCol = event.target.classList[2].slice(4);
+            thisInnerItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;
+            thisInnerItem = document.getElementsByClassName(thisInnerItemClass)[0];
+            thisInnerItem.classList.add('inner-current');
+
+            console.log('mouseover ' + thisInnerItem.classList[4]);
+            infectItemsAround(thisItemRow, thisItemCol, previousItemClass);
+            previousItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;                    
+        } else if (event.target.classList.contains('body')) {
+            cleanUnnecessaryItems();
         }
     });
+    // document.addEventListener("mouseover", function(event) {
+    //     if (event.target.id === 'body' || event.target.classList[0] === 'motto-mid') {
+    //         cleanUnnecessaryItems();
+    //     }
+    // });
 
 }
 
 // Visiem tiem lauciņiem, kas ir apkārt pašreizējam zilajam lauciņam, jau laicīgi nomaina
-// klases uz nepieciešamajām, lai pareizi veidotos animācijas virziens
+// klases uz nepieciešamajām, lai pareizi veidotos animācijas virziens. Manipulē arī ar nākamā
+// iespējamā un iepriekšējā lauciņa animācijas parametriem
 function infectItemsAround(r, c, previous) {
     let rowColClass = 'row-' + r + '-col-' + c;
     const previousItem = document.getElementsByClassName(previous)[0];
     const allOtherPrevious = document.getElementsByClassName('inner-previous');
     const thisItem = document.getElementsByClassName(rowColClass)[0];
+    console.log('infectItemsAround ' + thisItem.classList[4]);
 
     r = parseInt(r);
     c = parseInt(c);
     thisItem.classList.remove('inner-top', 'inner-bottom', 'inner-left', 'inner-right');
-    infectThisItem(r - 1, c, 'inner-bottom');
-    infectThisItem(r - 1, c + 1, 'inner-bottom');
-    infectThisItem(r, c - 1, 'inner-right');
-    infectThisItem(r, c + 1, 'inner-left');
-    infectThisItem(r + 1, c - 1, 'inner-top');
-    infectThisItem(r + 1, c, 'inner-top');
-    infectThisItem(r + 1, c + 1, 'inner-top');
-    infectThisItem(r - 1, c - 1, 'inner-bottom');
-    cleanUnnecessaryItems(thisItem);
+    // setTimeout(function() {
+        infectThisItem(r - 1, c - 1, 'inner-bottom');
+        infectThisItem(r - 1, c, 'inner-bottom');
+        infectThisItem(r - 1, c + 1, 'inner-bottom');
+        infectThisItem(r, c - 1, 'inner-right');
+        infectThisItem(r, c + 1, 'inner-left');
+        infectThisItem(r + 1, c - 1, 'inner-top');
+        infectThisItem(r + 1, c, 'inner-top');
+        infectThisItem(r + 1, c + 1, 'inner-top');
+    // }, 0);
+    cleanUnnecessaryItems();
+    
     
     while (allOtherPrevious.length > 0) {
         allOtherPrevious[0].classList.remove('inner-previous', 'transition-6');
@@ -161,6 +143,7 @@ function infectItemsAround(r, c, previous) {
     }
 }
 
+// Ļauj "infectItemsAround" funkcijai inficēt katru nepieciešamo lauciņu ar visām nepieciešamajām klasēm
 function infectThisItem(r, c, newClass)  {
     let rowColClass = 'row-' + r + '-col-' + c;
     const thisItem = document.getElementsByClassName(rowColClass)[0];
@@ -171,57 +154,65 @@ function infectThisItem(r, c, newClass)  {
     }
 }
 
-// Attīra visus nevajadzīgi iekrāsotos zilos lauciņus
-function cleanUnnecessaryItems(thisItem) {
+// Attīra visus nevajadzīgi iekrāsotos zilos lauciņus un atgriež tos sākotnējā (ielādes brīža) stāvoklī.
+// Var tikt izmantota kā funkcionāla palīgfunkcija jebkur kodā, nosacīti bez blakus efektiem
+function cleanUnnecessaryItems() {
     const allItems = document.getElementsByClassName('item-inner');
 
     for (i = 0; i < allItems.length; i++) {
-        if (allItems[i] !== thisItem &&
+        if (allItems[i].classList.contains('inner-current') === false &&
             allItems[i].classList.contains('inner-top') === false &&
             allItems[i].classList.contains('inner-bottom') === false &&
             allItems[i].classList.contains('inner-left') === false &&
             allItems[i].classList.contains('inner-right') === false &&
             allItems[i].classList.contains('item-inner-active') === false) {
             allItems[i].classList.remove('inner-previous');
-            allItems[i].classList.add('inner-right');
+            allItems[i].classList.add('inner-top');
+            console.log('CLEANUP HAPPENED! one cleaned from inner-previous and inner-top')
+        }
+    }
+}
+// Noņem kādu konkrētu klasi pilnīgi visiem dokumenta elementiem, kam tāda tajā brīdī ir.
+// Var tikt izmantota kā funkcionāla palīgfunkcija jebkur kodā bez blakusefektiem
+function removeThisClass(thisClass, itemToSave) {
+    const allClassItems = document.getElementsByClassName(thisClass);
+
+    for (i = 0; i < allClassItems.length; i++) {
+        if (allClassItems[i] !== itemToSave) {
+            allClassItems[i].classList.remove(thisClass);
+            i--;
         }
     }
 }
 
-let translateImageByThisAmount = 0;
+// Globāls divs, kas pasaka par cik pašreiz ir nomainījusies bilde, lai varētu tai pierēķināt klāt
+// nepieciešamo pixeļu skaitu.
+// TODO -- pārrakstīt uz funkciju, kas to nolasa pati neko nemainot globāli
+let translateAmount = 0;
 let currentId = '';
 
-function moveImage(event, direction) {
+function moveImage(event) {
     const activeImages = document.getElementById(currentId + "-images");
-    const singleImageWidth = activeImages.firstElementChild.offsetWidth;
-    const translateAmount = singleImageWidth + 8;
-    if (direction === "forward") {
-        translateImageByThisAmount -= translateAmount;
-        replaceAllOccurancesOfThisClass("previous", "next");
-        event.target.classList.replace("next", "previous");
-    } else if (direction === "back") {
-        translateImageByThisAmount += translateAmount;
-        replaceAllOccurancesOfThisClass("next", "previous");
-        event.target.classList.replace("previous", "next");
-    }
-    activeImages.style.transform = "translateX(" + translateImageByThisAmount + "px)";
+
+    translateAmount -= 906;
+    activeImages.style.transform = "translateX(" + translateAmount + "px)";
+    replacePrevious();
+    event.target.classList.replace("next", "previous");
 }
 
 function moveToZero(event) {
-    if (currentId) {
-        const activeImages = document.getElementById(currentId + "-images");
+    const activeImages = document.getElementById(currentId + "-images");
 
-        translateImageByThisAmount = 0;
-        activeImages.style.transform = "translateX(0px)";
-        replaceAllOccurancesOfThisClass("previous", "next");
-    }
+    translateAmount = 0;
+    activeImages.style.transform = "translateX(0px)";
+    replacePrevious();
 }
 
-function replaceAllOccurancesOfThisClass(classOne, classTwo) {
-    const allClassOneItems = document.getElementsByClassName(classOne);
+function replacePrevious() {
+    const allPrevious = document.getElementsByClassName("previous");
 
-    while (allClassOneItems.length > 0) {
-        allClassOneItems[0].classList.replace(classOne, classTwo);
+    for (i = 0; i < allPrevious.length; i++) {
+        allPrevious[i].classList.replace("previous", "next");
     }
 }
 
@@ -262,6 +253,6 @@ function closeExpanded() {
         }
     }
     
-    translateImageByThisAmount = 0;
+    translateAmount = 0;
     somethingIsOpen = false;
 }

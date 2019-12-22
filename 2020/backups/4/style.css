@@ -1,16 +1,13 @@
-@import url('portfolio.css');
+@import "portfolio.css";
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700&display=swap');
 
-*, html, body {
+*, body {
     margin: 0;
     padding: 0;
-    user-select: none;
 }
 
 body {
-    width: 100%;
     font-family: "Open Sans";
-    color: black; 
 }
 
 #curtain {
@@ -28,10 +25,8 @@ body {
 } 
 
 #wrapper {
-    max-width: 1200px;
-    transform-origin: top center;
+    width: 1200px;
     margin: auto;
-    overflow: hidden;
 }
 
 #header {
@@ -115,10 +110,10 @@ body {
     background-position-x: right;
     background-position-y: center;
     background-repeat: no-repeat;
-    animation: slideFromLeft 2s ease;
+    animation: slideFromRight 2s ease;
 }
 
-@keyframes slideFromLeft {
+@keyframes slideFromRight {
     0% {
         background-position-x: -2000px;
     }
@@ -162,6 +157,12 @@ body {
 
 h4 {
     font-weight: 400;
+}
+
+#grid-item {
+    grid-row: 1 / span 1;
+    height: 170px;
+    transition: all 1s ease;
 }
 
 .grid-item-inner {
@@ -212,10 +213,10 @@ h4 {
     color: black;
 }
 
-.inner-top { transform: translateY(-171px); }
-.inner-right { transform: translateX(295px); }
-.inner-bottom { transform: translateY(171px); }
-.inner-left { transform: translateX(-295px); }
+.inner-top { transform: translateY(-170px); }
+.inner-right { transform: translateX(294px); }
+.inner-bottom { transform: translateY(170px); }
+.inner-left { transform: translateX(-294px); }
 .transition-6 { transition: all 1s ease; }
 
 /* .item-inner-active:hover > img {
@@ -255,6 +256,7 @@ h4 {
     flex-wrap: wrap;
     align-items: stretch;
     grid-column: 1 / span 4;
+    overflow: hidden;
 }
 
 .hidden {
@@ -272,25 +274,20 @@ h4 {
 
 
 .expanded-bottom {
-    min-height: 150px;
+    min-height: 120px;
+    margin-top: -12px;
     margin-bottom: 4px;
-    width: 100%;
-    background-color: rgba(230, 230, 230, 0.9);
-    /* background-color: rgba(226, 226, 226, 0.404); */
-    /* border: 3px solid rgba(69, 247, 217, 0.9); */
+    background-color: rgba(226, 226, 226, 0.404);
+    border: 1px solid rgb(185, 185, 185);
     box-sizing: border-box;
     padding: 30px 50px;
 }
 
-.expanded-bottom span {
+.expanded-bottom h2 span {
     text-transform: uppercase;
     font-size: 16px;
     font-weight: 400;
-}
-
-.expanded-bottom img {
-    margin: 0 10px;
-    transform: rotate(180deg)
+    margin-left: 12px;
 }
 
 .expanded-bottom p {
@@ -300,18 +297,4 @@ h4 {
     letter-spacing: -.3px;
 }
 
-.expanded-bottom h2, .expanded-bottom span, .expanded-bottom p {
-    outline: none;
-}
 
-.edit-mode {
-    border: 1px solid white;
-    width: auto;
-    background: rgba(50, 209, 183, 0.9);
-}
-
-.edit-mode::selection {
-    background: rgba(255, 159, 239, 0.9);
-}
-
-@import url('media.css');
