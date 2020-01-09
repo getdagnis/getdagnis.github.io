@@ -12,7 +12,7 @@
 .viewer-img {
     display: inline-block;
     position: relative;
-    background: url(works/blank.jpg) no-repeat center;
+    background: url(img/blank.jpg) no-repeat center;
     background-size: cover;
     width: 898px;
     height: 526px;

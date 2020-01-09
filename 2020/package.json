@@ -1,0 +1,9 @@
+{
+  "name": "Portfolio",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "require": "^2.4.20"
+  }
+}

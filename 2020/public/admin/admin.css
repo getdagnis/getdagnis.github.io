@@ -1,0 +1,289 @@
+body {
+    position: relative;
+    padding: 2px 10px;
+    font-family: 'Open Sans';
+    font-weight: 400;
+}
+
+h1 {
+    font-family: 'DINPro';
+}
+
+h4 {
+    margin: 6px 0;
+    font-weight: 600;
+}
+
+h5 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 0 10px;
+    color: #999;
+    font-style: italic;
+}
+
+.edit-ready {
+    color: #000;
+    font-style: normal;
+}
+
+
+.client-top {
+    position: relative;
+    padding: 12px 20px;
+    background: rgba(231, 231, 231, 0.9);
+    color: black;
+    font-size: 16px;
+    text-transform: uppercase;
+    border-radius: 5px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.client-top:hover {
+    background: rgba(231, 231, 231, 0.7);
+}
+
+.client-top:active {
+    transform: scale(.95);
+    transition: all .5s ease;
+    background: rgba(69, 247, 217, 0.9);
+}
+
+.client-expandable {
+    padding-left: 20px;
+    margin-top: -10px;
+}
+
+.not-expanded {
+    display: none;
+    height: 0px;
+    transition: all 1s ease;
+}
+
+.client-top::after {
+    position: absolute;
+    content: '';
+    right: 20px;
+    top: calc(50% - 6px);
+    transform: rotate(90deg);
+    background: url('../img/jumis-right.svg') center no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 14px;
+}
+
+.is-not-shown {
+    background: #f5f5f5;
+    color: #aaa;
+}
+
+.h6 {
+    margin-right: 20px;
+}
+
+textarea {
+    width: 100%;
+    height: 600px;
+    outline: none;
+    font-size: 13px;
+    font-family: monospace;
+}
+
+.project {
+    margin: 0;
+}
+
+.edit-img {
+    width: 400px;
+}
+
+.img-upload {
+    display: none;
+}
+
+.copy-json {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border-radius: 10px;
+    background-color: rgba(69, 247, 217, 0.9);
+    text-transform: uppercase;
+    color: white;
+    padding: 5px 10px;
+    transition: padding .3s ease;
+}
+
+.copy-json::after {
+    content: 'copy json';
+}
+
+.copy-json:hover {
+    padding: 5px 60px;
+    transition: padding .3s ease;
+    cursor: pointer;
+}
+
+.copy-json:active {
+    transform: scale(.6);
+    background: black;
+    transition: transform .3s ease;
+}
+
+.allimages {
+    width: 250px;
+    margin-right: 10px;
+    border-radius: 5px;
+}
+
+.small-round-image {
+    width: 24px;
+    height: 24px;
+    border-radius: 10px;
+    margin: 0 0 -5px 2px;
+}
+
+.no-images {
+    font-size: 10px;
+    color: #f00;
+}
+
+.texts-ok {
+    font-size: 10px;
+    color: rgb(12, 168, 12);
+    margin-left: 20px;
+}
+
+.expandable-right, .expandable-left {
+    display: inline-block;
+}
+
+.expandable-left {
+    width: 70%;
+}
+
+.expandable-right {
+    float: right;
+    margin: 40px;
+    width: 20%;
+    text-align: right;
+}
+
+.edit-after {
+    color: black;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.edit-after:hover {
+    color: rgba(228, 30, 30, 0.829);
+    transition: all .3s ease;
+}
+
+.edit-after:hover::after {
+    margin-left: 20px;
+    content: 'double click to edit';
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.edit-mode {
+    display: block;
+    position: relative;
+    width: auto;
+    outline: none;
+    border: 2px solid rgba(69, 247, 217, 1);
+}
+
+.edit-mode::after {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-55%);
+    content: 'enter to save / esc cancel';
+    margin-left: 20px;
+    font-size: 11px;
+    font-weight: 300;
+}
+
+.edit-mode.description::after, .edit-mode.position::after, .edit-mode.show::after {
+    content: none;
+}
+
+.edit-mode.position, .edit-mode.show {
+    display: unset;
+    width: 20%;
+}
+
+span.show, span.position {
+    padding: 0 10px;
+}
+
+.edit-mode::selection {
+    background: rgba(69, 247, 217, 0.3)
+}
+
+.dropzone {
+    position: relative;
+    height: 10px;
+    margin: 0;
+    transition: all .3s ease;
+}
+
+.dropzone.dragover {
+    margin: 0;
+    padding: 30px 0;
+    transition: all .3s ease;
+}
+
+.dropzone.dragover::after {
+    content: "DROP IT LIKE IT'S HOT!";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #bbb;
+    font-size: 10px;
+}
+
+.show-edit.true {
+    color: rgb(13, 131, 13);
+    font-weight: 600;
+}
+
+.show-edit.false {
+    color: red;
+    font-weight: 600;
+}
+
+@keyframes dropanim {
+    from,
+    20%,
+    53%,
+    80%,
+    to {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, 0, 0);
+    }
+
+    40%,
+    43% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -30px, 0);
+    }
+
+    70% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(0, -15px, 0);
+    }
+
+    90% {
+        transform: translate3d(0, -4px, 0);
+    }
+}
+
+.drop-anim {
+/* background-color: rgba(69, 247, 217, 0.9); */
+animation: dropanim .7s ease;
+}

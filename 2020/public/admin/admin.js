@@ -1,5 +1,10 @@
 // JS code by Dagnis Skurbe, December 2019-January 2020
 
+
+let xhr = new XMLHttpRequest();
+xhr.open("GET", "/api/works/full", true);
+xhr.send();
+
 document.addEventListener("auxclick", function(event) {
     if (event.altKey === false && event.target.classList.contains('edit-ready')) {
         makeTextEditable(event);
@@ -20,11 +25,26 @@ function makeTextEditable(event) {
     document.execCommand('selectAll',false,null);
     document.addEventListener('keydown', function(thisKeyEvent) {
         if (thisKeyEvent.keyCode === 13) {
-            saveEditsToLocalStorage(thisKeyEvent);
+            sendXhrPostRequest(thisKeyEvent);
             makeAllUneditable();
         };
     });
     // thisElement.parentElement.replaceChild(newElement, thisElement);
+}
+
+
+function sendXhrPostRequest(event) {
+    let thisElement = event.target;        
+    let thisObjKey = thisElement.classList[1];
+    let thisPropertyName = thisElement.classList[2];
+    let newValue = thisElement.innerHTML;
+    let thisParent = thisElement.parentElement;
+    let position = thisParent.classList[2];
+    
+    let postLink = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
+    xhr.open("POST", postLink, true);
+    xhr.send();
+    console.log(xhr.responseText);
 }
 
 function saveEditsToLocalStorage(event) {
@@ -37,19 +57,30 @@ function saveEditsToLocalStorage(event) {
     localStorage.setItem("portfolio", JSON.stringify(allObjects));
 }
 
+function saveEditsToJson(event) {
+    let thisElement = event.target;        
+    let thisObjKey = thisElement.classList[1];
+    let thisPropertyName = thisElement.classList[2];
+    let newValue = thisElement.innerHTML;
+
+    allObjects[thisObjKey][thisPropertyName] = newValue;
+
+}
+
 function changeThisImage(event) {
     makeAllUneditable();
-    const imgInput = document.querySelector('.img-upload');
-    const thisImgDiv = event.target;
+    let thisImgName = event.target.classList[3];
+    let thisImgInputName = thisImgName + '-input';
+    let thisImgDiv = document.getElementsByClassName(thisImgName)[0];
+    let thisImgInput = document.getElementById(thisImgInputName);
     let thisKey = thisImgDiv.classList[1];
     let thisImgPlaceInArray = thisImgDiv.classList[2];
-    console.log(thisKey + '-' + thisImgPlaceInArray);
 
-    imgInput.click();
-    imgInput.addEventListener('change', function(dialogEvent) {
-        let newUrl = imgInput.files[0].name;
-        thisImgDiv.style.backgroundImage = `url("works/${thisKey}/${newUrl}")`;
-    });
+    thisImgInput.click();
+    thisImgInput.addEventListener('change', function(dialogEvent) {
+        let newUrl = thisImgInput.files[0].name;
+        thisImgDiv.style = `background: url('works/${thisKey}/${newUrl}') center center / cover no-repeat;`;
+    }); 
 }
 
 function makeAllUneditable() {

@@ -1,0 +1,279 @@
+{
+  "mars": {
+    "key": "mars",
+    "name": "Mission to Mars 2049",
+    "title": "Board Game",
+    "work": "Invented & Published",
+    "year": "2016",
+    "description": "Mission to Mars 2049 is a board game I invented and designed in 2013-2014. It successfully raised funds needed to get publish via crowdfunding and several seed investment pitches in 2015. In 2016-2017 it participated in several of the largest toy and board game conventions in the world, got published in seven languages, sold over 16'000 copies world-wide and briefly reached Top 10 best-selling board games in Germany and Top 20 in the UK.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "dinamo": {
+    "key": "dinamo",
+    "name": "Dinamo Riga",
+    "title": "Ice Hockey Club",
+    "work": "Logo & Jerseys",
+    "year": "2008",
+    "description": "Dinamo Rīga is an ice hockey club playing for KHL, the second largest hockey league in the world.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "liepaja": {
+    "key": "liepaja",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Logo, Identity, Jerseys",
+    "year": "2018",
+    "description": "BK Liepaja is a basketball club",
+    "images": [
+      "image-0.jpg"
+    ]
+  },
+  "zivtina": {
+    "key": "zivtina",
+    "name": "Zelta Zivtiņa",
+    "title": "Mobile Prepaid Card",
+    "work": "Logo Refresh",
+    "year": "2005",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "made": {
+    "key": "made",
+    "name": "MADE Arhitekti",
+    "title": "Architecture Office",
+    "work": "Logo &amp; Identity",
+    "year": "2007",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "open": {
+    "key": "open",
+    "name": "LU Open Minded",
+    "title": "Open Access Courses",
+    "work": "Logo &amp; Some Identity",
+    "year": "2012",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "makslai": {
+    "key": "makslai",
+    "name": "Mākslai Vajag Telpu",
+    "title": "Contemporary Art",
+    "work": "Logo &amp; Some Identity",
+    "year": "2014",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "reformu": {
+    "key": "reformu",
+    "name": "Reformu Partija",
+    "title": "Political Party",
+    "work": "Logo &amp; Full Identity",
+    "year": "2012",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "binders": {
+    "key": "binders",
+    "name": "Binders",
+    "title": "Road Construction",
+    "work": "Full Identity",
+    "year": "2014",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "sporta": {
+    "key": "sporta",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "centrs": {
+    "key": "centrs",
+    "name": "Sporta Centrs",
+    "title": "Online Sports News",
+    "work": "Logo",
+    "year": "2009",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "basket": {
+    "key": "basket",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "sponsor": {
+    "key": "sponsor",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "positivus": {
+    "key": "positivus",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "summer": {
+    "key": "summer",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "creative": {
+    "key": "creative",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "haemo": {
+    "key": "haemo",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "api": {
+    "key": "api",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "lapas": {
+    "key": "lapas",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  },
+  "maritec": {
+    "key": "maritec",
+    "name": "BK Liepāja",
+    "title": "Basketball Club",
+    "work": "Full Identity",
+    "year": "2018",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras molestie tellus dolor, et efficitur purus congue ac.Nulla congue orci et accumsan pellentesque. Pellentesque placerat pretium neque non ullamcorper.Sed a elit enim. Etiam tortor leo, vestibulum at metus vel, posuere placerat sapien.",
+    "images": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg"
+    ]
+  }
+}

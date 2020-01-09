@@ -1,0 +1,81 @@
+@media (max-width: 1460px) {
+    #wrapper {
+        transform: scale(.9);
+    }
+}
+
+@media (max-width: 1300px) {
+    #wrapper {
+        transform: scale(.8);
+    }
+}
+
+@media (max-width: 1100px) {
+    #wrapper {
+        transform: scale(.7);
+    }
+}
+
+@media (max-width: 900px) {
+    #wrapper {
+        transform: scale(.7);
+        width: 620px;
+        margin: 0;
+    }
+    #contents {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(10, 170px);
+        grid-gap: 8px;
+    }
+}
+
+@media (max-width: 420px) {
+    #body {
+        width: 100%;
+    }
+    #wrapper {
+        transform: scale(.5);
+        transform-origin: top left;
+        width: 180vw;
+        margin-left: 5vw;
+    }
+    #contents {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(10, 170px);
+        grid-gap: 4px;
+    }
+    .images {
+        width: calc(180vw*9);
+        height: 110vw;
+    }
+    .viewer-img {
+        width: 180vw;
+        height: 110vw;
+    }
+    .inner-right, .inner-left  {
+        transform: translateY(170px);
+        opacity: 0
+    }
+    
+    .item-inner-active { opacity: 1 }
+    
+    .item-inner-active > img { animation-delay: 1s; }
+
+    .expand-row-1a { grid-row-start: 2; grid-row-end: 6; }
+    .expand-row-1b { grid-row-start: 3; grid-row-end: 7; }
+    .expand-row-2a { grid-row-start: 4; grid-row-end: 8; }
+    .expand-row-2b { grid-row-start: 5; grid-row-end: 9; }
+    .expand-row-3a { grid-row-start: 6; grid-row-end: 10; }
+    .expand-row-3b { grid-row-start: 7; grid-row-end: 11; }
+    .expand-row-4a { grid-row-start: 8; grid-row-end: 12; }
+    .expand-row-4b { grid-row-start: 9; grid-row-end: 13; }
+    .expand-row-5a { grid-row-start: 10; grid-row-end: 14; }
+    .expand-row-5b { grid-row-start: 11; grid-row-end: 15; }
+    .expand-row-6a { grid-row-start: 12; grid-row-end: 16; }
+    .expand-row-6b { grid-row-start: 13; grid-row-end: 17; }
+    .expand-row-7a { grid-row-start: 14; grid-row-end: 18; }
+    .expand-row-7b { grid-row-start: 15; grid-row-end: 19; }
+
+}
