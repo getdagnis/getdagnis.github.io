@@ -8,7 +8,7 @@
     "description": "In 2018 I overlooked and assisted a small team of designers who built the identity and all related design materials over a 6 month period for one of the largest 5G technology related conferences in the world — 5G Techritory.",
     "images": [],
     "allimages": [],
-    "position": "0",
+    "position": "5",
     "show": "true"
   },
   {
@@ -20,7 +20,7 @@
     "description": "api description",
     "images": [],
     "allimages": [],
-    "position": "1",
+    "position": "0",
     "show": "true"
   },
   {
@@ -32,7 +32,7 @@
     "description": "atlant description",
     "images": [],
     "allimages": [],
-    "position": "2",
+    "position": "1",
     "show": "true"
   },
   {
@@ -44,19 +44,19 @@
     "description": "atlant2 description",
     "images": [],
     "allimages": [],
-    "position": "3",
+    "position": "2",
     "show": "false"
   },
   {
     "key": "basket",
-    "name": "Basketbola nosaukums",
-    "title": "basket - what it is",
+    "name": "Liepājas Basketbols",
+    "title": "Basketball Club",
     "work": "Logo, Identity, Jerseys",
     "year": "2018",
     "description": "basket description",
     "images": [],
     "allimages": [],
-    "position": "4",
+    "position": "3",
     "show": "true"
   },
   {
@@ -68,13 +68,13 @@
     "description": "bb-wake description",
     "images": [],
     "allimages": [],
-    "position": "5",
+    "position": "4",
     "show": "true"
   },
   {
     "key": "binders",
     "name": "Binders",
-    "title": "Construction company",
+    "title": "Road Construction",
     "work": "Logo &amp; Identity",
     "year": "2014",
     "description": "binders description",
@@ -244,7 +244,7 @@
       "image-0.jpg"
     ],
     "position": "17",
-    "show": "true"
+    "show": "false"
   },
   {
     "key": "made",

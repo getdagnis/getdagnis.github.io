@@ -23,6 +23,7 @@ function adminMain(allObjects) {
     let orderedArray = [];
     let elementToAddToArray = '';
     let indexInArray = '';
+    let desiredLength = allObjects.length;
 
     for (let x = 0; x < allObjects.length; x++) {
         indexInArray = allObjects.findIndex(obj => {
@@ -35,6 +36,9 @@ function adminMain(allObjects) {
     }
 
     allObjects = orderedArray;
+    if (allObjects.length < desiredLength) {
+        console.warn('Warning:', desiredLength - allObjects.length, 'projects missing after sorting');
+    }
 
     for (let i = 0; i < allObjects.length; i++) {
         let thisKey = allObjects[i].key;
@@ -49,7 +53,7 @@ function adminMain(allObjects) {
         newDiv.classList.add(thisKey, 'project', i);
         newDiv.setAttribute('draggable', true);
         newDiv.innerHTML = `
-            <div class="dropzone ${i}"></div>
+            <div class="${thisObj.key} dropzone ${i}"></div>
             <div class="${thisObj.key} client-top ${thisObj.key}-client-top ${isNotShown}"><span class="h6">${thisObj.key}</span></div>
             <div class="${thisObj.key} client-expandable ${i} not-expanded ${thisObj.key}-client-expandable">
             <div class="${thisObj.key} expandable-left ${i}">
@@ -58,7 +62,7 @@ function adminMain(allObjects) {
                 <h4 class="${thisObj.key} work edit-ready edit-after">${thisObj.work}</h4>
                 <h4 class="${thisObj.key} year edit-ready edit-after">${thisObj.year}</h4>
                 <h5 class="${thisObj.key} description edit-ready edit-after">${thisObj.description}</h5>
-                <h5 class="thisKey position ${i}">Position: <span class="${thisObj.key} position edit-ready edit-after">${thisObj.position}</span></h5>
+                <h5 class="thisKey position ${i}">Position: <span class="${thisObj.key} position ${i} ${thisObj.key}-edit-position position-span edit-ready edit-after">${thisObj.position}</span></h5>
                 <h5 class="thisKey show ${i}">Show: <span class="${thisObj.key} show show-edit edit-after ${thisObj.show}">${thisObj.show}</span></h5>
             </div>
             <div class="expandable-right">
@@ -85,7 +89,7 @@ document.addEventListener("dblclick", function(event) {
             event.target.innerHTML = 'true';
             event.target.classList.replace('false', 'true');
         }
-        sendXhrPostRequest(event);
+        sendXhrPostRequest(event.target);
     }
 });
 
@@ -151,10 +155,12 @@ function makeTextEditable(event) {
             thisElement.classList.add('edit-after');
             thisElement.classList.remove('edit-mode');
             if (event.target.classList.contains('position')) {
-                rewriteAllPositions(event.target);
+                moveProjectToNewPosition(event);
+                rewriteAllPositions();
+            } else {
+                sendXhrPostRequest(thisKeyEvent.target);
+                // saveEditsToLocalStorage(thisKeyEvent);
             }
-            sendXhrPostRequest(thisKeyEvent);
-            // saveEditsToLocalStorage(thisKeyEvent);
         } else if (thisKeyEvent.keyCode === 27) {
             makeAllUneditable();
             thisElement.classList.add('edit-after');
@@ -164,26 +170,66 @@ function makeTextEditable(event) {
     });
 }
 
-function rewriteAllPositions(thisElement) {
-    let allProjects = document.querySelectorAll('.project');
-    let project = '';
-    for (let i = 0; i < allProjects.length; i++) {
-        project = allProjects[i];
-        console.log(project);
-        // console.log(project.classList[2]);
+function moveProjectToNewPosition(event) {
+    const allProjects = document.querySelectorAll('.project');
+    let elementIndex = event.target.parentElement.classList[2];
+    let element = document.getElementsByClassName(elementIndex)[0];
+    let parent = element.parentElement;
+    let targetIndex = Number(event.target.innerHTML);
+    let target = document.getElementsByClassName(targetIndex)[0];
+
+    parent.insertBefore(element, target);
+    element.classList.add('drop-anim');
+    setTimeout(() => {
+        element.classList.remove('drop-anim');
+    }, 1000);
+}
+
+function rewriteAllPositions() {
+    const allProjects = document.querySelectorAll('.project');
+    let position = '';
+    let key = '';
+    let property = 'position';
+    let value = ''
+    let index = 0;
+
+    for (project of allProjects) {
+        position = index;
+        key = project.classList[0];
+        position = project.classList[2];
+        value = index;
+        sendXhrPostRequestByKey(position, key, property, value);
+        index++;
     }
 }
 
-function sendXhrPostRequest(event) {
-    let thisElement = event.target;        
+function updateLocationClasses() {
+    const allProjects = document.querySelectorAll('.project');
+    let allOldLocationClasses = [];
+    let keyName = '';
+
+    for (project of allProjects) {
+        allOldLocationClasses = document.querySelectorAll(oldLocation);
+        keyName = project.classList[0];
+    }
+}
+
+function sendXhrPostRequest(eventTarget) {
+    let thisElement = eventTarget;        
     let thisObjKey = thisElement.classList[0];
-    let thisPropertyName = thisElement.classList[1];
-    let newValue = thisElement.innerHTML;
     let thisParent = thisElement.parentElement;
     let position = thisParent.classList[2];
-    
+    let thisPropertyName = thisElement.classList[1];
+    let newValue = thisElement.innerHTML;
     let postLink = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
+
     xhr.open("POST", postLink, true);
+    xhr.send();
+}
+
+function sendXhrPostRequestByKey(position, key, property, value) {
+    let post = `../api/works/${position}/${key}/${property}/${value}`;
+    xhr.open("POST", post, true);
     xhr.send();
 }
 
@@ -235,7 +281,6 @@ document.addEventListener("dragstart", function(event) {
 function dragAndDrop(thisClient) {
     let allDropzones = document.getElementsByClassName('dropzone');
     element = thisClient;
-    console.log('drag and drop started', element.classList[0]);
     for (dropzone of allDropzones) {
         dropzone.addEventListener('dragover', dragOver);
         dropzone.addEventListener('dragleave', dragLeave);
@@ -256,11 +301,11 @@ function dragDrop(event) {
     let target = this;
     let parent = this.parentElement;
     let allProjects = document.querySelectorAll('.project');
-    console.log('drop happened', element, 'and', target);
     parent.insertBefore(element, target);
     this.classList.remove('dragover');
     element.classList.add('drop-anim');
     setTimeout(() => {
         element.classList.remove('drop-anim');
     }, 1000);
+    rewriteAllPositions();
 }
