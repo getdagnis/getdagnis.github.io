@@ -3,10 +3,12 @@ const app = express();
 const events = require('events');
 const fs = require('fs');
 const path = require('path');
+const bodyParser = require('body-parser');
 
 // const imageFolders = fs.readdirSync('./public/works/');
 let portfolio = JSON.parse(fs.readFileSync('./public/portfolio.json'));
 let fullPortfolio = JSON.parse(fs.readFileSync('./public/portfolio_full.json'));
+let urlencodedParser = bodyParser.urlencoded({extended: false});
 
 app.get('/', function(req,res){ 
     res.sendFile(__dirname + '/public/index.html');
@@ -36,20 +38,6 @@ app.get('/api/works/full', function(req,res){
     res.send(fullPortfolio);
 });
 
-app.post('/api/works/:pos/:key/:type/:body', function(req,res){ 
-    let thisKey = [req.params.key];
-    let thisIndex = fullPortfolio.findIndex(obj => {
-        return obj.position == [req.params.pos];
-    });
-    if (thisIndex > -1) {
-        fullPortfolio[thisIndex][req.params.type] = req.params.body;
-        fs.writeFileSync('./public/portfolio_full.json', JSON.stringify(fullPortfolio, null, 2));
-        res.send(fullPortfolio);
-    } else {
-        res.send("couldn't find this key");
-    }
-});
-
 app.get('/api/allimages/:key', function(req,res){ 
     let keyName = req.params.key;
     let imageFolders = fs.readdirSync('./public/works/');
@@ -68,6 +56,54 @@ app.get('/admin/new-json', function(req,res){
     <h3>previous json:</h3> ${JSON.stringify(previousPortfolio)}`);
     // res.send('temporarily disabled');
 });
+
+app.post('/api/works/:pos/:key/:type/:body', function(req,res){ 
+    let thisKey = [req.params.key];
+    let thisIndex = fullPortfolio.findIndex(obj => {
+        return obj.position == [req.params.pos];
+    });
+    if (thisIndex > -1) {
+        fullPortfolio[thisIndex][req.params.type] = req.params.body;
+        fs.writeFileSync('./public/portfolio_full.json', JSON.stringify(fullPortfolio, null, 2));
+        res.send(fullPortfolio);
+    } else {
+        res.send("couldn't find this key");
+    }
+});
+
+app.put('/api/works/update/:body', function(req, res) {
+    const positions = JSON.parse(req.params.body);
+    if (positions.length === fullPortfolio.length) {
+        console.log('positions array received ok |', 'length:', positions.length, '| required length:', fullPortfolio.length);
+        updatePositions(positions);
+        res.status(200).send(positions);
+    }
+    else if (positions.length < fullPortfolio.length) {
+        res.status(204).send('Positions array length error');
+    }
+    else {
+        res.status(400).send('Undefined error');
+    }
+});
+
+function updatePositions(positions) {
+    console.log(positions);
+    let oldIndex = null;
+    let newIndex = null;
+    let objectToPush = {};
+   
+    for (i = 0; i < positions.length; i++) {
+        let position = positions[i];
+        oldIndex = Number(position.old);
+        newIndex = Number(position.new);
+        fullPortfolio[oldIndex].position = newIndex;
+        // console.log('position for', fullPortfolio[oldIndex].key, 'changed from', oldIndex, 'to', newIndex);
+        // console.log(objectToPush);
+        // console.log('old position:', oldIndex, 'new position:', position.position, 'client:', fullPortfolio[oldIndex].key);
+    }
+    
+    // fs.writeFileSync('./public/portfolio_full.json', JSON.stringify(fullPortfolio, null, 2));
+}
 
 function createNewFullJson() {
     let thumbs = fs.readdirSync('./public/img/thumbs/');

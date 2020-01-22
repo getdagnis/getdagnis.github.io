@@ -103,31 +103,35 @@ textarea {
     display: none;
 }
 
-.copy-json {
+.save-btn {
+    display: block;
     position: fixed;
-    top: 20px;
+    top: 35px;
     right: 20px;
-    border-radius: 10px;
-    background-color: rgba(69, 247, 217, 0.9);
+    border-radius: 5px;
+    background-color: #ddd;
     text-transform: uppercase;
     color: white;
-    padding: 5px 10px;
-    transition: padding .3s ease;
+    padding: 5px 20px;
+    transform: scale(.95);
+    transition: all .3s ease;
 }
 
-.copy-json::after {
-    content: 'copy json';
+.save-btn::after {
+    content: 'save to json';
 }
 
-.copy-json:hover {
-    padding: 5px 60px;
-    transition: padding .3s ease;
+.save-btn:hover {
+    /* padding: 5px 60px; */
+    transform: scale(1);
+    padding: 5px 40px;
+    background-color: black;
     cursor: pointer;
+    transition: all .3s ease;
 }
 
-.copy-json:active {
+.save-btn:active {
     transform: scale(.6);
-    background: black;
     transition: transform .3s ease;
 }
 
@@ -225,19 +229,29 @@ span.show, span.position {
 }
 
 .dropzone {
-    position: relative;
+    margin: 0;
+    padding: 6px 0 0 0;
+    /* position: relative;
     height: 10px;
     margin: 0;
-    transition: all .3s ease;
+    transition: all .3s ease; */
 }
 
-.dropzone.dragover {
+/* .dropzone.dragover {
     margin: 0;
-    padding: 30px 0;
+    padding: 60px 0 0;
     transition: all .3s ease;
+} */
+
+.dropzone.dragover > .project {
+    /* background-color: black; */
+    border-radius: 6px;
+    padding-top: 52px;
+    /* border-top: solid 46px transparent; */
+    transition: all 1s ease;
 }
 
-.dropzone.dragover::after {
+/* .dropzone.dragover::after {
     content: "DROP IT LIKE IT'S HOT!";
     position: absolute;
     top: 50%;
@@ -245,7 +259,7 @@ span.show, span.position {
     transform: translate(-50%, -50%);
     color: #bbb;
     font-size: 10px;
-}
+} */
 
 .show-edit.true {
     color: rgb(13, 131, 13);

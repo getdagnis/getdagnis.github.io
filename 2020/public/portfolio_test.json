@@ -8,7 +8,7 @@
     "description": "In 2018 I overlooked and assisted a small team of designers who built the identity and all related design materials over a 6 month period for one of the largest 5G technology related conferences in the world — 5G Techritory.",
     "images": [],
     "allimages": [],
-    "position": 0,
+    "position": 3,
     "show": "true"
   },
   {
@@ -20,7 +20,7 @@
     "description": "api description",
     "images": [],
     "allimages": [],
-    "position": 2,
+    "position": 0,
     "show": "true"
   },
   {
@@ -32,7 +32,7 @@
     "description": "atlant description",
     "images": [],
     "allimages": [],
-    "position": 3,
+    "position": 1,
     "show": "true"
   },
   {
@@ -44,7 +44,7 @@
     "description": "atlant2 description",
     "images": [],
     "allimages": [],
-    "position": 4,
+    "position": 2,
     "show": "false"
   },
   {
@@ -56,7 +56,7 @@
     "description": "basket description",
     "images": [],
     "allimages": [],
-    "position": 5,
+    "position": 4,
     "show": "true"
   },
   {
@@ -68,7 +68,7 @@
     "description": "bb-wake description",
     "images": [],
     "allimages": [],
-    "position": 6,
+    "position": 5,
     "show": "true"
   },
   {
@@ -80,7 +80,7 @@
     "description": "binders description",
     "images": [],
     "allimages": [],
-    "position": 7,
+    "position": 6,
     "show": "true"
   },
   {
@@ -98,7 +98,7 @@
       "image-4.jpg",
       "image-5.jpg"
     ],
-    "position": 8,
+    "position": 7,
     "show": "true"
   },
   {
@@ -110,7 +110,7 @@
     "description": "creative description",
     "images": [],
     "allimages": [],
-    "position": 9,
+    "position": 8,
     "show": "true"
   },
   {
@@ -122,7 +122,7 @@
     "description": "cska description",
     "images": [],
     "allimages": [],
-    "position": 10,
+    "position": 9,
     "show": "true"
   },
   {
@@ -157,7 +157,7 @@
       "image-8.jpg",
       "image-9.jpg"
     ],
-    "position": 1,
+    "position": 10,
     "show": "true"
   },
   {

@@ -13,7 +13,7 @@ xhr.onreadystatechange = function() {
     }
 };
 xhr.onerror = function() {
-    console.log('error');
+    console.error('XHR error happened');
 }
 xhr.open("GET", "/api/works/full", true);
 xhr.send();
@@ -50,28 +50,36 @@ function adminMain(allObjects) {
         }
 
         admin.insertAdjacentElement('beforeend', newDiv);
-        newDiv.classList.add(thisKey, 'project', i);
+        newDiv.classList.add(thisKey, 'dropzone', i);
         newDiv.setAttribute('draggable', true);
         newDiv.innerHTML = `
-            <div class="${thisObj.key} dropzone ${i}"></div>
-            <div class="${thisObj.key} client-top ${thisObj.key}-client-top ${isNotShown}"><span class="h6">${thisObj.key}</span></div>
-            <div class="${thisObj.key} client-expandable ${i} not-expanded ${thisObj.key}-client-expandable">
-            <div class="${thisObj.key} expandable-left ${i}">
-                <h2 class="${thisObj.key} name edit-ready edit-after">${thisObj.name}</h2>
-                <h4 class="${thisObj.key} title edit-ready edit-after">${thisObj.title}</h4>
-                <h4 class="${thisObj.key} work edit-ready edit-after">${thisObj.work}</h4>
-                <h4 class="${thisObj.key} year edit-ready edit-after">${thisObj.year}</h4>
-                <h5 class="${thisObj.key} description edit-ready edit-after">${thisObj.description}</h5>
-                <h5 class="thisKey position ${i}">Position: <span class="${thisObj.key} position ${i} ${thisObj.key}-edit-position position-span edit-ready edit-after">${thisObj.position}</span></h5>
-                <h5 class="thisKey show ${i}">Show: <span class="${thisObj.key} show show-edit edit-after ${thisObj.show}">${thisObj.show}</span></h5>
-            </div>
-            <div class="expandable-right">
-                <img src="../img/thumbs/${thisObj.key}.svg" width="200px"></img>
-            </div>
+            <div class="${thisObj.key} project ${i}">
+                <div class="${thisObj.key} client-top ${thisObj.key}-client-top ${isNotShown}">
+                    <span class="h6">${thisObj.key}</span>
+                </div>
+                <div class="${thisObj.key} client-expandable ${i} not-expanded ${thisObj.key}-client-expandable">
+                    <div class="${thisObj.key} expandable-left ${i}">
+                        <h2 class="${thisObj.key} name edit-ready edit-after">${thisObj.name}</h2>
+                        <h4 class="${thisObj.key} title edit-ready edit-after">${thisObj.title}</h4>
+                        <h4 class="${thisObj.key} work edit-ready edit-after">${thisObj.work}</h4>
+                        <h4 class="${thisObj.key} year edit-ready edit-after">${thisObj.year}</h4>
+                        <h5 class="${thisObj.key} description edit-ready edit-after">${thisObj.description}</h5>
+                        <h5 class="thisKey position ${i}">Position: <span class="${thisObj.key} position ${i} ${thisObj.key}-edit-position
+                        position-span edit-ready edit-after">${thisObj.position}</span>
+                        </h5>
+                        <h5 class="thisKey show ${i}">Show: 
+                            <span class="${thisObj.key} show show-edit edit-after ${thisObj.show}">${thisObj.show}</span>
+                        </h5>
+                    </div>
+                    <div class="expandable-right">
+                        <img src="../img/thumbs/${thisObj.key}.svg" width="200px" />
+                    </div>
+                </div>
             </div>
         `;
         minorTweeks(thisObj);
     }
+    admin.insertAdjacentHTML('afterbegin', '<div class="save-btn"></div>');
 }
 
 document.addEventListener("dblclick", function(event) {
@@ -115,21 +123,26 @@ function minorTweeks(thisObj) {
     const clientExpand = document.getElementsByClassName(thisClientExpandClass)[0];
     const thisClientTop = document.getElementsByClassName(`${thisObj.key}-client-top`)[0];
 
+    // ALL IMAGES TO CHOOSE FROM
     for (let j = 0; j < thisObj.allimages.length; j++) {
         clientExpand.insertAdjacentHTML('beforeend', `
-        <img class="${thisObj.key} ${j} ${thisObj.key}-${j} allimages" src="../works/${thisObj.key}/${thisObj.allimages[j]}"></img>
+        <img class="${thisObj.key} img-${j} ${thisObj.key}-${j} allimages" src="../works/${thisObj.key}/${thisObj.allimages[j]}" />
         <input id="${thisObj.key}-${j}-input" type="file" class="img-upload">
         `);
     }
+
+    // SMALL IMAGE THUMBNAILS IN ADMIN MAIN VIEW
     if (thisObj.allimages.length < 1) {
         thisClientTop.insertAdjacentHTML('beforeend', `<span class="${thisObj.key}-no-images no-images">No Images</span>`);
     } else {
         for (let k = 0; k < thisObj.allimages.length; k++) {
             thisClientTop.insertAdjacentHTML('beforeend', `
-            <img class="${thisObj.key} ${k} ${thisObj.key}-${k} small-round-image" src="../works/${thisObj.key}/${thisObj.allimages[k]}"></img>
+            <img class="${thisObj.key} img-${k} ${thisObj.key}-${k} small-round-image" src="../works/${thisObj.key}/${thisObj.allimages[k]}" />
             `);
         }
     }
+
+    // WARNINGS
     if (thisObj.name !== thisObj.key + ' name' &&
         thisObj.title !== thisObj.key + ' - what it is' &&
         thisObj.work !== thisObj.key + ' - what was done' &&
@@ -156,7 +169,7 @@ function makeTextEditable(event) {
             thisElement.classList.remove('edit-mode');
             if (event.target.classList.contains('position')) {
                 moveProjectToNewPosition(event);
-                rewriteAllPositions();
+                rewriteAllPositions(event);
             } else {
                 sendXhrPostRequest(thisKeyEvent.target);
                 // saveEditsToLocalStorage(thisKeyEvent);
@@ -185,52 +198,69 @@ function moveProjectToNewPosition(event) {
     }, 1000);
 }
 
-function rewriteAllPositions() {
+function rewriteAllPositions(event) {
     const allProjects = document.querySelectorAll('.project');
-    let position = '';
-    let key = '';
-    let property = 'position';
-    let value = ''
-    let index = 0;
+    let positions = [];
+    let oldPosition = 0;
+    let newPosition = 0;
 
     for (project of allProjects) {
-        position = index;
-        key = project.classList[0];
-        position = project.classList[2];
-        value = index;
-        sendXhrPostRequestByKey(position, key, property, value);
-        index++;
+        oldPosition = Number(project.classList[2]);
+        positions.push({
+            "old": oldPosition,
+            "new": newPosition
+        });
+        newPosition++;
+    }
+    updateLocationClasses(positions);
+    // sendXhrPUTrequest(positions);
+}
+
+function updateLocationClasses(positions) {
+    let oldClassName = '';
+    let newClassName = '';
+    let position = 0;
+    let element = 0;
+    let allCurrentClassElements = [];
+    let reversedArray = [];
+
+    for (let i = positions.length - 1; i > -1; i--) {
+        console.error('LAAAAARGGGEEE CYCLE', i);
+        position = positions[i];
+        oldClassName = String(position.old);
+        newClassName = String(position.new);
+        classElements = document.getElementsByClassName(oldClassName);
+        console.log('old', oldClassName, 'new:', newClassName, 'all:', classElements);
+
+        for (let j = 0; j < classElements.length; j++) {
+            element = classElements[j];
+            console.warn('INNER CYCLE', j);
+            console.log('old element:', String(element.classList));
+            element.classList.replace(oldClassName, newClassName);
+            console.log('new element:', String(element.classList));
+            console.log('old', oldClassName, 'new:', newClassName, 'all:', classElements);
+            console.log('inner all:', classElements);
+        }
     }
 }
 
-function updateLocationClasses() {
-    const allProjects = document.querySelectorAll('.project');
-    let allOldLocationClasses = [];
-    let keyName = '';
-
-    for (project of allProjects) {
-        allOldLocationClasses = document.querySelectorAll(oldLocation);
-        keyName = project.classList[0];
-    }
-}
-
-function sendXhrPostRequest(eventTarget) {
+function sendXhrPOSTrequest(eventTarget) {
     let thisElement = eventTarget;        
     let thisObjKey = thisElement.classList[0];
     let thisParent = thisElement.parentElement;
     let position = thisParent.classList[2];
     let thisPropertyName = thisElement.classList[1];
     let newValue = thisElement.innerHTML;
-    let postLink = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
+    let post_url = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
 
-    xhr.open("POST", postLink, true);
+    xhr.open("POST", post_url, true);
     xhr.send();
 }
 
-function sendXhrPostRequestByKey(position, key, property, value) {
-    let post = `../api/works/${position}/${key}/${property}/${value}`;
-    xhr.open("POST", post, true);
-    xhr.send();
+function sendXhrPUTrequest(positions) {
+    let put_url = `../api/works/update/${JSON.stringify(positions)}`;
+    xhr.open("PUT", put_url, true);
+    xhr.send(positions);
 }
 
 // FAKE ADMIN
@@ -295,6 +325,7 @@ function dragOver(event) {
 
 function dragLeave() {
     this.classList.remove('dragover');
+    console.log(event);
 }
 
 function dragDrop(event) {
@@ -307,5 +338,5 @@ function dragDrop(event) {
     setTimeout(() => {
         element.classList.remove('drop-anim');
     }, 1000);
-    rewriteAllPositions();
+    rewriteAllPositions(event);
 }
