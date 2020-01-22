@@ -221,26 +221,36 @@ function updateLocationClasses(positions) {
     let newClassName = '';
     let position = 0;
     let element = 0;
-    let allCurrentClassElements = [];
+    let classElements = [];
     let reversedArray = [];
+    let allChanged = [];
+    let changed = '';
+
+    console.log(positions);
 
     for (let i = positions.length - 1; i > -1; i--) {
-        console.error('LAAAAARGGGEEE CYCLE', i);
         position = positions[i];
         oldClassName = String(position.old);
         newClassName = String(position.new);
-        classElements = document.getElementsByClassName(oldClassName);
-        console.log('old', oldClassName, 'new:', newClassName, 'all:', classElements);
 
-        for (let j = 0; j < classElements.length; j++) {
-            element = classElements[j];
-            console.warn('INNER CYCLE', j);
-            console.log('old element:', String(element.classList));
-            element.classList.replace(oldClassName, newClassName);
-            console.log('new element:', String(element.classList));
-            console.log('old', oldClassName, 'new:', newClassName, 'all:', classElements);
-            console.log('inner all:', classElements);
+        if (oldClassName !== newClassName) {
+            classElements = document.getElementsByClassName(oldClassName);
+            for (let j = classElements.length - 1; j > -1; j--) {
+                element = classElements[j];
+                if (element.classList.contains('changed') == false) {
+                    element.classList.remove(oldClassName);
+                    element.classList.add(newClassName);
+                    element.classList.add('changed');
+                    console.log('old:',oldClassName, '| new:', newClassName, classElements);
+                }
+                classElements = document.getElementsByClassName(oldClassName);
+            }
         }
+    }
+    allChanged = document.getElementsByClassName('changed');
+    for (k = 0; k < allChanged.length; k++) {
+        changed = allChanged[k];
+        changed.classList.remove('changed');
     }
 }
 
@@ -303,14 +313,14 @@ function makeAllUneditable() {
         }
     }
 }
-let element = '';
+let dragElement = '';
 document.addEventListener("dragstart", function(event) {
     dragAndDrop(event.target);
 })
 
 function dragAndDrop(thisClient) {
     let allDropzones = document.getElementsByClassName('dropzone');
-    element = thisClient;
+    dragElement = thisClient;
     for (dropzone of allDropzones) {
         dropzone.addEventListener('dragover', dragOver);
         dropzone.addEventListener('dragleave', dragLeave);
@@ -332,11 +342,11 @@ function dragDrop(event) {
     let target = this;
     let parent = this.parentElement;
     let allProjects = document.querySelectorAll('.project');
-    parent.insertBefore(element, target);
+    parent.insertBefore(dragElement, target);
     this.classList.remove('dragover');
-    element.classList.add('drop-anim');
+    dragElement.classList.add('drop-anim');
     setTimeout(() => {
-        element.classList.remove('drop-anim');
+        dragElement.classList.remove('drop-anim');
     }, 1000);
     rewriteAllPositions(event);
 }
