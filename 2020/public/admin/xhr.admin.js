@@ -1,29 +1,61 @@
 
-const sendFetchRequest = async (method, url, data) => {
-    const res = await fetch(url, {
-        method: method,
-        body: data,
-        headers: data ? { 'Content-Type': 'application/json' } : {} 
-    });
-    return res.json();
+let allObjects = [];
+
+let xhr = new XMLHttpRequest();
+
+// const fetchResponse = fetch('http://localhost:8080/api/works/full')
+//     .then(res => res.json())
+//     .then(data => adminMain(data));
+
+xhr.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200 && this.responseURL == 'http://localhost:8080/api/works/full') {
+        allObjects = JSON.parse(xhr.responseText);
+        adminMain(allObjects);
+        // FAKE ADMIN SOURCE
+        // localStorage.setItem("portfolio", xhr.responseText);
+        // allObjects = JSON.parse(localStorage.getItem("portfolio"));
+    } else if (this.readyState == 4 && this.status == 200) {
+        setTimeout(() => {
+            location.reload();
+        }, 500);
+    }
 };
+xhr.onerror = function() {
+    console.error('XHR error happened');
+}
+xhr.open("GET", "/api/works/full", true);
+xhr.send();
 
-launchAdmin(orderPortfolioByPositions);
-
-function launchAdmin(nextFunction) {
-    sendFetchRequest('GET', 'http://localhost:8080/api/works/full')
-        .then(resData => nextFunction(resData, true))
-        .catch(err => console.error('Error:', err));
-};
-
-function adminMain(orderedPortfolio) {
+function adminMain(allObjects) {
     const admin = document.querySelector('admin');
+    let orderedArray = [];
+    let elementToAddToArray = '';
+    let indexInArray = '';
+    let desiredLength = allObjects.length;
 
-    for (let i = 0; i < orderedPortfolio.length; i++) {
-        let thisKey = orderedPortfolio[i].key;
-        let thisObj = orderedPortfolio[i];
+    for (let x = 0; x < allObjects.length; x++) {
+        indexInArray = allObjects.findIndex(obj => {
+            return obj.position == x;
+        });
+        if (indexInArray > -1) {
+            elementToAddToArray = allObjects[indexInArray];
+            orderedArray.push(elementToAddToArray);
+        }
+    }
+
+    allObjects = orderedArray;
+    if (allObjects.length < desiredLength) {
+        console.warn('Warning:', desiredLength - allObjects.length, 'projects missing after sorting');
+    }
+
+    for (let i = 0; i < allObjects.length; i++) {
+        let thisKey = allObjects[i].key;
+        let thisObj = allObjects[i];
         let newDiv = document.createElement('div');
-        let isNotShown = (thisObj.show == 'false') ? 'is-not-shown' : '';
+        let isNotShown = '';
+        if (thisObj.show == "false") {
+            isNotShown = 'is-not-shown';
+        }
 
         admin.insertAdjacentElement('beforeend', newDiv);
         newDiv.classList.add(thisKey, 'dropzone', i);
@@ -48,13 +80,14 @@ function adminMain(orderedPortfolio) {
                         </h5>
                     </div>
                     <div class="expandable-right">
-                        <img class="thumb-img" src="../img/thumbs/${thisObj.key}.svg" width="200px" />
+                        <img src="../img/thumbs/${thisObj.key}.svg" width="200px" />
                     </div>
                 </div>
             </div>
         `;
-        adminExtras(thisObj); // ADDS EXTRAS, SUCH AS IMAGES & WARNINGS
+        minorTweeks(thisObj);
     }
+    admin.insertAdjacentHTML('afterbegin', '<div class="save-btn"></div>');
 }
 
 document.addEventListener("dblclick", function(event) {
@@ -72,17 +105,18 @@ document.addEventListener("dblclick", function(event) {
             event.target.innerHTML = 'true';
             event.target.classList.replace('false', 'true');
         }
-        fetchUpdateText(event.target);
+        sendXhrPostRequest(event.target);
     }
 });
+
 
 document.addEventListener("click", function(event) {
     if (event.target.classList.contains('client-top')) {
         let thisClient = event.target.classList[0];
         let elementToExpandClass = thisClient + '-client-expandable';
         let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
+
         elementToExpand.classList.toggle('not-expanded');
-        event.target.classList.toggle('client-top-expanded');
     } else if (event.target.parentElement.classList.contains('client-top')) {
         let thisClient = event.target.parentElement.classList[0];
         let elementToExpandClass = thisClient + '-client-expandable';
@@ -92,36 +126,7 @@ document.addEventListener("click", function(event) {
     } 
 });
 
-function orderPortfolioByPositions(fetchData, launchAdmin) {
-    fullPortfolio = fetchData;
-    let orderedPortfolio = [];
-    let orderedArray = [];
-    let elementToAddToArray = '';
-    let indexInArray = '';
-    let desiredLength = fullPortfolio.length;
-
-    for (let x = 0; x < fullPortfolio.length; x++) {
-        indexInArray = fullPortfolio.findIndex(obj => {
-            return obj.position == x;
-        });
-        if (indexInArray > -1) {
-            elementToAddToArray = fullPortfolio[indexInArray];
-            orderedArray.push(elementToAddToArray);
-        }
-    }
-
-    orderedPortfolio = orderedArray;
-
-    if (orderedPortfolio.length !== desiredLength) {
-        console.warn('Warning:', desiredLength - orderedPortfolio.length, 'projects missing after sorting');
-    } else if (launchAdmin === true) {
-        adminMain(orderedPortfolio);
-    } else {
-        return orderedPortfolio;
-    }
-}
-
-function adminExtras(thisObj) {
+function minorTweeks(thisObj) {
     let thisClientExpandClass = thisObj.key + '-client-expandable';
     const clientExpand = document.getElementsByClassName(thisClientExpandClass)[0];
     const thisClientTop = document.getElementsByClassName(`${thisObj.key}-client-top`)[0];
@@ -129,8 +134,7 @@ function adminExtras(thisObj) {
     // ALL IMAGES TO CHOOSE FROM
     for (let j = 0; j < thisObj.allimages.length; j++) {
         clientExpand.insertAdjacentHTML('beforeend', `
-        <img class="${thisObj.key} img-${j} ${thisObj.key}-${j} allimages"
-            src="../works/${thisObj.key}/${thisObj.allimages[j]}"  draggable="false" />
+        <img class="${thisObj.key} img-${j} ${thisObj.key}-${j} allimages" src="../works/${thisObj.key}/${thisObj.allimages[j]}" />
         <input id="${thisObj.key}-${j}-input" type="file" class="img-upload">
         `);
     }
@@ -141,13 +145,12 @@ function adminExtras(thisObj) {
     } else {
         for (let k = 0; k < thisObj.allimages.length; k++) {
             thisClientTop.insertAdjacentHTML('beforeend', `
-            <img class="${thisObj.key} img-${k} ${thisObj.key}-${k} small-round-image"
-                src="../works/${thisObj.key}/${thisObj.allimages[k]}" draggable="false" />
+            <img class="${thisObj.key} img-${k} ${thisObj.key}-${k} small-round-image" src="../works/${thisObj.key}/${thisObj.allimages[k]}" />
             `);
         }
     }
 
-    // TEXT & IMAGE WARNINGS
+    // WARNINGS
     if (thisObj.name !== thisObj.key + ' name' &&
         thisObj.title !== thisObj.key + ' - what it is' &&
         thisObj.work !== thisObj.key + ' - what was done' &&
@@ -166,18 +169,18 @@ function makeTextEditable(event) {
     thisElement.focus();
     thisElement.classList.remove('edit-after');
     thisElement.classList.add('edit-mode');
-    document.execCommand('selectAll', false, null);
-    thisElement.addEventListener('keydown', function(thisKeyEvent) {
+    document.execCommand('selectAll',false,null);
+    document.addEventListener('keydown', function(thisKeyEvent) {
         if (thisKeyEvent.keyCode === 13) {
             makeAllUneditable();
             thisElement.classList.add('edit-after');
             thisElement.classList.remove('edit-mode');
             if (event.target.classList.contains('position')) {
                 moveProjectToNewPosition(event);
-                updatePositions();
+                rewriteAllPositions(event);
             } else {
-                fetchUpdateText(thisKeyEvent.target);
-                // saveEditsToLocalStorage(thisKeyEvent); // FAKE ADMIN
+                sendXhrPostRequest(thisKeyEvent.target);
+                // saveEditsToLocalStorage(thisKeyEvent);
             }
         } else if (thisKeyEvent.keyCode === 27) {
             makeAllUneditable();
@@ -187,6 +190,117 @@ function makeTextEditable(event) {
         }
     });
 }
+
+function moveProjectToNewPosition(event) {
+    const allProjects = document.querySelectorAll('.project');
+    let elementIndex = event.target.parentElement.classList[2];
+    let element = document.getElementsByClassName(elementIndex)[0];
+    let parent = element.parentElement;
+    let targetIndex = Number(event.target.innerHTML);
+    let target = document.getElementsByClassName(targetIndex)[0];
+
+    parent.insertBefore(element, target);
+    element.classList.add('drop-anim');
+    setTimeout(() => {
+        element.classList.remove('drop-anim');
+    }, 1000);
+}
+
+function rewriteAllPositions(event) {
+    const admin = document.querySelector('admin');
+    admin.innerHTML = "";
+    allObjects = allObjects.reverse();
+    console.log('admin deleted');
+    console.log(allObjects);
+    adminMain(allObjects);
+    'admin repoluted'
+    // const allProjects = document.querySelectorAll('.project');
+    // const jsonBtn = document.querySelector('.save-btn');
+    // let positions = [];
+    // let oldPosition = 0;
+    // let newPosition = 0;
+
+    // for (project of allProjects) {
+    //     oldPosition = Number(project.classList[2]);
+    //     positions.push({
+    //         "old": oldPosition, // TODO Pārrakstīt uz PROJEkTA KEY !!!!!!
+    //         "new": newPosition
+    //     });
+    //     newPosition++;
+    // }
+    // updateLocationClasses(positions);
+    // jsonBtn.style.display = "block";
+    // jsonBtn.addEventListener('click', function() {
+    //     sendXhrPUTrequest(positions);
+    // });
+}
+
+function updateLocationClasses(positions) {
+    let oldClassName = '';
+    let newClassName = '';
+    let position = 0;
+    let element = 0;
+    let classElements = [];
+    let reversedArray = [];
+    let allChanged = [];
+    let changed = '';
+
+    for (let i = positions.length - 1; i > -1; i--) {
+        position = positions[i];
+        oldClassName = String(position.old);
+        newClassName = String(position.new);
+
+        if (oldClassName !== newClassName) {
+            classElements = document.getElementsByClassName(oldClassName);
+            for (let j = classElements.length - 1; j > -1; j--) {
+                element = classElements[j];
+                if (element.classList.contains('changed') == false) {
+                    element.classList.remove(oldClassName);
+                    element.classList.add(newClassName);
+                    element.classList.add('changed');
+                }
+                classElements = document.getElementsByClassName(oldClassName);
+            }
+        }
+    }
+    setTimeout(() => {
+        allChanged = document.getElementsByClassName('changed');
+        for (k = 0; k < allChanged.length; k++) {
+            changed = allChanged[k];
+            changed.classList.remove('changed');
+        }
+    }, 1000);
+}
+
+function sendXhrPOSTrequest(eventTarget) {
+    let thisElement = eventTarget;        
+    let thisObjKey = thisElement.classList[0];
+    let thisParent = thisElement.parentElement;
+    let position = thisParent.classList[2];
+    let thisPropertyName = thisElement.classList[1];
+    let newValue = thisElement.innerHTML;
+    let post_url = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
+
+    xhr.open("POST", post_url, true);
+    xhr.send();
+}
+
+function sendXhrPUTrequest(positions) {
+    let put_url = `../api/works/update/${JSON.stringify(positions)}`;
+    xhr.open("PUT", put_url, true);
+    xhr.send(positions);
+}
+
+// FAKE ADMIN
+// function saveEditsToLocalStorage(event) {
+//     let thisElement = event.target;        
+//     let thisObjKey = thisElement.classList[0];
+//     let thisPropertyName = thisElement.classList[1];
+//     let newValue = thisElement.innerHTML;
+
+//     allObjects[thisObjKey][thisPropertyName] = newValue;
+//     localStorage.setItem("portfolio", JSON.stringify(allObjects));
+// }
 
 function changeThisImage(event) {
     makeAllUneditable();
@@ -217,21 +331,7 @@ function makeAllUneditable() {
         }
     }
 }
-
-function fetchUpdateText(eventTarget) {
-    let thisElement = eventTarget;        
-    let thisObjKey = thisElement.classList[0];
-    let thisParent = thisElement.parentElement;
-    let position = thisParent.classList[2];
-    let thisPropertyName = thisElement.classList[1];
-    let newValue = thisElement.innerHTML;
-    let post_url = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
-
-    sendFetchRequest('POST', post_url);
-}
-
 let dragElement = '';
-
 document.addEventListener("dragstart", function(event) {
     dragAndDrop(event.target);
 })
@@ -265,60 +365,5 @@ function dragDrop(event) {
     setTimeout(() => {
         dragElement.classList.remove('drop-anim');
     }, 1000);
-    setTimeout(() => {
-        (dragElement.classList.contains('thumb-img')) ? alert('Congratulations! Curiosity bonus unlocked') : updatePositions();
-    }, 1000);
+    rewriteAllPositions(event);
 }
-
-function moveProjectToNewPosition(event) {
-    const allProjects = document.querySelectorAll('.project');
-    let elementIndex = event.target.parentElement.classList[2];
-    let element = document.getElementsByClassName(elementIndex)[0];
-    let parent = element.parentElement;
-    let targetIndex = Number(event.target.innerHTML) + 1;
-    let target = document.getElementsByClassName(targetIndex)[0];
-
-    parent.insertBefore(element, target);
-    element.classList.add('drop-anim');
-    setTimeout(() => {
-        element.classList.remove('drop-anim');
-    }, 1000);
-}
-
-function updatePositions() {
-    const allProjects = document.querySelectorAll('.project');
-    let newPortfolio = orderPortfolioByPositions(fullPortfolio);
-    let projectKey = '';
-    let oldPosition = 0;
-    let newPosition = 0;
-
-    for (project of allProjects) {
-        projectKey = project.classList[0];
-        oldPosition = project.classList[2];
-        if (oldPosition != newPosition) {
-            newPortfolio[oldPosition].position = newPosition;
-        }
-        newPosition++;
-    }
-
-    newPortfolio = orderPortfolioByPositions(newPortfolio);
-    rewriteEverything(newPortfolio);
-}
-
-function rewriteEverything(newPortfolio) {
-    const admin = document.querySelector('admin');
-    admin.innerHTML = "";
-    adminMain(newPortfolio);
-    sendFetchRequest('POST', 'http://localhost:8080/api/works/update', JSON.stringify(newPortfolio));
-}
-
-// FAKE OFFLINE ADMIN
-// function saveEditsToLocalStorage(event) {
-//     let thisElement = event.target;        
-//     let thisObjKey = thisElement.classList[0];
-//     let thisPropertyName = thisElement.classList[1];
-//     let newValue = thisElement.innerHTML;
-
-//     fullPortfolio[thisObjKey][thisPropertyName] = newValue;
-//     localStorage.setItem("portfolio", JSON.stringify(fullPortfolio));
-// }
