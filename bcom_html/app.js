@@ -44,10 +44,10 @@ function init(initEvent) {
             console.log(event.clientX / event.view.innerWidth)
             let amount = 100 * event.clientX / event.view.innerWidth * 2.1;
             let watermarkAmount = -70 - (event.view.innerWidth - event.clientX);
-            let complicated = true;
+            let complicated = false;
 
             nextBg.style.transform = `translateX(-${amount}vw)`;
-            nextBg.style.backgroundPositionX = watermarkAmount + `px`
+            nextBg.style.backgroundPositionX = watermarkAmount + `px`;
             slideOneTitleOne.style.transform = `translateX(-${amount / 20}vw)`;
             slideOneTitleTwo.style.transform = `translateX(${amount / 15}vw)`;
 
@@ -61,13 +61,14 @@ function init(initEvent) {
                 }
             }
 
-            if (event.clientX > event.view.innerWidth * 0.75) {
-                slideOneTitleOne.innerHTML = "Uzzini kā mēs";
-                slideOneTitleTwo.innerHTML = "Tev varam palīdzēt";
-            }
+
             if (event.clientX < event.view.innerWidth * 0.75) {
                 slideOneTitleOne.innerHTML = "15 gadu pieredze";
                 slideOneTitleTwo.innerHTML = "komunikācijas nozarē";
+            }
+            if (event.clientX > event.view.innerWidth * 0.75) {
+                slideOneTitleOne.innerHTML = "Uzzini kā mēs";
+                slideOneTitleTwo.innerHTML = "Tev varam palīdzēt";
             }
 
             if (complicated === false) {
