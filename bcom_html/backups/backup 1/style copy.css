@@ -1,0 +1,138 @@
+body {
+    margin: 0;
+    background: white;
+    font-family: 'Muli';
+    background: url('img/bg.jpg') center center no-repeat;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+app {
+    width: 1000vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+#main {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-60%, -70%);
+    max-width: 50vw;
+}
+
+h1 {
+    font-size: 4vw;
+    margin-bottom: -3vw;
+}
+
+#logo {
+    display: block;
+    position: absolute;
+    background: url('img/logo.svg') center center no-repeat;
+    background-size: contain;
+    right: 5vw;
+    bottom: 5vh;
+    min-width: 8vw;
+    min-height: 15vh;
+}
+
+#next {
+    display: block;
+    position: absolute;
+    right: 1.8vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5vw;
+    min-height: 10vh;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.svg-next-black {
+    fill: black;
+}
+
+.svg-next-white {
+    fill: white;
+}
+
+#next-bg, #this-bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -100vw;
+    width: 100vw;
+    height: 100vh;
+    background: #7AFECD;
+    opacity: 0.9;
+    translate: all 2s ease;
+    z-index: 0;
+}
+
+@keyframes bounce {
+    from {
+        opacity: 1;
+    }
+
+    4%,
+    15%,
+    20% {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, -50%, 0);
+    }
+
+    10%,
+    12% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-50px, -50%, 0);
+    }
+
+    17% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-15px, -50%, 0);
+    }
+
+    25% {
+        transform: translate3d(-4px, -50%, 0);
+    }
+}
+
+.bounce {
+    animation: bounce 4s ease-out 3s infinite;
+}
+
+@keyframes fadeInLeft {
+    from, 20% {
+      opacity: 0;
+      transform: translate3d(-10vw, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+.fadeInLeft {
+    animation: fadeInLeft 2s ease;
+}
+
+@keyframes fadeInRight {
+    from, 50% {
+      opacity: 0;
+      transform: translate3d(10vw, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+.fadeInRight {
+    animation: fadeInRight 2s ease;
+}

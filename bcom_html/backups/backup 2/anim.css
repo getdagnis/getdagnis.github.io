@@ -1,0 +1,91 @@
+@keyframes bounce {
+    from {
+        opacity: 1;
+    }
+
+    4%,
+    15%,
+    20% {
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        transform: translate3d(0, -50%, 0);
+    }
+
+    10%,
+    12% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-50px, -50%, 0);
+    }
+
+    17% {
+        animation-timing-function: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+        transform: translate3d(-15px, -50%, 0);
+    }
+
+    25% {
+        transform: translate3d(-4px, -50%, 0);
+    }
+}
+
+.bounce {
+    animation: bounce 2s ease-out 3s infinite;
+}
+
+@keyframes fadeInLeft {
+    from, 20% {
+      opacity: 0;
+      transform: translate3d(-10vw, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+.fadeInLeft {
+    animation: fadeInLeft 2s ease;
+}
+
+@keyframes fadeInRight {
+    from, 50% {
+      opacity: 0;
+      transform: translate3d(10vw, 0, 0);
+    }
+  
+    to {
+      opacity: 1;
+      transform: translate3d(0, 0, 0);
+    }
+}
+
+
+.fadeInRight {
+    animation: fadeInRight 2s ease;
+}
+
+@keyframes popIn {
+    from, 40% {
+        opacity: 0;
+        transform: scale(.1);
+    }
+
+    90% {
+        opacity: .7;
+        transform: scale(1.1)
+    }
+
+    to {
+        opacity: .9;
+        transform: scale(1);
+    }
+}
+
+@keyframes blendIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}

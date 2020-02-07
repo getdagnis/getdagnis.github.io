@@ -1,0 +1,175 @@
+@import 'anim.css';
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: white;
+    font-family: 'Muli';
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+app {
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    margin: 0;
+    transition: all .5s ease;
+}
+
+.slide {
+    display: inline-block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+.slide-1 {
+    position: absolute;
+    left: 0;
+    background: url('img/bg.jpg') center center no-repeat;
+    background-size: cover;
+    z-index: 10;
+}
+
+#title {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-70%, -70%);
+    max-width: 80vw;
+}
+
+h1 {
+    font-size: 4.5vw;
+    margin-bottom: -3vw;
+    color: #25c4ff;
+}
+
+#logo {
+    display: block;
+    position: absolute;
+    background: url('img/logo_color.svg') center center no-repeat;
+    background-size: contain;
+    right: 5vw;
+    bottom: 5vh;
+    min-width: 8vw;
+    min-height: 15vh;
+    z-index: 9;
+}
+
+#next, .next {
+    display: block;
+    position: absolute;
+    right: 1.8vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5vw;
+    min-height: 10vh;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#next-bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -299vw;
+    width: 200vw;
+    height: 100vh;
+    background: rgba(37, 196, 255, .3);
+    opacity: 0.9;
+    translate: all 2s ease;
+    z-index: 0;
+    animation: blendIn 3s ease 1s; 
+    animation-fill-mode: backwards;
+}
+
+.svg-next-black {
+    fill: #97a1a5;
+}
+
+.svg-next-white {
+    fill: white;
+}
+
+.svg-slide-2 {
+    fill: white;
+    opacity: .2;
+}
+
+.svg-slide-2:hover {
+    opacity: .6;
+}
+
+.slide-2 {
+    position: absolute;
+    left: 100vw;
+    background: url('img/bg-5g.jpg') center center no-repeat;
+    background-size: cover;
+    z-index: 9;
+    transition: all .1s ease-out;
+}
+
+.slide-inner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+#icons {
+    position: absolute;
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    grid-gap: 1vh;
+    width: 60vw;
+    height: 40vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.ico {
+    display: inline-block;
+    background-size: contain;
+    transform: scale(.9);
+    animation-fill-mode: backwards;
+    animation-timing-function: ease;
+    animation-duration: .8s;
+    transition: transform 1s ease;
+    opacity: .9;
+}
+
+.ico:hover {
+    transform: scale(1.1);
+    transition: transform .3s ease;
+    opacity: .95;
+    cursor: pointer;
+}
+
+.ico.animate {
+    animation-name: popIn;
+}
+
+.ico-1 { background: url(img/ico-1.svg) center center no-repeat; animation-delay: .6s; }
+.ico-2 { background: url(img/ico-2.svg) center center no-repeat; animation-delay: 1s; }
+.ico-3 { background: url(img/ico-3.svg) center center no-repeat; animation-delay: 1.8s; }
+.ico-4 { background: url(img/ico-4.svg) center center no-repeat; animation-delay: 1.4s; }
+.ico-5 { background: url(img/ico-5.svg) center center no-repeat; animation-delay: .2s; }
+.ico-6 { background: url(img/ico-6.svg) center center no-repeat; animation-delay: 1.2s; }
+.ico-7 { background: url(img/ico-7.svg) center center no-repeat; animation-delay: 1.6s; }
+.ico-8 { background: url(img/ico-8.svg) center center no-repeat; animation-delay: 2.2s; }
+.ico-9 { background: url(img/ico-9.svg) center center no-repeat; animation-delay: 2s; }
+
+

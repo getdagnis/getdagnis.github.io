@@ -1,0 +1,270 @@
+@import 'anim.css';
+
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: white;
+    font-family: 'Muli';
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+app {
+    display: block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+    margin: 0;
+    transition: all .5s ease;
+}
+
+.slide {
+    display: inline-block;
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+}
+
+.slide-1 {
+    left: 0;
+    background: url('img/bg.jpg') center center no-repeat;
+    background-size: cover;
+    z-index: 10;
+}
+
+
+#title {
+    position: absolute;
+    top: 44%;
+    left: 50%;
+    transform: translate(-70%, -70%);
+    max-width: 80vw;
+}
+
+#svg-logo {
+    position: absolute;
+    right: 7vw;
+    bottom: 5vh;
+    height: 18vh;
+    z-index: 9;
+}
+
+/* LOGO SVG */
+.logo-blue { fill: #00bbff; }
+.logo-white { fill: #fff; }
+.logo-black { fill: #000; }
+.cls-2 { fill: #000; }
+
+h1 {
+    font-size: 4.5vw;
+    margin-bottom: -3vw;
+    z-index: 999;
+}
+
+.h1-blue { color: #00bbff; }
+.h1-white { color: #fff; }
+.slide-one-title-1, .slide-one-title-2 {
+    transform: translateX();
+    transition: all 1s ease;
+}
+
+
+h2 {
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    font-size: 3rem;
+    letter-spacing: .2;
+    opacity: .9;
+    margin-bottom: 30px;
+}
+
+#next {
+    display: block;
+    position: absolute;
+    right: 1.8vw;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1.5vw;
+    min-height: 10vh;
+    cursor: pointer;
+    z-index: 1;
+}
+
+#next-bg {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: -299vw;
+    width: 200vw;
+    height: 100vh;
+    background: url(img/transp.svg) #00bbffad no-repeat;
+    background-size: 58%;
+    background-position-x: -375px;
+    background-position-y: 68%;
+    opacity: 0.9;
+    translate: all 2s ease;
+    z-index: -1;
+    animation: blendIn 3s ease 1s; 
+    animation-fill-mode: backwards;
+}
+
+.watermark {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 248vh;
+}
+
+.next, .prev {
+    display: block;
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 6vw;
+    min-height: 10vh;
+    z-index: 1;
+    background: url(img/next.svg) center;
+    background-repeat: no-repeat;
+    background-size: 26%;
+    background-position-y: 47%;
+    opacity: .3;
+    cursor: pointer;
+    transition: all 1s ease;
+}
+
+.next:hover, .prev:hover {
+    opacity: .8;
+    transition: all .5s ease;
+}
+
+.next-2:hover, .prev-2:hover { background-color: rgba(101, 205, 243, 0.3); }
+
+.prev {
+    left: 0;
+    transform: rotate(-180deg);
+    background-position-y: 53%;
+}
+
+.svg-next-black {
+    fill: #97a1a5;
+}
+
+.svg-next-white {
+    fill: white;
+}
+
+.svg-slide-2 {
+    fill: white;
+    opacity: .2;
+}
+
+.svg-slide-2:hover {
+    opacity: .6;
+}
+
+.slide-2 {
+    position: absolute;
+    left: 100vw;
+    background: url('img/bg-5g.jpg') center center no-repeat;
+    background-size: cover;
+    z-index: 9;
+    transition: all .1s ease-out;
+}
+
+.slide-inner {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    left: 0;
+    top: 0;
+}
+
+#icons {
+    position: absolute;
+    width: 60vw;
+    height: 40vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#grid-ico {
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 33% 33% 33%;
+    grid-gap: .5vh;
+}
+
+.ico {
+    display: inline-block;
+    background-size: contain;
+    transform: scale(.9);
+    animation-fill-mode: backwards;
+    animation-timing-function: ease;
+    animation-duration: .8s;
+    transition: transform 1s ease;
+    opacity: .9;
+}
+
+.ico:hover {
+    transform: scale(1.1);
+    transition: transform .3s ease;
+    opacity: .95;
+    cursor: pointer;
+}
+
+.ico.animate {
+    animation-name: popIn;
+}
+
+.ico-1 { background: url(img/ico-1.svg) center center no-repeat; animation-delay: .6s; }
+.ico-2 { background: url(img/ico-2.svg) center center no-repeat; animation-delay: 1s; }
+.ico-3 { background: url(img/ico-3.svg) center center no-repeat; animation-delay: 1.8s; }
+.ico-4 { background: url(img/ico-4.svg) center center no-repeat; animation-delay: 1.4s; }
+.ico-5 { background: url(img/ico-5.svg) center center no-repeat; animation-delay: .2s; }
+.ico-6 { background: url(img/ico-6.svg) center center no-repeat; animation-delay: 1.2s; }
+.ico-7 { background: url(img/ico-7.svg) center center no-repeat; animation-delay: 1.6s; }
+.ico-8 { background: url(img/ico-8.svg) center center no-repeat; animation-delay: 2.2s; }
+.ico-9 { background: url(img/ico-9.svg) center center no-repeat; animation-delay: 2s; }
+
+.ico-description {
+    position: relative;
+    background: #00608636;
+    border-radius: .4vw;
+    margin: 1vw;
+    color: white;
+    text-align: center;
+    transition: margin 1s ease;
+    cursor: pointer;
+}
+
+.ico-description:after {
+    position: absolute;
+    width: 12vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2rem;
+}
+
+.ico-1-desc:after { content: 'Palīdzēsim ar korporatīvo komunikāciju lorem ipsum dolor sit amet un liput'; }
+.ico-2-desc:after { content: 'Palīdzēsim ar reputācijas vadību lorem ipsum dolor sit amet un liput'; }
+.ico-3-desc:after { content: 'Palīdzēsim ar interesēm lorem ipsum dolor sit amet un liput'; }
+.ico-4-desc:after { content: 'Palīdzēsim ar iekšējo komunikāciju lorem ipsum dolor sit amet un liput'; }
+.ico-5-desc:after { content: 'Palīdzēsim izveidot un uzturēt labas attiecības ar medijiem lorem ipsum dolor etc'; }
+.ico-6-desc:after { content: 'Organizējam pasākumus, lielus un mazus lorem ipsum dolor sit amet un liput'; }
+.ico-7-desc:after { content: 'Organizējam sociālo tīklu kampaņas lorem ipsum dolor sit amet un liput'; }
+.ico-8-desc:after { content: 'Dzēšam krīzes laika komunikācijas ugunsgrēkus lorem ipsum dolor sit amet un liput'; }
+.ico-9-desc:after { content: 'Uztrenēsim mediju prasmi lorem ipsum dolor sit amet un liput'; }
+
