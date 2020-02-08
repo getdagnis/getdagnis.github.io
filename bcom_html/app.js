@@ -44,7 +44,7 @@ function init(initEvent) {
             console.log(event.clientX / event.view.innerWidth)
             let amount = 100 * event.clientX / event.view.innerWidth * 2.1;
             let watermarkAmount = -70 - (event.view.innerWidth - event.clientX);
-            let complicated = false;
+            let complicated = true;
 
             nextBg.style.transform = `translateX(-${amount}vw)`;
             nextBg.style.backgroundPositionX = watermarkAmount + `px`;
