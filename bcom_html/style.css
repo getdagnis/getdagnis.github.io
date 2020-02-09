@@ -8,7 +8,7 @@ body, html {
 
 body {
     background: white;
-    font-family: 'Muli';
+    font-family: 'Muli', 'Helvetica', 'Arial';
     width: 100vw;
     height: 100vh;
     overflow: hidden;
