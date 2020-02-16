@@ -164,6 +164,12 @@ h4 {
     font-weight: 400;
 }
 
+seo {
+   display: none;
+   height: 1px;
+   width: 1px; 
+}
+
 .grid-item-inner {
     position: relative;
     display: block;
@@ -234,7 +240,7 @@ h4 {
 }
 
 .item-inner-active {
-    transform: translate(0, 0);
+    transform: translate(0, 0)!important;
 }
 
 .thumb {

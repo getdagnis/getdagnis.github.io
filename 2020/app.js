@@ -4,6 +4,23 @@ const events = require('events');
 const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+    destination: function(req, file, callback) {
+        const incomingPath = req.path;
+        let key = incomingPath.split('/')[4];
+        let uploadPath = './public/uploads/' + key;
+        console.log(file);
+        console.log(uploadPath);
+        callback(null, '.public/uploads');
+    },
+    filename: function(req, file, callback) {
+        callback(null, file.originalname);
+    }
+})
+
+const upload = multer({ storage: storage });
 
 let fullPortfolio = JSON.parse(fs.readFileSync('./public/portfolio_full.json'));
 
@@ -20,7 +37,15 @@ app.get('/admin', function(req,res){
     console.log('---------------- ADMIN launched! -----------------');
     // ENABLE JSON BACKUPS ON ADMIN LAUNCH
     let thisDate = new Date;
-    let dateToAdd = thisDate.getFullYear() + '-' + (thisDate.getMonth() + 1) + '-' + thisDate.getDate();
+    let month = (thisDate.getMonth() + 1);
+    if (String(month).length < 2) {
+        month = '0' + month;
+    }
+    let date = thisDate.getDate();
+    if (String(date).length < 2) {
+        date = '0' + date;
+    }
+    let dateToAdd = thisDate.getFullYear() + '-' + month + '-' + date;
     let newJsonBackupName = 'portfolio-full-' + dateToAdd + '.json';
     let newJsonBackupFullPath = './backups/json-backups/' + newJsonBackupName;
     let jsonBackups = fs.readdirSync('./backups/json-backups/');
@@ -49,9 +74,16 @@ app.post('/api/works/:pos/:key/:type/:body', function(req,res){
         fs.writeFileSync('./public/portfolio_full.json', JSON.stringify(fullPortfolio, null, 2));
         res.send(fullPortfolio);
     } else {
-        res.send("Couldn't find changed object key");
+        res.send("Such key not found");
     }
 });
+
+app.post('/api/works/images/:key/', upload.any('image'), function(req, res) {
+    const key = req.params.key;
+
+    console.log(req.params.key, 'images received', req.body);
+    res.send(`${key} images received: ${JSON.stringify(req.file)}`);
+})
 
 app.post('/api/works/update/', function(req, res) {
     const newPortfolio = req.body;
@@ -74,9 +106,10 @@ app.post('/api/works/update/', function(req, res) {
 });
 
 app.get('/api/allimages/:key', function(req,res){ 
-    let keyName = req.params.key;
-    let imageFolders = fs.readdirSync('./public/works/');
+    const keyName = req.params.key;
+    const imageFolders = fs.readdirSync('./public/works/');
     let thisKeyImages = [];
+
     if (imageFolders.includes(keyName)) {
         thisKeyImages = fs.readdirSync('./public/works/' + keyName)
     }
@@ -101,10 +134,6 @@ const port = process.env.PORT || 8080;
 app.listen(port, () => {
 	console.log('Server is alive & kicking on http://localhost:' + port);
 });
-
-
-
-
 
 function createNewFullJson() {
     let thumbs = fs.readdirSync('./public/img/thumbs/');

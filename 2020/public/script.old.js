@@ -6,7 +6,6 @@ function contents() {
     setTimeout(function() {
         hideTheCurtain();
         launchPortfolio();
-        walkTheInnerBlue();
     }, 1100);
     // document.addEventListener("mouseleave", function(event) {
     //     showTheCurtain();
@@ -14,6 +13,7 @@ function contents() {
     // document.addEventListener("mouseover", function(event) {
     //     hideTheCurtain();
     // });
+    walkTheInnerBlue();
 }
 
 // Paslēpj zilo priekškaru, kad nepieciešams
@@ -29,16 +29,6 @@ function showTheCurtain() {
     hideDiv.style.transitionDuration = "2s";
     hideDiv.style.top = "0%";
 }
-
-// function newWalkTheInnerBlue() {
-//     const items = document.getElementsByClassName('grid-item');
-
-//     for (item of items) {
-//         item.addEventListener('mouseenter', function() {
-//             console.log('target:', event.target.id);
-//         })
-//     }
-// };
 
 // Galvenais dokumenta "event listeners"
 document.addEventListener("click", function(event) {
@@ -85,12 +75,33 @@ document.addEventListener("click", function(event) {
     }
 });
 
+function moveScreenUp(event, wasOnParent) {
+    let pageY = event.pageY;
+    let elementY = event.offsetY;
+    let windowY = event.y;
+    let newY = 0;
+
+    if (wasOnParent === false) {
+        newY = pageY - elementY - 10;
+        
+        window.scrollTo({
+            top: newY,
+            left: 0,
+            behavior: 'smooth'
+        });
+    } else {
+        newY = pageY - event.layerY - 10;
+        window.scrollTo({
+            top: newY,
+            left: 0,
+            behavior: 'smooth'
+        });
+    }
+}
+
 
 // Vada zilā laukuma staigāšanu pa gridu (sekošanu pelei)
 function walkTheInnerBlue() {
-    const items = document.getElementsByClassName('grid-item-inner');
-    const contents = document.querySelector('#contents');
-    const viewers = document.getElementsByClassName('viewer');
     let previousItemClass = '';
     let thisItemRow = 0;
     let thisItemCol = 0;
@@ -99,25 +110,24 @@ function walkTheInnerBlue() {
     let itemsAround = [];
     const previousItem = document.getElementsByClassName(previousItemClass)[0];
 
-    for (item of items) {
-        item.addEventListener('mouseenter', function() {
-            thisItemRow = event.target.classList[1].slice(4);
-            thisItemCol = event.target.classList[2].slice(4);
-            thisInnerItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;
-            thisInnerItem = document.getElementsByClassName(thisInnerItemClass)[0];
-            thisInnerItem.classList.add('inner-current');
-
-            infectItemsAround(thisItemRow, thisItemCol, previousItemClass);
-            previousItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;
-        });
-    }
-    for (viewer of viewers) {
-        viewer.addEventListener('mouseenter', function() {
-            cleanUnnecessaryItems('inner-bottom');
-        });
-    }
-    contents.addEventListener('mouseleave', function() {
-        cleanUnnecessaryItems();
+    document.addEventListener("mouseover", function(event) {
+        if (event.target.classList.length > 0) {
+            if (event.target.classList.contains('grid-item-inner')) {
+                thisItemRow = event.target.classList[1].slice(4);
+                thisItemCol = event.target.classList[2].slice(4);
+                thisInnerItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;
+                thisInnerItem = document.getElementsByClassName(thisInnerItemClass)[0];
+                thisInnerItem.classList.add('inner-current');
+    
+                infectItemsAround(thisItemRow, thisItemCol, previousItemClass);
+                previousItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;                    
+            } else if (event.target.classList.contains('body') ||
+                    event.target.parentElement.classList.contains('motto') ||
+                    event.target.classList.contains('viewer-img') ||
+                    event.target.classList.contains('item-inner-active')) {
+                cleanUnnecessaryItems();
+            }
+        }
     });
 
 }
@@ -141,6 +151,7 @@ function infectItemsAround(r, c, previous) {
     infectThisItem(r + 1, c, 'inner-top');
     infectThisItem(r + 1, c + 1, 'inner-top');
     infectThisItem(r - 1, c - 1, 'inner-bottom');
+    cleanUnnecessaryItems(thisItem);
     
     while (allOtherPrevious.length > 0) {
         allOtherPrevious[0].classList.remove('inner-previous', 'transition-6');
@@ -155,24 +166,25 @@ function infectThisItem(r, c, newClass)  {
     const thisItem = document.getElementsByClassName(rowColClass)[0];
     
     if (thisItem) {       
-        thisItem.classList.remove('inner-top', 'inner-bottom', 'inner-left', 'inner-right', 'transition-6', 'inner-previous', 'inner-current');
+        thisItem.classList.remove('inner-top', 'inner-bottom', 'inner-left', 'inner-right', 'transition-6', 'inner-previous');
         thisItem.classList.add(newClass);
     }
 }
 
 // Attīra visus nevajadzīgi iekrāsotos zilos lauciņus
-function cleanUnnecessaryItems(direction) {
-    const items = document.getElementsByClassName('item-inner');
-    const innerCurrent = document.querySelector('.inner-current');
-    if (innerCurrent && direction) {
-        innerCurrent.classList.add('transition-6', direction);
-    } else if (innerCurrent) {
-        innerCurrent.classList.add('transition-6', 'inner-top');
-    };
+function cleanUnnecessaryItems(thisItem) {
+    const allItems = document.getElementsByClassName('item-inner');
 
-    for (item of items) {
-        item.classList.remove('inner-previous');
-        item.classList.remove('inner-current');
+    for (i = 0; i < allItems.length; i++) {
+        if (allItems[i] !== thisItem &&
+            allItems[i].classList.contains('inner-top') === false &&
+            allItems[i].classList.contains('inner-bottom') === false &&
+            allItems[i].classList.contains('inner-left') === false &&
+            allItems[i].classList.contains('inner-right') === false &&
+            allItems[i].classList.contains('item-inner-active') === false) {
+            allItems[i].classList.remove('inner-previous');
+            allItems[i].classList.add('inner-right');
+        }
     }
 }
 

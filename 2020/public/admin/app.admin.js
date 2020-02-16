@@ -1,9 +1,9 @@
 
-const sendFetchRequest = async (method, url, data) => {
+const sendFetchRequest = async (method, url, data, head) => {
     const res = await fetch(url, {
         method: method,
         body: data,
-        headers: data ? { 'Content-Type': 'application/json' } : {} 
+        headers: head ? { 'Content-Type': 'application/json' } : { }
     });
     return res.json();
 };
@@ -11,7 +11,7 @@ const sendFetchRequest = async (method, url, data) => {
 launchAdmin(orderPortfolioByPositions);
 
 function launchAdmin(nextFunction) {
-    sendFetchRequest('GET', 'http://localhost:8080/api/works/full')
+    sendFetchRequest('GET', '/api/works/full')
         .then(resData => nextFunction(resData, true))
         .catch(err => console.error('Error:', err));
 };
@@ -83,14 +83,23 @@ document.addEventListener("click", function(event) {
         let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
         elementToExpand.classList.toggle('not-expanded');
         event.target.classList.toggle('client-top-expanded');
+        imageDropListener();
     } else if (event.target.parentElement.classList.contains('client-top')) {
         let thisClient = event.target.parentElement.classList[0];
         let elementToExpandClass = thisClient + '-client-expandable';
         let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
 
+        imageDropListener();
         elementToExpand.classList.toggle('not-expanded');
     } 
 });
+
+// document.addEventListener('dragover', function(event) {
+//     console.log('dragover noticed');
+//     if (event.target.classList.contains('drop-image')) {
+//         imageDropListener();
+//     }
+// })
 
 function orderPortfolioByPositions(fetchData, launchAdmin) {
     fullPortfolio = fetchData;
@@ -111,6 +120,7 @@ function orderPortfolioByPositions(fetchData, launchAdmin) {
     }
 
     orderedPortfolio = orderedArray;
+    fullPortfolio = orderedPortfolio;
 
     if (orderedPortfolio.length !== desiredLength) {
         console.warn('Warning:', desiredLength - orderedPortfolio.length, 'projects missing after sorting');
@@ -126,14 +136,30 @@ function adminExtras(thisObj) {
     const clientExpand = document.getElementsByClassName(thisClientExpandClass)[0];
     const thisClientTop = document.getElementsByClassName(`${thisObj.key}-client-top`)[0];
 
-    // ALL IMAGES TO CHOOSE FROM
-    for (let j = 0; j < thisObj.allimages.length; j++) {
+    // ALL IMAGES TO CHOOSE FROM & IMAGE DROP
+    if (thisObj.allimages.length < 1) {
+        // console.log(thisObj.key, 'has no images');
         clientExpand.insertAdjacentHTML('beforeend', `
-        <img class="${thisObj.key} img-${j} ${thisObj.key}-${j} allimages"
-            src="../works/${thisObj.key}/${thisObj.allimages[j]}"  draggable="false" />
-        <input id="${thisObj.key}-${j}-input" type="file" class="img-upload">
+            <div id="${thisObj.key}-drop-image" class="${thisObj.key} drop-image"></div>
+            <input id="${thisObj.key}-0-input" type="file" class="img-upload">
+            `);
+    } else {
+        clientExpand.insertAdjacentHTML('beforeend', `
+        <div id="${thisObj.key}-drop-image" class="${thisObj.key} drop-image drop-image-small"></div>
+        <input id="${thisObj.key}-0-input" type="file" class="img-upload">
         `);
+        for (let j = 0; j < thisObj.allimages.length; j++) {
+            clientExpand.insertAdjacentHTML('beforeend', `
+            <div class="${thisObj.key} img-${j} ${thisObj.key}-${j} allimages admin-image"
+                style="background: url('../works/${thisObj.key}/${thisObj.allimages[j]}')
+                center center / cover no-repeat;"  draggable="false">
+                <input id="${thisObj.key}-${j}-input" type="file" class="img-upload">
+            </div>
+            `
+            )
+        };
     }
+
 
     // SMALL IMAGE THUMBNAILS IN ADMIN MAIN VIEW
     if (thisObj.allimages.length < 1) {
@@ -176,8 +202,8 @@ function makeTextEditable(event) {
                 moveProjectToNewPosition(event);
                 updatePositions();
             } else {
-                fetchUpdateText(thisKeyEvent.target);
-                // saveEditsToLocalStorage(thisKeyEvent); // FAKE ADMIN
+                updateArrayValues(thisKeyEvent.target);
+                fetchUpdateText(thisKeyEvent.target)
             }
         } else if (thisKeyEvent.keyCode === 27) {
             makeAllUneditable();
@@ -218,22 +244,17 @@ function makeAllUneditable() {
     }
 }
 
-function fetchUpdateText(eventTarget) {
-    let thisElement = eventTarget;        
-    let thisObjKey = thisElement.classList[0];
-    let thisParent = thisElement.parentElement;
-    let position = thisParent.classList[2];
-    let thisPropertyName = thisElement.classList[1];
-    let newValue = thisElement.innerHTML;
-    let post_url = `../api/works/${position}/${thisObjKey}/${thisPropertyName}/${newValue}`;
-
-    sendFetchRequest('POST', post_url);
-}
-
 let dragElement = '';
 
 document.addEventListener("dragstart", function(event) {
+    console.log('drag start!');
     dragAndDrop(event.target);
+})
+
+document.addEventListener("dragover", function(event) {
+    if (event.target.classList.contains('drop-image')) {
+        imageDropListener();
+    }
 })
 
 function dragAndDrop(thisClient) {
@@ -285,6 +306,34 @@ function moveProjectToNewPosition(event) {
     }, 1000);
 }
 
+function imageDropListener() {
+    let allImageDropzones = document.getElementsByClassName('drop-image');
+    for (dropImage of allImageDropzones) {
+        dropImage.addEventListener('dragover', imageDragOver);
+        dropImage.addEventListener('dragleave', imageDragLeave);
+        dropImage.addEventListener('drop', imageDragDrop);
+    }
+}
+
+function imageDragOver(event) {
+    event.preventDefault();
+    this.classList.add('dragover');
+}
+
+function imageDragLeave(event) {
+    console.log('drag LEAVE!');
+    this.classList.remove('dragover');
+}
+
+function imageDragDrop(event) {
+    let key = event.target.classList[0];
+    let files = event.dataTransfer.files;
+
+    event.preventDefault();
+    this.classList.remove('dragover');
+    uploadImages(files, key);
+}
+
 function updatePositions() {
     const allProjects = document.querySelectorAll('.project');
     let newPortfolio = orderPortfolioByPositions(fullPortfolio);
@@ -305,12 +354,64 @@ function updatePositions() {
     rewriteEverything(newPortfolio);
 }
 
+function updateArrayValues(eventTarget) {
+    let element = eventTarget;        
+    let key = element.classList[0];
+    let parent = element.parentElement;
+    let position = parent.classList[2];
+    let property = element.classList[1];
+    let value = element.innerHTML;
+    
+    fullPortfolio[position][property] = value;
+}
+
+function uploadImages(files, key) {
+    const formData = new FormData();
+    const url = '/api/works/images/' + key;
+    console.log(files);
+
+    for (const file of files) {
+        formData.append("myImages", file);
+    }
+
+    for (const [key, value] of formData) {
+        console.log('Key', key);
+        console.log('Value', value);
+    }
+    
+    const fetchUpload = async (method, url, data) => {
+        const res = await fetch(url, {
+            method: method,
+            body: data,
+            head: { 'Content-Type': 'multipart/form-data' }
+        });
+        return res.json();
+    };
+
+    fetchUpload('POST', url, formData );
+}
+
 function rewriteEverything(newPortfolio) {
     const admin = document.querySelector('admin');
+    const head = true;
+
     admin.innerHTML = "";
     adminMain(newPortfolio);
-    sendFetchRequest('POST', 'http://localhost:8080/api/works/update', JSON.stringify(newPortfolio));
+    sendFetchRequest('POST', '/api/works/update', JSON.stringify(newPortfolio), head);
 }
+
+function fetchUpdateText(eventTarget) {
+    let element = eventTarget;        
+    let key = element.classList[0];
+    let parent = element.parentElement;
+    let position = parent.classList[2];
+    let property = element.classList[1];
+    let value = element.innerHTML;
+    let post_url = `../api/works/${position}/${key}/${property}/${value}`;
+
+    sendFetchRequest('POST', post_url);
+}
+
 
 // FAKE OFFLINE ADMIN
 // function saveEditsToLocalStorage(event) {
