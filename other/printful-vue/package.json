@@ -1,0 +1,14 @@
+{
+  "name": "printful-vue",
+  "version": "1.0.0",
+  "description": "printful quiz vue",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "getdagnis",
+  "license": "ISC",
+  "dependencies": {
+    "vue": "^2.6.11"
+  }
+}

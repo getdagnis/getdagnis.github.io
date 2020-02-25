@@ -1,40 +1,59 @@
-// Vanilla JS by Dagnis Skurbe, December 2019-January 2020
+// JS code by Dagnis Skurbe, December 2019-January 2020
 
-const sendFetchRequest = async (method, url, data, head) => {
-    const res = await fetch(url, {
-        method: method,
-        body: data,
-        headers: head ? { 'Content-Type': 'application/json' } : { }
-    });
-    return res.json();
-};
+let allObjects = {};
 
-launchAdmin(orderPortfolioByPositions);
+// if (localStorage.getItem("portfolio") != null) {
+//     allObjects = JSON.parse(localStorage.getItem("portfolio"));
+//     console.log('Reading from localStorage:');
+//     console.log(allObjects);
+// } else {
+    let xhttp = new XMLHttpRequest();
 
-function launchAdmin(nextFunction) {
-    sendFetchRequest('GET', '/api/works/full')
-        .then(resData => nextFunction(resData, true))
-        .catch(err => console.error('Error:', err));
-};
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+            allObjects = JSON.parse(xhttp.responseText);
+            // localStorage.setItem("portfolio", xhttp.responseText);
+            // console.log(JSON.parse(localStorage.getItem("portfolio")));  
+        }
+    };
+    xhttp.open("GET", "/api/works/full", true);
+    xhttp.send();
+// }
 
-function portfolioMain(orderedPortfolio) {
-    let visibleObjects = orderedPortfolio.filter(object => {
+function launchPortfolio() {
+    let orderedArray = [];
+    let elementToAddToArray = '';
+    let indexInArray = '';
+
+    for (let x = 0; x < allObjects.length; x++) {
+        indexInArray = allObjects.findIndex(obj => {
+            return obj.position == x;
+        });
+        if (indexInArray > -1) {
+            elementToAddToArray = allObjects[indexInArray];
+            orderedArray.push(elementToAddToArray);
+        }
+    }
+
+    allObjects = orderedArray;
+
+
+    let visibleObjects = allObjects.filter(object => {
         return object.show == "true";
     })
     let objectKeys = Object.keys(visibleObjects);
     let thisObj = {};
     let newContents = '';
-    console.log(visibleObjects);
 
     for (i = 0; i < objectKeys.length; i++) {
         let thisObjKey = objectKeys[i];
         thisObj = visibleObjects[thisObjKey];
         let thisCol = '';
-        let thisRowFormula = null;
+        let thisRowFormula = 0;
         let thisRow = '';
         let rowAndCol = '';
         let whichInnerSide = '';
-        let animationDelay = null; 
+        let animationDelay = 0; 
         let animationDelayFormula = .2 + i / 100 * 1.5;
         let thisImageDiv = '';
         let allImageDivs = '';
@@ -89,6 +108,7 @@ function portfolioMain(orderedPortfolio) {
         expandRow = 'row-' + thisRowFormula + expandRowExtension;
 
         // TEMPLATE FOR BOTH THE THUMBNAIL AND THE IMAGE VIEWER.
+        // WARNING: ITEM-INNER (AND GRID-ITEM-INNER) FIRST FOUR (AND THREE) CLASSES ARE USED BY SCRIPTS.JS AND ADMIN.JS IN THIS ORDER!
         templateHTML = `
         <div class="grid-item" id="grid-item-${thisObj.key}">
             <div class="grid-item-inner ${thisRow} ${thisCol} itemBounce" style="animation-delay: ${animationDelay}s">
@@ -103,7 +123,7 @@ function portfolioMain(orderedPortfolio) {
         </div>
         <div class="expanded ${thisObj.key} expand-${expandRow} scale-0 hidden">
             <div class="viewer" id="${thisObj.key}-viewer">
-                <div class="images ${thisObj.images.length}" id="${thisObj.key}-images">
+                <div class="images" id="${thisObj.key}-images">
                     ${allImageDivs}
                     <div class="viewer-img last"></div>
                 </div>
@@ -124,34 +144,4 @@ function portfolioMain(orderedPortfolio) {
 
     const contentDiv = document.getElementById('contents');
     contentDiv.innerHTML = newContents;
-}
-
-function orderPortfolioByPositions(fetchData, startPortfolio) {
-    fullPortfolio = fetchData;
-    let orderedPortfolio = [];
-    let orderedArray = [];
-    let elementToAddToArray = '';
-    let indexInArray = '';
-    let desiredLength = fullPortfolio.length;
-
-    for (let x = 0; x < fullPortfolio.length; x++) {
-        indexInArray = fullPortfolio.findIndex(obj => {
-            return obj.position == x;
-        });
-        if (indexInArray > -1) {
-            elementToAddToArray = fullPortfolio[indexInArray];
-            orderedArray.push(elementToAddToArray);
-        }
-    }
-
-    orderedPortfolio = orderedArray;
-    fullPortfolio = orderedPortfolio;
-
-    if (orderedPortfolio.length !== desiredLength) {
-        console.warn('Warning:', desiredLength - orderedPortfolio.length, 'projects missing after sorting');
-    } else if (startPortfolio === true) {
-        portfolioMain(orderedPortfolio);
-    } else {
-        return orderedPortfolio;
-    }
 }

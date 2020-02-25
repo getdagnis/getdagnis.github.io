@@ -1,23 +1,44 @@
 [
   {
-    "key": "mars",
-    "name": "Mission to Mars 2049",
-    "title": "Board Game Startup",
-    "work": "Invented, Designed, Published",
-    "year": "2015",
-    "description": "Mission to Mars 2049 is a board game startup that I launched in 2015. It successfully raised ~€50k needed to get published via crowdfunding and seed investment pitches. During 2016-2017 it debuted in several of the largest toy and board game conventions in the world, got published in seven languages, sold over 16k copies world-wide, got 7.2k FB fans and briefly reached Top 10 best-selling position in Germany and Top 20 in the UK.",
-    "images": [],
+    "key": "made",
+    "name": "made name",
+    "title": "made - what it is",
+    "work": "made - what was done",
+    "year": "made year",
+    "description": "made description",
+    "images": [
+      "_template.jpg",
+      "image-0.jpg"
+    ],
     "allimages": [
-      "image-0.jpg",
-      "image-1.jpg",
-      "image-2.jpg",
-      "image-3.jpg",
-      "image-4.jpg",
-      "image-5.jpg",
-      "image-6.jpg",
-      "image-7.jpg"
+      "_template.jpg",
+      "image-0.jpg"
     ],
     "position": 0,
+    "show": "true"
+  },
+  {
+    "key": "sponsor",
+    "name": "SponsorKing",
+    "title": "sponsor - what it is",
+    "work": "sponsor - what was done",
+    "year": "sponsor year",
+    "description": "sponsor description",
+    "images": [],
+    "allimages": [],
+    "position": 1,
+    "show": "true"
+  },
+  {
+    "key": "zivtina",
+    "name": "Zelta Zivtiņa",
+    "title": "Mobile Prepaid Card",
+    "work": "Brand Refresh",
+    "year": "2005",
+    "description": "zivtina description",
+    "images": [],
+    "allimages": [],
+    "position": 2,
     "show": "true"
   },
   {
@@ -27,9 +48,67 @@
     "work": "Founder, Editor, Designer",
     "year": "2003-2011",
     "description": "satori description",
+    "images": [
+      "1-satori_paper_fourth.jpg",
+      "2-birojnica_foto_outofboxarhictecture.jpg",
+      "3-satori_vzk_bw.jpg",
+      "4-satori_branding.jpg",
+      "5-satori_branding_three.jpg",
+      "6-satori_web_1.jpg",
+      "7-satori_banner_d.jpg",
+      "8-DSC_0372b.jpg",
+      "9-book_igltons_01.jpg"
+    ],
+    "allimages": [],
+    "position": 3,
+    "show": "true"
+  },
+  {
+    "key": "basket",
+    "name": "Liepājas Basketbols",
+    "title": "Basketball Club",
+    "work": "Logo, Identity, Jerseys",
+    "year": "2018",
+    "description": "basket description",
     "images": [],
     "allimages": [],
-    "position": 1,
+    "position": 4,
+    "show": "true"
+  },
+  {
+    "key": "yearbook",
+    "name": "Yearbook.com",
+    "title": "Automated College Yearbooks",
+    "work": "In-house Designer",
+    "year": "2011-2012",
+    "description": "Yearbook.com is a London, Shoreditch based startup which is also one of the leaders in the UK college yearbook market.",
+    "images": [],
+    "allimages": [],
+    "position": 5,
+    "show": "true"
+  },
+  {
+    "key": "reformu",
+    "name": "Reformu Partija",
+    "title": "Political Party",
+    "work": "Logo &amp; Brandbook",
+    "year": "2012",
+    "description": "reformu description",
+    "images": [],
+    "allimages": [],
+    "position": 6,
+    "show": "true"
+  },
+  {
+    "key": "open",
+    "name": "open name",
+    "title": "open - what it is",
+    "work": "open - what was done",
+    "year": "open year",
+    "description": "open description",
+    "images": [],
+    "allimages": [],
+    "position": 7,
     "show": "true"
   },
   {
@@ -39,7 +118,18 @@
     "work": "Logo &amp; Jerseys",
     "year": "2008",
     "description": "Dinamo Rīga is an ice hockey club playing for KHL, the second largest hockey league in the world. In spring 2008, when the club was re-established after a 25 year break, I was approached by the club's management and asked to participate in a closed logo design contest. My logo, which incorporated letter D from the original club's logo as well as symbols from the Latvian coat of arms, won among proposals by several of the largest advertising agencies in the country. I continued to work with them for the first half of their first season -- designing player jerseys, fan merchandising etc. When the club's management changed halfway into the season, they took over the design part too.&nbsp;",
-    "images": [],
+    "images": [
+      "00.jpg",
+      "01.jpg",
+      "02.jpg",
+      "03.jpg",
+      "04.jpg",
+      "05.jpg",
+      "06.jpg",
+      "07.jpg",
+      "08.jpg",
+      "09.jpg"
+    ],
     "allimages": [
       "coyotes-1.jpg",
       "coyotes-2.jpg",
@@ -64,81 +154,6 @@
       "image-8.jpg",
       "image-9.jpg"
     ],
-    "position": 2,
-    "show": "true"
-  },
-  {
-    "key": "basket",
-    "name": "Liepājas Basketbols",
-    "title": "Basketball Club",
-    "work": "Logo, Identity, Jerseys",
-    "year": "2018",
-    "description": "basket description",
-    "images": [],
-    "allimages": [],
-    "position": 3,
-    "show": "true"
-  },
-  {
-    "key": "yearbook",
-    "name": "Yearbook.com",
-    "title": "Automated College Yearbooks",
-    "work": "In-house Designer",
-    "year": "2011-2012",
-    "description": "Yearbook.com is a London, Shoreditch based startup which is also one of the leaders in the UK college yearbook market.",
-    "images": [],
-    "allimages": [],
-    "position": 4,
-    "show": "true"
-  },
-  {
-    "key": "reformu",
-    "name": "Reformu Partija",
-    "title": "Political Party",
-    "work": "Logo &amp; Brandbook",
-    "year": "2012",
-    "description": "reformu description",
-    "images": [],
-    "allimages": [],
-    "position": 5,
-    "show": "true"
-  },
-  {
-    "key": "zivtina",
-    "name": "Zelta Zivtiņa",
-    "title": "Mobile Prepaid Card",
-    "work": "Brand Refresh",
-    "year": "2005",
-    "description": "zivtina description",
-    "images": [],
-    "allimages": [],
-    "position": 6,
-    "show": "true"
-  },
-  {
-    "key": "made",
-    "name": "made name",
-    "title": "made - what it is",
-    "work": "made - what was done",
-    "year": "made year",
-    "description": "made description",
-    "images": [],
-    "allimages": [
-      "_template.jpg",
-      "image-0.jpg"
-    ],
-    "position": 7,
-    "show": "true"
-  },
-  {
-    "key": "open",
-    "name": "open name",
-    "title": "open - what it is",
-    "work": "open - what was done",
-    "year": "open year",
-    "description": "open description",
-    "images": [],
-    "allimages": [],
     "position": 8,
     "show": "true"
   },
@@ -149,7 +164,10 @@
     "work": "makslai - what was done",
     "year": "makslai year",
     "description": "makslai description",
-    "images": [],
+    "images": [
+      "1-mvt_canvas_mockup.jpg",
+      "2-foto_instagram_ilsteraivis_2.jpg"
+    ],
     "allimages": [],
     "position": 9,
     "show": "true"
@@ -167,18 +185,6 @@
     "show": "true"
   },
   {
-    "key": "sponsor",
-    "name": "SponsorKing",
-    "title": "sponsor - what it is",
-    "work": "sponsor - what was done",
-    "year": "sponsor year",
-    "description": "sponsor description",
-    "images": [],
-    "allimages": [],
-    "position": 11,
-    "show": "true"
-  },
-  {
     "key": "binders",
     "name": "Binders",
     "title": "Road Construction",
@@ -187,7 +193,7 @@
     "description": "binders description",
     "images": [],
     "allimages": [],
-    "position": 12,
+    "position": 11,
     "show": "true"
   },
   {
@@ -199,7 +205,7 @@
     "description": "summer description",
     "images": [],
     "allimages": [],
-    "position": 13,
+    "position": 12,
     "show": "true"
   },
   {
@@ -211,7 +217,7 @@
     "description": "positivus description",
     "images": [],
     "allimages": [],
-    "position": 14,
+    "position": 13,
     "show": "true"
   },
   {
@@ -223,7 +229,7 @@
     "description": "haemo description",
     "images": [],
     "allimages": [],
-    "position": 15,
+    "position": 14,
     "show": "true"
   },
   {
@@ -235,7 +241,7 @@
     "description": "api description",
     "images": [],
     "allimages": [],
-    "position": 16,
+    "position": 15,
     "show": "true"
   },
   {
@@ -247,7 +253,7 @@
     "description": "bb-wake description",
     "images": [],
     "allimages": [],
-    "position": 17,
+    "position": 16,
     "show": "true"
   },
   {
@@ -259,7 +265,7 @@
     "description": "royal description",
     "images": [],
     "allimages": [],
-    "position": 18,
+    "position": 17,
     "show": "true"
   },
   {
@@ -271,7 +277,7 @@
     "description": "sporta description",
     "images": [],
     "allimages": [],
-    "position": 19,
+    "position": 18,
     "show": "true"
   },
   {
@@ -281,7 +287,13 @@
     "work": "Logo",
     "year": "2009",
     "description": "SportaCentrs.com is the largest sports news website (plus TV channel) in Latvia. In 2009 I was asked to do the site's logo design. No identity design works were requested, however, additionally I had a chance to design a few website \"skins\" for their sports related clients - other websites that were hosted under their portal, used the same layout as their portal but needed a slightly customised design.",
-    "images": [],
+    "images": [
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg",
+      "image-4.jpg",
+      "image-5.jpg"
+    ],
     "allimages": [
       "image-1.jpg",
       "image-2.jpg",
@@ -289,7 +301,7 @@
       "image-4.jpg",
       "image-5.jpg"
     ],
-    "position": 20,
+    "position": 19,
     "show": "true"
   },
   {
@@ -301,7 +313,7 @@
     "description": "var description",
     "images": [],
     "allimages": [],
-    "position": 21,
+    "position": 20,
     "show": "true"
   },
   {
@@ -313,7 +325,7 @@
     "description": "lapas description",
     "images": [],
     "allimages": [],
-    "position": 22,
+    "position": 21,
     "show": "true"
   },
   {
@@ -325,7 +337,7 @@
     "description": "latvija description",
     "images": [],
     "allimages": [],
-    "position": 23,
+    "position": 22,
     "show": "true"
   },
   {
@@ -337,7 +349,7 @@
     "description": "rsu description",
     "images": [],
     "allimages": [],
-    "position": 24,
+    "position": 23,
     "show": "true"
   },
   {
@@ -349,7 +361,7 @@
     "description": "saistoss description",
     "images": [],
     "allimages": [],
-    "position": 25,
+    "position": 24,
     "show": "true"
   },
   {
@@ -361,7 +373,7 @@
     "description": "maritec description",
     "images": [],
     "allimages": [],
-    "position": 26,
+    "position": 25,
     "show": "true"
   },
   {
@@ -373,7 +385,7 @@
     "description": "creative description",
     "images": [],
     "allimages": [],
-    "position": 27,
+    "position": 26,
     "show": "true"
   },
   {
@@ -385,7 +397,7 @@
     "description": "survival description",
     "images": [],
     "allimages": [],
-    "position": 28,
+    "position": 27,
     "show": "true"
   },
   {
@@ -397,7 +409,7 @@
     "description": "guw description",
     "images": [],
     "allimages": [],
-    "position": 29,
+    "position": 28,
     "show": "true"
   },
   {
@@ -409,7 +421,7 @@
     "description": "useless description",
     "images": [],
     "allimages": [],
-    "position": 30,
+    "position": 29,
     "show": "true"
   },
   {
@@ -421,7 +433,7 @@
     "description": "kiki description",
     "images": [],
     "allimages": [],
-    "position": 31,
+    "position": 30,
     "show": "true"
   },
   {
@@ -433,7 +445,7 @@
     "description": "sponsorking description",
     "images": [],
     "allimages": [],
-    "position": 32,
+    "position": 31,
     "show": "true"
   },
   {
@@ -445,6 +457,37 @@
     "description": "urban description",
     "images": [],
     "allimages": [],
+    "position": 32,
+    "show": "true"
+  },
+  {
+    "key": "mars",
+    "name": "Mission to Mars 2049",
+    "title": "Board Game Startup",
+    "work": "Invented, Designed, Published",
+    "year": "2015",
+    "description": "Mission to Mars 2049 is a board game startup that I launched in 2015. It successfully raised funds needed to get published via crowdfunding and several seed investment pitches. During 2016-2017 it debuted in several of the largest toy and board game conventions in the world, got published in seven languages, sold over 16k copies world-wide, got 7.2k FB fans and briefly reached Top 10 best-selling position in Germany and Top 20 in the UK before selling out the stock.",
+    "images": [
+      "game_full_on_white_us.jpg",
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg",
+      "image-4.jpg",
+      "image-5.jpg",
+      "image-6.jpg",
+      "image-7.jpg"
+    ],
+    "allimages": [
+      "image-0.jpg",
+      "image-1.jpg",
+      "image-2.jpg",
+      "image-3.jpg",
+      "image-4.jpg",
+      "image-5.jpg",
+      "image-6.jpg",
+      "image-7.jpg"
+    ],
     "position": 33,
     "show": "true"
   },
@@ -503,7 +546,9 @@
     "work": "liepaja - what was done",
     "year": "liepaja year",
     "description": "liepaja description",
-    "images": [],
+    "images": [
+      "image-0.jpg"
+    ],
     "allimages": [
       "image-0.jpg"
     ],

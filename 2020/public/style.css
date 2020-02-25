@@ -164,12 +164,6 @@ h4 {
     font-weight: 400;
 }
 
-seo {
-   display: none;
-   height: 1px;
-   width: 1px; 
-}
-
 .grid-item-inner {
     position: relative;
     display: block;
@@ -315,6 +309,26 @@ seo {
 
 .edit-mode::selection {
     background: rgba(255, 159, 239, 0.9);
+}
+
+noscript {
+    display: block;
+    width: 70vw;
+    margin: 50px auto;
+}
+
+noscript h4 {
+    color: rgb(218, 4, 4);
+    font-weight: 700;
+    margin-bottom: 40px;
+    background: rgba(235, 198, 198, 0.685);
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+}
+
+noscript h3 {
+    margin-top: 20px;
 }
 
 @import url('media.css');

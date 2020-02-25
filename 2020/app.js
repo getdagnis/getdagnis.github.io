@@ -23,6 +23,35 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 let fullPortfolio = JSON.parse(fs.readFileSync('./public/portfolio_full.json'));
+const uploadedImageKeys = fs.readdirSync('./public/works/');
+uploadedImageKeys.shift();
+let uploadedImages = {};
+
+const allImagesObject = function() {
+    let newDir = '';
+    let thisIndex = 0;
+    let extension = '.jpg';
+
+    for (imageKey of uploadedImageKeys) {
+        thisIndex = fullPortfolio.findIndex(obj => {
+            return obj.key == imageKey;
+        });
+        if (thisIndex > -1) { 
+            newDir = './public/works/' + imageKey;
+            let fileList = fs.readdirSync(newDir);
+            let thisKeyImages = fileList.filter(function(file){
+                return file.indexOf(extension) !== -1;
+            });
+            fullPortfolio[thisIndex]["images"] = thisKeyImages;
+        } else {
+            console.warn('No such object key found while scanning for images!');
+        }
+    }
+    
+    fs.writeFileSync('./public/portfolio_full.json', JSON.stringify(fullPortfolio, null, 2));
+}
+
+allImagesObject();
 
 app.use(bodyParser.json({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
@@ -59,7 +88,7 @@ app.get('/admin', function(req,res){
     }
 });
 
-app.get('/api/works/full', function(req,res){
+app.get('/api/works/full', function(req, res){
     fullPortfolio = JSON.parse(fs.readFileSync('./public/portfolio_full.json'));
     res.send(fullPortfolio);
 });
@@ -83,6 +112,13 @@ app.post('/api/works/images/:key/', upload.any('image'), function(req, res) {
 
     console.log(req.params.key, 'images received', req.body);
     res.send(`${key} images received: ${JSON.stringify(req.file)}`);
+})
+
+app.get('/api/works/images/:key/', function(req, res) {
+    const key = req.params.key;
+    allImagesObject();
+
+    res.send(allImages[key]);
 })
 
 app.post('/api/works/update/', function(req, res) {
@@ -173,7 +209,7 @@ function createNewFullJson() {
 }
 
 function updateAllimagesToJson() {
-    fs.readFileSync('./public/portfolio_full.json', JSON.parss(fullPortfolio));
+    fs.readFileSync('./public/portfolio_full.json', JSON.parse(fullPortfolio));
     // TODO JĀPĀRRAKSTA NO IEPRIEKŠĒJĀS FUNKCIJAS TIKAI ALLIMAGES DAĻA
     fs.writeFileSync('./public/portfolio_full.json', JSON.stringify(thumbsArray, null, 2));
 }

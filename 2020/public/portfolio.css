@@ -3,7 +3,7 @@
 }
 
 .images {
-    width: calc(908px*9);
+    width: calc(908px);
     height: 526px;
     background: white;
     transition: all .5s ease;

@@ -1,3 +1,4 @@
+// Vanilla JS by Dagnis Skurbe, December 2019-January 2020
 
 const sendFetchRequest = async (method, url, data, head) => {
     const res = await fetch(url, {
@@ -76,31 +77,6 @@ document.addEventListener("dblclick", function(event) {
     }
 });
 
-document.addEventListener("click", function(event) {
-    if (event.target.classList.contains('client-top')) {
-        let thisClient = event.target.classList[0];
-        let elementToExpandClass = thisClient + '-client-expandable';
-        let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
-        elementToExpand.classList.toggle('not-expanded');
-        event.target.classList.toggle('client-top-expanded');
-        imageDropListener();
-    } else if (event.target.parentElement.classList.contains('client-top')) {
-        let thisClient = event.target.parentElement.classList[0];
-        let elementToExpandClass = thisClient + '-client-expandable';
-        let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
-
-        imageDropListener();
-        elementToExpand.classList.toggle('not-expanded');
-    } 
-});
-
-// document.addEventListener('dragover', function(event) {
-//     console.log('dragover noticed');
-//     if (event.target.classList.contains('drop-image')) {
-//         imageDropListener();
-//     }
-// })
-
 function orderPortfolioByPositions(fetchData, launchAdmin) {
     fullPortfolio = fetchData;
     let orderedPortfolio = [];
@@ -131,6 +107,24 @@ function orderPortfolioByPositions(fetchData, launchAdmin) {
     }
 }
 
+document.addEventListener("click", function(event) {
+    if (event.target.classList.contains('client-top')) {
+        let thisClient = event.target.classList[0];
+        let elementToExpandClass = thisClient + '-client-expandable';
+        let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
+        elementToExpand.classList.toggle('not-expanded');
+        event.target.classList.toggle('client-top-expanded');
+        imageDropListener();
+    } else if (event.target.parentElement.classList.contains('client-top')) {
+        let thisClient = event.target.parentElement.classList[0];
+        let elementToExpandClass = thisClient + '-client-expandable';
+        let elementToExpand = document.getElementsByClassName(elementToExpandClass)[0];
+
+        imageDropListener();
+        elementToExpand.classList.toggle('not-expanded');
+    } 
+});
+
 function adminExtras(thisObj) {
     let thisClientExpandClass = thisObj.key + '-client-expandable';
     const clientExpand = document.getElementsByClassName(thisClientExpandClass)[0];
@@ -159,7 +153,6 @@ function adminExtras(thisObj) {
             )
         };
     }
-
 
     // SMALL IMAGE THUMBNAILS IN ADMIN MAIN VIEW
     if (thisObj.allimages.length < 1) {

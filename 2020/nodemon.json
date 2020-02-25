@@ -1,5 +1,5 @@
 {
     "delay": "2500",
-    "ext": "js, html",
+    "ext": "js, html, jpg",
     "start": "open -a opera"
 }
