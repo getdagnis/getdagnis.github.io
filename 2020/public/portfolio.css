@@ -1,3 +1,4 @@
+
 .viewer {
     position: relative;
 }
@@ -14,11 +15,77 @@
     position: relative;
     background: url(img/blank.jpg) no-repeat center;
     background-size: cover;
-    width: 898px;
-    height: 526px;
+    width: 898px; 
+    height: 526px; 
     margin: 0 8px 0 0;
     transition: all .5s ease;
 }
+
+.thumb {
+    position: absolute;
+    width: 190px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.viewer-description {
+    position: absolute;
+    display: flex;
+    background: rgba(247, 247, 247, 0.96);
+    height: 100%;
+    width: 100%;
+    padding: 20px 0 25px 35px;
+    box-sizing: border-box;
+}
+
+.descr-thumb {
+    top: 0;
+    left: 100%;
+    transform: translate(-105%, 20px);
+    width: 250px;
+}
+
+.description-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.description-top {
+    width: 90%;
+}
+
+.description-top h2 {
+    font-size: 2rem!important;
+}
+
+.description-bottom {
+    font-size: 1.12rem;
+}
+
+.description-left {
+    max-width: 650px;
+}
+
+.description-right {
+    width: 10%;
+}
+
+.arrow-to-right, .previous::after {
+    content: '';
+    position: absolute;
+    right: -21%;
+    top: 50%;
+    width: 6%;
+    height: 100%;
+    transform: translateY(-10%);
+    background: url(img/arrow-head.svg) no-repeat;
+    animation: pulse 3s infinite ease 2s;
+    animation-fill-mode: backwards;
+}
+
 
 .img-upload {
     position: absolute;
@@ -45,7 +112,7 @@
 
 #contents .next {
     position: relative;
-    background-blend-mode: darken;
+    background-blend-mode: difference;
     opacity: .2;
     cursor: pointer;
 }
@@ -57,11 +124,11 @@
 
 #contents .last {
     background: url(img/arrow.svg) no-repeat;
-    background-color: rgba(230, 230, 230, 0.9);
+    background-color: rgba(248, 248, 248, 1);
     background-size: 16%;
     background-position: 10% 50%;
     margin-left: -4px;
-    opacity: .5;
+    opacity: 1;
     cursor: pointer;
 }
 
@@ -110,4 +177,15 @@
     animation: slideIn .7s;
 }
 
+@keyframes pulse {
+    from {
+        opacity: 0;
+    }
+    75% {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
 

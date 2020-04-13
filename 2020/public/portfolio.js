@@ -15,12 +15,12 @@ function launchAdmin(nextFunction) {
     sendFetchRequest('GET', '/api/works/full')
         .then(resData => nextFunction(resData, true))
         .catch(err => console.error('Error:', err));
-};
+}
 
 function portfolioMain(orderedPortfolio) {
     let visibleObjects = orderedPortfolio.filter(object => {
         return object.show == "true";
-    })
+    });
     let objectKeys = Object.keys(visibleObjects);
     let thisObj = {};
     let newContents = '';
@@ -35,9 +35,7 @@ function portfolioMain(orderedPortfolio) {
         let rowAndCol = '';
         let whichInnerSide = '';
         let animationDelay = null; 
-        let animationDelayFormula = .2 + i / 100 * 1.5;
-        let thisImageDiv = '';
-        let allImageDivs = '';
+        let animationDelayFormula = 0.2 + i / 100 * 1.5;
         let expandRow = '';
         let expandRowExtension = '';
         
@@ -48,35 +46,55 @@ function portfolioMain(orderedPortfolio) {
             whichInnerSide = 'inner-right';
             expandRowExtension = 'a';
         } else if (i % 4 === 1) {
-            animationDelay = animationDelayFormula + .15;
+            animationDelay = animationDelayFormula + 0.15;
             thisCol = 'col-2';
             whichInnerSide = 'inner-left';
             expandRowExtension = 'a';
         } else if (i % 4 === 2) {
-            animationDelay = animationDelayFormula + .3;
+            animationDelay = animationDelayFormula + 0.3;
             thisCol = 'col-3';
             whichInnerSide = 'inner-right';
             expandRowExtension = 'b';
         } else if (i % 4 === 3) {
-            animationDelay = animationDelayFormula + .45;
+            animationDelay = animationDelayFormula + 0.45;
             thisCol = 'col-4';
             whichInnerSide = 'inner-left';
             expandRowExtension = 'b';
-        };
+        }
         thisRowFormula = (i - (i % 4)) / 4 + 1;
         thisRow = 'row-' + thisRowFormula;
         rowAndCol = thisRow + '-' + thisCol;
 
         // GENERATES ALL THE IMAGES IN THE IMAGE VIEWER
+        let thisImageDiv = '';
+        let allImageDivs = `
+            <div class="viewer-img first" style="background: url('works/${thisObj.key}/${thisObj.images[0]}') no-repeat center;
+            background-size: cover;">
+                <div class="viewer-description">
+                    <div class="description-left">
+                        <div class="description-top">
+                            <h2 class="${thisObj.key}-name ${thisObj.key} name edit-ready">${thisObj.name}</h2>
+                            <h3 class="${thisObj.key}-title ${thisObj.key} title edit-ready">${thisObj.title}</h3>
+                            <h3 class="${thisObj.key}-work ${thisObj.key} work edit-ready">${thisObj.work}</h3>
+                            <h3 class="${thisObj.key}-year ${thisObj.key} year edit-ready">${thisObj.year}</h3>
+                        </div>
+                        <div class="description-bottom">
+                            <p class="${thisObj.key}-description ${thisObj.key} description edit-ready">${thisObj.description}</p>
+                        </div>
+                    </div>
+                    <div class="description-right">
+                        <img class="thumb descr-thumb" src="img/thumbs/${thisObj.key}.svg" alt="${thisObj.name + ", " + thisObj.work}" />
+                    </div>
+                    <div class="arrow-to-right"></div>
+                </div>
+            </div>`;
         let j = 0;
 
         if (thisObj.images.length > 0) {
             while (j < thisObj.images.length) {
                 let thisImgName = thisObj.key + '-' + j;
-                let firstOrNext = 'first';
-                (j > 0) ? firstOrNext = 'next' : 'first';
 
-                thisImageDiv = `<div class="viewer-img ${thisObj.key} ${j} ${thisImgName} ${firstOrNext}"
+                thisImageDiv = `<div class="viewer-img ${thisObj.key} ${j} ${thisImgName} next"
                 style="background: url('works/${thisObj.key}/${thisObj.images[j]}') center center / cover no-repeat;">
                 <input id="${thisImgName}-input" type="file" class="img-upload">
                 </div>`;
@@ -88,7 +106,7 @@ function portfolioMain(orderedPortfolio) {
         // WHICH ROW TO EXPAND (differs in 2 and 4 column versions)
         expandRow = 'row-' + thisRowFormula + expandRowExtension;
 
-        // TEMPLATE FOR BOTH THE THUMBNAIL AND THE IMAGE VIEWER.
+        // TEMPLATE FOR BOTH THE THUMBNAIL AND THE IMAGE VIEWER HOLDER.
         templateHTML = `
         <div class="grid-item" id="grid-item-${thisObj.key}">
             <div class="grid-item-inner ${thisRow} ${thisCol} itemBounce" style="animation-delay: ${animationDelay}s">
@@ -107,13 +125,6 @@ function portfolioMain(orderedPortfolio) {
                     ${allImageDivs}
                     <div class="viewer-img last"></div>
                 </div>
-            </div>
-            <div class="expanded-bottom ${thisObj.key} ${thisObjKey} ">
-                    <h2 class="${thisObj.key}-name ${thisObj.key} name edit-ready">${thisObj.name}</h2>
-                    <span class="${thisObj.key}-title ${thisObj.key} title edit-ready">${thisObj.title}</span>
-                    <img src="img/arrow.svg" height="12px" /><span class="${thisObj.key}-work ${thisObj.key} work edit-ready">${thisObj.work}</span> 
-                    (<span class="${thisObj.key}-year ${thisObj.key} year edit-ready">${thisObj.year}</span>)
-                    <p class="${thisObj.key}-description ${thisObj.key} description edit-ready">${thisObj.description}</p>
             </div>
         </div>         
         `;

@@ -87,7 +87,7 @@ function walkTheInnerBlue() {
     let itemsAround = [];
     const previousItem = document.getElementsByClassName(previousItemClass)[0];
 
-    for (item of items) {
+    for (let item of items) {
         item.addEventListener('mouseenter', function() {
             thisItemRow = event.target.classList[1].slice(4);
             thisItemCol = event.target.classList[2].slice(4);
@@ -99,7 +99,7 @@ function walkTheInnerBlue() {
             previousItemClass = 'row-' + thisItemRow + '-col-' + thisItemCol;
         });
     }
-    for (viewer of viewers) {
+    for (let viewer of viewers) {
         viewer.addEventListener('mouseenter', function() {
             cleanUnnecessaryBlues(thisItemCol);
         });
@@ -107,8 +107,9 @@ function walkTheInnerBlue() {
     contents.addEventListener('mouseleave', function() {
         cleanUnnecessaryBlues(thisItemCol);
     });
-
 }
+
+
 
 // Visiem tiem lauciņiem, kas ir apkārt pašreizējam zilajam lauciņam, jau laicīgi nomaina
 // klases uz nepieciešamajām, lai pareizi veidotos animācijas virziens
@@ -166,7 +167,7 @@ function cleanUnnecessaryBlues(thisItemCol) {
         innerCurrent.classList.add('transition-6', direction);
     }
 
-    for (item of items) {
+    for (let item of items) {
         item.classList.remove('inner-previous');
         item.classList.remove('inner-current');
     }
@@ -218,7 +219,7 @@ function openExpandedImageViewer(id) {
     const imageViewerClass = id + '-images';
     const thisImageViewer = document.getElementById(imageViewerClass);
     const numberOfImages = Number(thisImageViewer.classList[1]) + 1;
-    const viewerWidth = 908 * numberOfImages;
+    const viewerWidth = 908 * numberOfImages + 908;
 
     thisImageViewer.style.width = viewerWidth + 'px';
     currentId = id;
@@ -229,7 +230,7 @@ function openExpandedImageViewer(id) {
         expandableDiv.classList.replace('scale-0', 'scale-100');
         buttonThatExpanded.classList.add('item-inner-active');
     }, 10);
-};
+}
 
 function closeExpandedImageViewer() {
     let allExpanded = document.getElementsByClassName('is-expanded');

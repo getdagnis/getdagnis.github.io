@@ -19,7 +19,7 @@ body {
     position: fixed;
     width: 100%;
     height: 100%;
-    background-color: rgba(69, 247, 217, 0.9);
+    background-color: rgba(255, 69, 36, 0.9);
     /* background-color: rgba(255, 69, 36, 0.9); */
     top: 0;
     z-index: 998;
@@ -208,7 +208,7 @@ h4 {
 
 /* Blue */
 .item-inner, .item-inner-active, .item-visited, .item-inner > svg {
-    background: rgba(69, 247, 217, 0.97);
+    background: rgba(255, 69, 36, 0.97);
     color: black;
 }
 
@@ -237,14 +237,6 @@ h4 {
     transform: translate(0, 0)!important;
 }
 
-.thumb {
-    position: absolute;
-    width: 190px;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
 .expanded {
     display: flex;
     flex-wrap: wrap;
@@ -257,13 +249,13 @@ h4 {
     transition: all 1s ease;
 }
 
-.expand-row-1a, .expand-row-1b { grid-row-start: 2; grid-row-end: 6; }
-.expand-row-2a, .expand-row-2b { grid-row-start: 3; grid-row-end: 7; }
-.expand-row-3a, .expand-row-3b { grid-row-start: 4; grid-row-end: 8; }
-.expand-row-4a, .expand-row-4b { grid-row-start: 5; grid-row-end: 9; }
-.expand-row-5a, .expand-row-5b { grid-row-start: 6; grid-row-end: 10; }
-.expand-row-6a, .expand-row-6b { grid-row-start: 7; grid-row-end: 11; }
-.expand-row-7a, .expand-row-7b { grid-row-start: 8; grid-row-end: 12; }
+.expand-row-1a, .expand-row-1b { grid-row-start: 2; grid-row-end: 5; }
+.expand-row-2a, .expand-row-2b { grid-row-start: 3; grid-row-end: 6; }
+.expand-row-3a, .expand-row-3b { grid-row-start: 4; grid-row-end: 7; }
+.expand-row-4a, .expand-row-4b { grid-row-start: 5; grid-row-end: 8; }
+.expand-row-5a, .expand-row-5b { grid-row-start: 6; grid-row-end: 9; }
+.expand-row-6a, .expand-row-6b { grid-row-start: 7; grid-row-end: 10; }
+.expand-row-7a, .expand-row-7b { grid-row-start: 8; grid-row-end: 11; }
 
 
 
@@ -274,7 +266,7 @@ h4 {
     width: 100%;
     background-color: rgba(230, 230, 230, 0.9);
     /* background-color: rgba(226, 226, 226, 0.404); */
-    /* border: 3px solid rgba(69, 247, 217, 0.9); */
+    /* border: 3px solid rgba(255, 69, 36, 0.9); */
     box-sizing: border-box;
     padding: 30px 50px;
 }
@@ -305,6 +297,7 @@ h4 {
     border: 1px solid white;
     width: auto;
     background: rgba(50, 209, 183, 0.9);
+    outline: unset;
 }
 
 .edit-mode::selection {

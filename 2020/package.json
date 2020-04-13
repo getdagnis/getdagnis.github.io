@@ -9,5 +9,8 @@
     "multer": "^1.4.2",
     "require": "^2.4.20",
     "restify": "^8.5.1"
+  },
+  "jshintConfig": {
+    "esversion": "6"
   }
 }
